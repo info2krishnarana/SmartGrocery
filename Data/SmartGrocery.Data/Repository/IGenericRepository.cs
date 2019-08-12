@@ -9,12 +9,10 @@ namespace SmartGrocery.Data.Repository
     public interface IGenericRepository<T> where T : class
     {
         IEnumerable<T> GetAll();
-        IEnumerable<T> GetAll(object obj);
         T GetById(object id);
-        object Insert(T obj);
-        object Update(T obj);
-        object Delete(object id);
-        object Save();
-        bool Exist(object obj);
+        void Add(T obj);
+        void Update(T obj);
+        void Delete(object id);
+        void Save();
     }
 }

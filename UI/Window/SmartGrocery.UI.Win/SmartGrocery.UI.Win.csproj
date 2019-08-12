@@ -33,7 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,14 +56,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="ItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ItemForm.Designer.cs">
+      <DependentUpon>ItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemListForm.Designer.cs">
+      <DependentUpon>ItemListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MastersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MastersForm.Designer.cs">
+      <DependentUpon>MastersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateStoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateStoreForm.Designer.cs">
+      <DependentUpon>CreateStoreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIParentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIParentForm.Designer.cs">
+      <DependentUpon>MDIParentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Validation.cs" />
+    <Compile Include="ViewModels\ItemViewModels.cs" />
+    <EmbeddedResource Include="ItemForm.resx">
+      <DependentUpon>ItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemListForm.resx">
+      <DependentUpon>ItemListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MastersForm.resx">
+      <DependentUpon>MastersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateStoreForm.resx">
+      <DependentUpon>CreateStoreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIParentForm.resx">
+      <DependentUpon>MDIParentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +114,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +141,13 @@
       <Project>{ceb4db5b-d989-4f0c-932c-b6fad0c5fa7b}</Project>
       <Name>SmartGrocery.Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Business\" />
+    <Folder Include="Data\" />
+    <Folder Include="Grocery\" />
+    <Folder Include="Patterns\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

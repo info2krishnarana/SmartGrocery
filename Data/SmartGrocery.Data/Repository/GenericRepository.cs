@@ -19,44 +19,42 @@ namespace SmartGrocery.Data.Repository
             this._dbSet = _context.Set<T>();
         }
 
-        public object Delete(object id)
+        public GenericRepository(SmartGroceryDataContext context)
         {
-            throw new NotImplementedException();
+            this._context = context;
+            this._dbSet = _context.Set<T>();
         }
 
-        public bool Exist(object obj)
+        public void Delete(object id)
         {
-            throw new NotImplementedException();
+            T existing = _dbSet.Find(id);
+            _dbSet.Remove(existing);
         }
 
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<T> GetAll(object obj)
-        {
-            throw new NotImplementedException();
+            return _dbSet.ToList();
         }
 
         public T GetById(object id)
         {
-            throw new NotImplementedException();
+            return _dbSet.Find(id);
         }
 
-        public object Insert(T obj)
+        public void Add(T obj)
         {
-            throw new NotImplementedException();
+            _dbSet.Add(obj);
         }
 
-        public object Save()
+        public void Save()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
-
-        public object Update(T obj)
+            
+        public void Update(T obj)
         {
-            throw new NotImplementedException();
+            _dbSet.Attach(obj);
+            _context.Entry(obj).State = EntityState.Modified;
         }
     }
 }

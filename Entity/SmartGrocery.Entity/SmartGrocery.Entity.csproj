@@ -50,10 +50,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModel\Brand.cs">
+      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Category.cs">
+      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\City.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Country.cs">
+      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Item.cs">
+      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ProductType.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\SmartGroceryModel.Context.cs">

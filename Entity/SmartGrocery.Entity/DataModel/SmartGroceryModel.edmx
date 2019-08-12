@@ -5,6 +5,20 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SmartGrocery.Entity.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,6 +28,36 @@
           <Property Name="StateId" Type="int" />
         </EntityType>
         <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Mrp" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="SalePrice" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="ProductTypeId" Type="int" />
+          <Property Name="BrandId" Type="int" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="SaleOnline" Type="bit" />
+          <Property Name="NotForSale" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProductType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -40,6 +84,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Item_Brand_Brand_Id">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Category_Category_Id">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ProductType_ProductType_Id">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
+          <End Role="Item" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ProductTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_State_CountryId_Country_Id">
           <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
           <End Role="State" Type="Self.State" Multiplicity="*" />
@@ -53,12 +133,28 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SmartGroceryEntityStoreContainer">
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_City_StateId_State_Id" Association="Self.FK_City_StateId_State_Id">
             <End Role="State" EntitySet="State" />
             <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Brand_Brand_Id" Association="Self.FK_Item_Brand_Brand_Id">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Category_Category_Id" Association="Self.FK_Item_Category_Category_Id">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Item" EntitySet="Item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ProductType_ProductType_Id" Association="Self.FK_Item_ProductType_ProductType_Id">
+            <End Role="ProductType" EntitySet="ProductType" />
+            <End Role="Item" EntitySet="Item" />
           </AssociationSet>
           <AssociationSet Name="FK_State_CountryId_Country_Id" Association="Self.FK_State_CountryId_Country_Id">
             <End Role="Country" EntitySet="Country" />
@@ -132,8 +228,110 @@
             <End Role="Country" EntitySet="Countries" />
             <End Role="State" EntitySet="States" />
           </AssociationSet>
-        </EntityContainer>
-      </Schema>
+          <EntitySet Name="Brands" EntityType="SmartGrocery.Entity.Brand" />
+          <EntitySet Name="Categories" EntityType="SmartGrocery.Entity.Category" />
+          <EntitySet Name="ProductTypes" EntityType="SmartGrocery.Entity.ProductType" />
+          <EntitySet Name="Items" EntityType="SmartGrocery.Entity.Item" />
+          <AssociationSet Name="FK_Item_Brand_Brand_Id" Association="SmartGrocery.Entity.FK_Item_Brand_Brand_Id">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_Category_Category_Id" Association="SmartGrocery.Entity.FK_Item_Category_Category_Id">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Item_ProductType_ProductType_Id" Association="SmartGrocery.Entity.FK_Item_ProductType_ProductType_Id">
+            <End Role="ProductType" EntitySet="ProductTypes" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Items" Relationship="SmartGrocery.Entity.FK_Item_Brand_Brand_Id" FromRole="Brand" ToRole="Item" />
+          </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Items" Relationship="SmartGrocery.Entity.FK_Item_Category_Category_Id" FromRole="Category" ToRole="Item" />
+          </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Items" Relationship="SmartGrocery.Entity.FK_Item_ProductType_ProductType_Id" FromRole="ProductType" ToRole="Item" />
+          </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mrp" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="SalePrice" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="ProductTypeId" Type="Int32" />
+          <Property Name="BrandId" Type="Int32" />
+          <Property Name="Photo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="SaleOnline" Type="Boolean" />
+          <Property Name="NotForSale" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Brand" Relationship="SmartGrocery.Entity.FK_Item_Brand_Brand_Id" FromRole="Item" ToRole="Brand" />
+          <NavigationProperty Name="Category" Relationship="SmartGrocery.Entity.FK_Item_Category_Category_Id" FromRole="Item" ToRole="Category" />
+          <NavigationProperty Name="ProductType" Relationship="SmartGrocery.Entity.FK_Item_ProductType_ProductType_Id" FromRole="Item" ToRole="ProductType" />
+        </EntityType>
+        <Association Name="FK_Item_Brand_Brand_Id">
+          <End Type="SmartGrocery.Entity.Brand" Role="Brand" Multiplicity="0..1" />
+          <End Type="SmartGrocery.Entity.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_Category_Category_Id">
+          <End Type="SmartGrocery.Entity.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="SmartGrocery.Entity.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Item_ProductType_ProductType_Id">
+          <End Type="SmartGrocery.Entity.ProductType" Role="ProductType" Multiplicity="0..1" />
+          <End Type="SmartGrocery.Entity.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="ProductTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -162,6 +360,54 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="SmartGrocery.Entity.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="SmartGrocery.Entity.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTypes">
+            <EntityTypeMapping TypeName="SmartGrocery.Entity.ProductType">
+              <MappingFragment StoreEntitySet="ProductType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="SmartGrocery.Entity.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="NotForSale" ColumnName="NotForSale" />
+                <ScalarProperty Name="SaleOnline" ColumnName="SaleOnline" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="Mrp" ColumnName="Mrp" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

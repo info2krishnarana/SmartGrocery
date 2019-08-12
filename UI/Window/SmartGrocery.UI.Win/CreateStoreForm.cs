@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SmartGrocery.UI.Win
 {
-    public partial class Form1 : Form
+    public partial class CreateStoreForm : Form
     {
-        public Form1()
+        public CreateStoreForm()
         {
             InitializeComponent();
         }

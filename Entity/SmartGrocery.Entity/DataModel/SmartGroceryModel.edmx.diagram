@@ -5,11 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b4bab8238da64b30b0e4566c65c4e28d" Name="Diagram1">
-        <EntityTypeShape EntityType="SmartGrocery.Entity.City" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Country" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.State" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.City" Width="1.5" PointX="0.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Country" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.State" Width="1.5" PointX="0.5" PointY="2.625" IsExpanded="true" />
         <AssociationConnector Association="SmartGrocery.Entity.FK_City_StateId_State_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SmartGrocery.Entity.FK_State_CountryId_Country_Id" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Brand" Width="1.5" PointX="2.375" PointY="0.5" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Category" Width="1.5" PointX="4.125" PointY="0.5" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.ProductType" Width="1.5" PointX="5.875" PointY="0.5" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Item" Width="1.5" PointX="8.125" PointY="0.75" />
+        <AssociationConnector Association="SmartGrocery.Entity.FK_Item_Brand_Brand_Id" />
+        <AssociationConnector Association="SmartGrocery.Entity.FK_Item_Category_Category_Id" />
+        <AssociationConnector Association="SmartGrocery.Entity.FK_Item_ProductType_ProductType_Id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
