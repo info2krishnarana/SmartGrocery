@@ -15,16 +15,9 @@ namespace SmartGrocery.UI.Win.ViewModels
         public Nullable<decimal> Mrp { get; set; }
         public Nullable<decimal> PurchasePrice { get; set; }
         public Nullable<decimal> SalePrice { get; set; }
-        public Nullable<int> CategoryId { get; set; }
-        public Nullable<int> ProductTypeId { get; set; }
-        public Nullable<int> BrandId { get; set; }
+        public string Category { get; set; }
+        public string Brand { get; set; }
+        public string ProductType { get; set; }
         public string Photo { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-        public Nullable<bool> SaleOnline { get; set; }
-        public Nullable<bool> NotForSale { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
-        public Nullable<int> UpdatedBy { get; set; }
-        public Nullable<System.DateTime> UpdatedDate { get; set; }
     }
 }

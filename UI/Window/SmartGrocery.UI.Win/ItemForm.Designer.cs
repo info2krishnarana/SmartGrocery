@@ -201,6 +201,7 @@
             this.txtSalePrice.Name = "txtSalePrice";
             this.txtSalePrice.Size = new System.Drawing.Size(244, 20);
             this.txtSalePrice.TabIndex = 2;
+            this.txtSalePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowOnlyNumber);
             // 
             // label8
             // 
@@ -217,6 +218,7 @@
             this.txtPurchasePrice.Name = "txtPurchasePrice";
             this.txtPurchasePrice.Size = new System.Drawing.Size(244, 20);
             this.txtPurchasePrice.TabIndex = 1;
+            this.txtPurchasePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowOnlyNumber);
             // 
             // txtMrp
             // 
@@ -224,6 +226,7 @@
             this.txtMrp.Name = "txtMrp";
             this.txtMrp.Size = new System.Drawing.Size(244, 20);
             this.txtMrp.TabIndex = 0;
+            this.txtMrp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowOnlyNumber);
             // 
             // label7
             // 

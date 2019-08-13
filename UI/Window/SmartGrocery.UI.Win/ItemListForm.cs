@@ -48,6 +48,7 @@ namespace SmartGrocery.UI.Win
             itemForm = new ItemForm();
             //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
             itemForm.ShowDialog();
+            BindItemDataGrid();
         }
 
         private void BindAllComoBoxes()
