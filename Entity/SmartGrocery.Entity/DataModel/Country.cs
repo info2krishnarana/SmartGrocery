@@ -18,6 +18,7 @@ namespace SmartGrocery.Entity.DataModel
         public Country()
         {
             this.States = new HashSet<State>();
+            this.Suppliers = new HashSet<Supplier>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace SmartGrocery.Entity.DataModel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<State> States { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Supplier> Suppliers { get; set; }
     }
 }

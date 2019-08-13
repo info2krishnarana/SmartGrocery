@@ -86,6 +86,9 @@
     <Compile Include="DataModel\State.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\Supplier.cs">
+      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

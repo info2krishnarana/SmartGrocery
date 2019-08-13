@@ -32,9 +32,10 @@
             this.masterSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mastersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.storeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,19 +54,21 @@
             this.masterSetupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mastersToolStripMenuItem,
             this.storeToolStripMenuItem,
-            this.itemsToolStripMenuItem,
+            this.supplierToolStripMenuItem,
             this.itemToolStripMenuItem,
-            this.employeeToolStripMenuItem});
+            this.employeeToolStripMenuItem,
+            this.customerToolStripMenuItem});
             this.masterSetupToolStripMenuItem.Name = "masterSetupToolStripMenuItem";
             this.masterSetupToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
             this.masterSetupToolStripMenuItem.Text = "Master Setup";
+            this.masterSetupToolStripMenuItem.Click += new System.EventHandler(this.masterSetupToolStripMenuItem_Click);
             // 
             // mastersToolStripMenuItem
             // 
             this.mastersToolStripMenuItem.Name = "mastersToolStripMenuItem";
             this.mastersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mastersToolStripMenuItem.Text = "Masters";
-            this.mastersToolStripMenuItem.Click += new System.EventHandler(this.addressToolStripMenuItem_Click);
+            this.mastersToolStripMenuItem.Click += new System.EventHandler(this.mastersToolStripMenuItem_Click);
             // 
             // storeToolStripMenuItem
             // 
@@ -74,11 +77,12 @@
             this.storeToolStripMenuItem.Text = "Store";
             this.storeToolStripMenuItem.Click += new System.EventHandler(this.storeToolStripMenuItem_Click);
             // 
-            // itemsToolStripMenuItem
+            // supplierToolStripMenuItem
             // 
-            this.itemsToolStripMenuItem.Name = "itemsToolStripMenuItem";
-            this.itemsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.itemsToolStripMenuItem.Text = "Vender";
+            this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
+            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.supplierToolStripMenuItem.Text = "Supplier";
+            this.supplierToolStripMenuItem.Click += new System.EventHandler(this.supplierToolStripMenuItem_Click);
             // 
             // itemToolStripMenuItem
             // 
@@ -92,6 +96,14 @@
             this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
             this.employeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.employeeToolStripMenuItem.Text = "Employee";
+            this.employeeToolStripMenuItem.Click += new System.EventHandler(this.employeeToolStripMenuItem_Click);
+            // 
+            // customerToolStripMenuItem
+            // 
+            this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customerToolStripMenuItem.Text = "Customer";
+            this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
             // 
             // MDIParentForm
             // 
@@ -114,9 +126,10 @@
         private System.Windows.Forms.ToolStripMenuItem masterSetupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mastersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem storeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem itemsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem supplierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem employeeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem customerToolStripMenuItem;
     }
 }
 

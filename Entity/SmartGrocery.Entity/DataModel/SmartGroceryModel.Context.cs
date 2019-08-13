@@ -32,5 +32,6 @@ namespace SmartGrocery.Entity.DataModel
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<ProductType> ProductTypes { get; set; }
         public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
     }
 }

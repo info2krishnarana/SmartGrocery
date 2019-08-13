@@ -17,26 +17,26 @@ namespace SmartGrocery.UI.Win
             InitializeComponent();
         }
 
-        private void addressToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MastersForm addressForm = null;
-            addressForm = new MastersForm();
-            //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
-            addressForm.ShowDialog();
-            //if (!Utilities.Validation.IsAlreadyOpen(typeof(AddressForm)))
-            //{
-                //addressForm = new AddressForm
-                //{
-                //    //MdiParent = this,
-                //    //Left = 10,
-                //    //Top = 10
-                //};
-                //addressForm.Size = addressForm.ParentForm.ClientRectangle.Size;
-                //addressForm = new AddressForm();
-                //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
-                //addressForm.ShowDialog();
-            //}
-        }
+        //private void addressToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    MastersForm addressForm = null;
+        //    addressForm = new MastersForm();
+        //    //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
+        //    addressForm.ShowDialog();
+        //    //if (!Utilities.Validation.IsAlreadyOpen(typeof(AddressForm)))
+        //    //{
+        //        //addressForm = new AddressForm
+        //        //{
+        //        //    //MdiParent = this,
+        //        //    //Left = 10,
+        //        //    //Top = 10
+        //        //};
+        //        //addressForm.Size = addressForm.ParentForm.ClientRectangle.Size;
+        //        //addressForm = new AddressForm();
+        //        //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
+        //        //addressForm.ShowDialog();
+        //    //}
+        //}
 
         private void storeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -69,6 +69,40 @@ namespace SmartGrocery.UI.Win
             ItemListForm itemListForm = null;
             itemListForm = new ItemListForm();            //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
             itemListForm.ShowDialog();
+        }       
+
+        private void customerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void employeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SupplierListForm supplierListForm = null;
+            supplierListForm = new SupplierListForm();
+            //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
+            supplierListForm.ShowDialog();
+        }
+
+        private void masterSetupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MastersForm addressForm = null;
+            //addressForm = new MastersForm();
+            ////addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
+            //addressForm.ShowDialog();
+        }
+
+        private void mastersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MastersForm addressForm = null;
+            addressForm = new MastersForm();
+            //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
+            addressForm.ShowDialog();
         }
     }
 }
