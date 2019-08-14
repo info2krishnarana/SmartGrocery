@@ -17,6 +17,12 @@ namespace SmartGrocery.Entity.DataModel
         public long Id { get; set; }
         public string SupplierCode { get; set; }
         public string SupplierName { get; set; }
+        public string Notes { get; set; }
+        public string VatNo { get; set; }
+        public string CstNo { get; set; }
+        public string TinNo { get; set; }
+        public string PanNo { get; set; }
+        public string GstNo { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

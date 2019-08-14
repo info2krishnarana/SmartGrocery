@@ -17,11 +17,11 @@
         <AssociationConnector Association="SmartGrocery.Entity.FK_Item_Brand_Brand_Id" />
         <AssociationConnector Association="SmartGrocery.Entity.FK_Item_Category_Category_Id" />
         <AssociationConnector Association="SmartGrocery.Entity.FK_Item_ProductType_ProductType_Id" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Supplier" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Supplier" Width="1.5" PointX="2.75" PointY="3.125" />
         <AssociationConnector Association="SmartGrocery.Entity.FK_Supplier_CityId_City_Id" />
         <AssociationConnector Association="SmartGrocery.Entity.FK_Supplier_CountryId_Country_Id" />
         <AssociationConnector Association="SmartGrocery.Entity.FK_Supplier_StateId_State_Id" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
