@@ -39,6 +39,7 @@ namespace SmartGrocery.Entity.DataModel
         public Nullable<int> CountryId { get; set; }
         public string PostalCode { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public Nullable<bool> IsPreferred { get; set; }
         public string Photo { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }
