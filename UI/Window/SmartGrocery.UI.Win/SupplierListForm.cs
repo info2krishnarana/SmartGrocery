@@ -42,5 +42,10 @@ namespace SmartGrocery.UI.Win
         {
             dgSupplier.DataSource = supplierRepo.GetAll();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

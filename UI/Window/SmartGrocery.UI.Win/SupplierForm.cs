@@ -57,6 +57,7 @@ namespace SmartGrocery.UI.Win
                 supplier.TinNo = txtTinNo.Text.Trim();
                 supplier.PanNo = txtPanNo.Text.Trim();
                 supplier.PanNo = txtPanNo.Text.Trim();
+                supplier.GstNo = txtGstNo.Text.Trim();
                 supplier.AddressLine1 = txtAddressLine1.Text.Trim();
                 supplier.AddressLine2 = txtAddressLine2.Text.Trim();
                 supplier.CountryId = Convert.ToInt32(cmbCountry.SelectedValue);

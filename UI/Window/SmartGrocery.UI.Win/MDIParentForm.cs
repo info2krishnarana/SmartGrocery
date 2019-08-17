@@ -73,12 +73,18 @@ namespace SmartGrocery.UI.Win
 
         private void customerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            CustomerListForm customerListForm = null;
+            customerListForm = new CustomerListForm();
+            //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
+            customerListForm.ShowDialog();
         }
 
         private void employeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            EmplyeeListForm emplyeeListForm = null;
+            emplyeeListForm = new EmplyeeListForm();
+            //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
+            emplyeeListForm.ShowDialog();
         }
 
         private void supplierToolStripMenuItem_Click(object sender, EventArgs e)

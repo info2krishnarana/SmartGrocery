@@ -56,6 +56,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerListForm.Designer.cs">
+      <DependentUpon>CustomerListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeForm.Designer.cs">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmplyeeListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmplyeeListForm.Designer.cs">
+      <DependentUpon>EmplyeeListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +126,18 @@
     </Compile>
     <Compile Include="Utilities\Validation.cs" />
     <Compile Include="ViewModels\ItemViewModels.cs" />
+    <EmbeddedResource Include="CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerListForm.resx">
+      <DependentUpon>CustomerListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeForm.resx">
+      <DependentUpon>EmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmplyeeListForm.resx">
+      <DependentUpon>EmplyeeListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ItemForm.resx">
       <DependentUpon>ItemForm.cs</DependentUpon>
     </EmbeddedResource>
