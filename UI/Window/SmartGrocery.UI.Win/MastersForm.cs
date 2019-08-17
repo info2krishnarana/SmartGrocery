@@ -21,6 +21,9 @@ namespace SmartGrocery.UI.Win
         private IGenericRepository<Category> categoryRepo;
         private IGenericRepository<Brand> brandRepo;
         private IGenericRepository<ProductType> productTypeRepo;
+        private IGenericRepository<MeasurementUnit> measurementUnitRepo;
+        private IGenericRepository<Department> departmentRepo;
+        private IGenericRepository<Designation> designationRepo;
 
         private Country country;
         private State state;
@@ -28,6 +31,9 @@ namespace SmartGrocery.UI.Win
         private Category category;
         private Brand brand;
         private ProductType productType;
+        private MeasurementUnit measurementUnit;
+        private Department department;
+        private Designation designation;
 
         public MastersForm()
         {
@@ -39,6 +45,9 @@ namespace SmartGrocery.UI.Win
             categoryRepo = new GenericRepository<Category>();
             brandRepo = new GenericRepository<Brand>();
             productTypeRepo = new GenericRepository<ProductType>();
+            measurementUnitRepo = new GenericRepository<MeasurementUnit>();
+            departmentRepo = new GenericRepository<Department>();
+            designationRepo = new GenericRepository<Designation>();
 
             country = new Country();
             state = new State();
@@ -46,6 +55,9 @@ namespace SmartGrocery.UI.Win
             category = new Category();
             brand = new Brand();
             productType = new ProductType();
+            measurementUnit = new MeasurementUnit();
+            department = new Department();
+            designation = new Designation();
 
             BindAllDataGrids();
             BindAllComboBoxes();
@@ -108,6 +120,9 @@ namespace SmartGrocery.UI.Win
             dgCategory.DataSource = categoryRepo.GetAll();
             dgBrand.DataSource = brandRepo.GetAll();
             dgProductType.DataSource = productTypeRepo.GetAll();
+            dgMeasurementUnit.DataSource = measurementUnitRepo.GetAll();
+            dgDepartment.DataSource = departmentRepo.GetAll();
+            dgDesignation.DataSource = designationRepo.GetAll();
         }
 
         private void BindAllComboBoxes()
@@ -216,6 +231,78 @@ namespace SmartGrocery.UI.Win
                     productTypeRepo.Save();
                 }
                 txtProductType.Clear();
+
+                BindAllDataGrids();
+                BindAllComboBoxes();
+            }
+        }
+
+        private void btnSaveMeasurementUnit_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMeasurementUnitName.Text.Trim()))
+            {
+                MessageBox.Show("Measurement Unit Name required");
+                txtMeasurementUnitName.Focus();
+            }
+            else
+            {
+                string[] measurementUnits = txtMeasurementUnitName.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (string measure in measurementUnits)
+                {
+                    measurementUnit.Name = measure;
+                    measurementUnitRepo.Add(measurementUnit);
+                    measurementUnitRepo.Save();
+                }
+                txtMeasurementUnitName.Clear();
+
+                BindAllDataGrids();
+                BindAllComboBoxes();
+            }
+        }
+
+        private void btnSaveDepartment_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDepartmentName.Text.Trim()))
+            {
+                MessageBox.Show("Department Name required");
+                txtDepartmentName.Focus();
+            }
+            else
+            {
+                string[] departments = txtDepartmentName.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (string dept in departments)
+                {
+                    department.Name = dept;
+                    departmentRepo.Add(department);
+                    departmentRepo.Save();
+                }
+                txtDepartmentName.Clear();
+
+                BindAllDataGrids();
+                BindAllComboBoxes();
+            }
+        }
+
+        private void btnSaveDesignation_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDesignationName.Text.Trim()))
+            {
+                MessageBox.Show("Designation Name required");
+                txtDesignationName.Focus();
+            }
+            else
+            {
+                string[] designations = txtDesignationName.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (string desg in designations)
+                {
+                    designation.Name = desg;
+                    designationRepo.Add(designation);
+                    designationRepo.Save();
+                }
+                txtDesignationName.Clear();
 
                 BindAllDataGrids();
                 BindAllComboBoxes();

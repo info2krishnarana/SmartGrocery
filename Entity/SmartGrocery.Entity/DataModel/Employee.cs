@@ -12,42 +12,41 @@ namespace SmartGrocery.Entity.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Supplier
+    public partial class Employee
     {
         public long Id { get; set; }
-        public string SupplierCode { get; set; }
-        public string SupplierName { get; set; }
-        public string Notes { get; set; }
-        public string VatNo { get; set; }
-        public string CstNo { get; set; }
-        public string TinNo { get; set; }
-        public string PanNo { get; set; }
-        public string GstNo { get; set; }
+        public string EmployeeCode { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
+        public string Gender { get; set; }
+        public string MaritalStatus { get; set; }
+        public Nullable<System.DateTime> AnniversaryDate { get; set; }
+        public Nullable<System.DateTime> JoiningDate { get; set; }
+        public Nullable<int> BranchId { get; set; }
+        public Nullable<int> DepartmentId { get; set; }
+        public Nullable<int> DesignationId { get; set; }
+        public string Photo { get; set; }
+        public string Address { get; set; }
+        public Nullable<int> CountryId { get; set; }
+        public Nullable<int> StateId { get; set; }
+        public Nullable<int> CityId { get; set; }
         public string ContactNumber { get; set; }
         public string MobileNumber { get; set; }
-        public string FaxNumber { get; set; }
-        public string WhatsppNumber { get; set; }
+        public string WhatsappNumber { get; set; }
         public string WebsiteUrl { get; set; }
         public string EmailAddress { get; set; }
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
-        public Nullable<int> CityId { get; set; }
-        public Nullable<int> StateId { get; set; }
-        public Nullable<int> CountryId { get; set; }
-        public string PostalCode { get; set; }
-        public Nullable<bool> IsActive { get; set; }
-        public Nullable<bool> IsPreferred { get; set; }
-        public string Photo { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }
-        public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
     
+        public virtual Branch Branch { get; set; }
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }
+        public virtual Department Department { get; set; }
+        public virtual Designation Designation { get; set; }
         public virtual State State { get; set; }
     }
 }

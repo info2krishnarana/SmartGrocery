@@ -18,11 +18,13 @@ namespace SmartGrocery.UI.Win
         private IGenericRepository<Brand> brandRepo;
         private IGenericRepository<ProductType> productTypeRepo;
         private IGenericRepository<Item> itemRepo;
+        private IGenericRepository<MeasurementUnit> measurementUnitRepo;
 
         private Category category;
         private Brand brand;
         private ProductType productType;
         private Item item;
+        private MeasurementUnit measurement;
 
         public ItemForm()
         {
@@ -32,11 +34,13 @@ namespace SmartGrocery.UI.Win
             brandRepo = new GenericRepository<Brand>();
             productTypeRepo = new GenericRepository<ProductType>();
             itemRepo = new GenericRepository<Item>();
+            measurementUnitRepo = new GenericRepository<MeasurementUnit>();
 
             category = new Category();
             brand = new Brand();
             productType = new ProductType();
             item = new Item();
+            measurement = new MeasurementUnit();
 
             BindAllComoBoxes();
         }
@@ -46,6 +50,7 @@ namespace SmartGrocery.UI.Win
             Utilities.Validation.BindComboBox(cmbCategory, categoryRepo.GetAll(), "Name", "Id", true);
             Utilities.Validation.BindComboBox(cmbBrand, brandRepo.GetAll(), "Name", "Id", true);
             Utilities.Validation.BindComboBox(cmbProductType, productTypeRepo.GetAll(), "Name", "Id", true);
+            Utilities.Validation.BindComboBox(cmbMeasurementUnit, measurementUnitRepo.GetAll(), "Name", "Id", true);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -75,6 +80,11 @@ namespace SmartGrocery.UI.Win
                 MessageBox.Show("Sale Price required");
                 txtSalePrice.Focus();
             }
+            //else if (string.IsNullOrEmpty(txtSalePrice.Text.Trim()))
+            //{
+            //    MessageBox.Show("Sale Price required");
+            //    txtSalePrice.Focus();
+            //}
             else
             {
                 item.Barcode = txtBarcode.Text.Trim();
@@ -86,6 +96,7 @@ namespace SmartGrocery.UI.Win
                 item.Mrp = Convert.ToDecimal(txtMrp.Text.Trim());
                 item.PurchasePrice = Convert.ToDecimal(txtPurchasePrice.Text.Trim());
                 item.SalePrice = Convert.ToDecimal(txtSalePrice.Text.Trim());
+                item.MeasurementUnitId = Convert.ToInt32(cmbMeasurementUnit.SelectedValue);
                 item.IsActive = chkIsActive.Checked;
                 item.SaleOnline = chkSaleOnline.Checked;
                 item.NotForSale = chkNotForSaleNow.Checked;

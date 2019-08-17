@@ -12,32 +12,36 @@ namespace SmartGrocery.Entity.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Supplier
+    public partial class Customer
     {
         public long Id { get; set; }
-        public string SupplierCode { get; set; }
-        public string SupplierName { get; set; }
-        public string Notes { get; set; }
+        public string CustomerCode { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
+        public Nullable<System.DateTime> AnniversaryDate { get; set; }
         public string VatNo { get; set; }
         public string CstNo { get; set; }
         public string TinNo { get; set; }
         public string PanNo { get; set; }
         public string GstNo { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
         public string ContactNumber { get; set; }
         public string MobileNumber { get; set; }
         public string FaxNumber { get; set; }
-        public string WhatsppNumber { get; set; }
+        public string WhatsappNumber { get; set; }
         public string WebsiteUrl { get; set; }
         public string EmailAddress { get; set; }
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
-        public Nullable<int> CityId { get; set; }
-        public Nullable<int> StateId { get; set; }
-        public Nullable<int> CountryId { get; set; }
-        public string PostalCode { get; set; }
+        public string ShippingAddress { get; set; }
+        public Nullable<int> ShippingCountryId { get; set; }
+        public Nullable<int> ShippingStateId { get; set; }
+        public Nullable<int> ShippingCityId { get; set; }
+        public string ShippingPostaCode { get; set; }
+        public string BillingAddress { get; set; }
+        public Nullable<int> BillingCountryId { get; set; }
+        public Nullable<int> BillingStateId { get; set; }
+        public Nullable<int> BillingCityId { get; set; }
+        public string BillingPostalCode { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<bool> IsPreferred { get; set; }
         public string Photo { get; set; }
@@ -47,7 +51,10 @@ namespace SmartGrocery.Entity.DataModel
         public Nullable<int> UpdatedBy { get; set; }
     
         public virtual City City { get; set; }
+        public virtual City City1 { get; set; }
         public virtual Country Country { get; set; }
+        public virtual Country Country1 { get; set; }
         public virtual State State { get; set; }
+        public virtual State State1 { get; set; }
     }
 }

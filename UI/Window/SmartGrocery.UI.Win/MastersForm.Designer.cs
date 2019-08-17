@@ -69,6 +69,24 @@
             this.btnSaveProductType = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.dgProductType = new System.Windows.Forms.DataGridView();
+            this.tabMeasurementUnit = new System.Windows.Forms.TabPage();
+            this.tabDepartment = new System.Windows.Forms.TabPage();
+            this.tabDesignation = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.txtMeasurementUnitName = new System.Windows.Forms.TextBox();
+            this.btnSaveMeasurementUnit = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dgMeasurementUnit = new System.Windows.Forms.DataGridView();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.txtDepartmentName = new System.Windows.Forms.TextBox();
+            this.btnSaveDepartment = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dgDepartment = new System.Windows.Forms.DataGridView();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.txtDesignationName = new System.Windows.Forms.TextBox();
+            this.btnSaveDesignation = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dgDesignation = new System.Windows.Forms.DataGridView();
             this.tabMasters.SuspendLayout();
             this.tabCountry.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,6 +106,15 @@
             this.tabType.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductType)).BeginInit();
+            this.tabMeasurementUnit.SuspendLayout();
+            this.tabDepartment.SuspendLayout();
+            this.tabDesignation.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMeasurementUnit)).BeginInit();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDepartment)).BeginInit();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDesignation)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMasters
@@ -98,6 +125,9 @@
             this.tabMasters.Controls.Add(this.tabCategory);
             this.tabMasters.Controls.Add(this.tabBrand);
             this.tabMasters.Controls.Add(this.tabType);
+            this.tabMasters.Controls.Add(this.tabMeasurementUnit);
+            this.tabMasters.Controls.Add(this.tabDepartment);
+            this.tabMasters.Controls.Add(this.tabDesignation);
             this.tabMasters.Location = new System.Drawing.Point(12, 12);
             this.tabMasters.Name = "tabMasters";
             this.tabMasters.SelectedIndex = 0;
@@ -496,6 +526,183 @@
             this.dgProductType.Size = new System.Drawing.Size(398, 388);
             this.dgProductType.TabIndex = 5;
             // 
+            // tabMeasurementUnit
+            // 
+            this.tabMeasurementUnit.Controls.Add(this.groupBox7);
+            this.tabMeasurementUnit.Controls.Add(this.dgMeasurementUnit);
+            this.tabMeasurementUnit.Location = new System.Drawing.Point(4, 22);
+            this.tabMeasurementUnit.Name = "tabMeasurementUnit";
+            this.tabMeasurementUnit.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMeasurementUnit.Size = new System.Drawing.Size(768, 400);
+            this.tabMeasurementUnit.TabIndex = 6;
+            this.tabMeasurementUnit.Text = "Measurement Unit";
+            this.tabMeasurementUnit.UseVisualStyleBackColor = true;
+            // 
+            // tabDepartment
+            // 
+            this.tabDepartment.Controls.Add(this.groupBox8);
+            this.tabDepartment.Controls.Add(this.dgDepartment);
+            this.tabDepartment.Location = new System.Drawing.Point(4, 22);
+            this.tabDepartment.Name = "tabDepartment";
+            this.tabDepartment.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDepartment.Size = new System.Drawing.Size(768, 400);
+            this.tabDepartment.TabIndex = 7;
+            this.tabDepartment.Text = "Department";
+            this.tabDepartment.UseVisualStyleBackColor = true;
+            // 
+            // tabDesignation
+            // 
+            this.tabDesignation.Controls.Add(this.groupBox9);
+            this.tabDesignation.Controls.Add(this.dgDesignation);
+            this.tabDesignation.Location = new System.Drawing.Point(4, 22);
+            this.tabDesignation.Name = "tabDesignation";
+            this.tabDesignation.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDesignation.Size = new System.Drawing.Size(768, 400);
+            this.tabDesignation.TabIndex = 8;
+            this.tabDesignation.Text = "Designation";
+            this.tabDesignation.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.txtMeasurementUnitName);
+            this.groupBox7.Controls.Add(this.btnSaveMeasurementUnit);
+            this.groupBox7.Controls.Add(this.label9);
+            this.groupBox7.Location = new System.Drawing.Point(6, 6);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(352, 388);
+            this.groupBox7.TabIndex = 6;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Add/Edit Measurement Unit";
+            // 
+            // txtMeasurementUnitName
+            // 
+            this.txtMeasurementUnitName.Location = new System.Drawing.Point(9, 43);
+            this.txtMeasurementUnitName.Multiline = true;
+            this.txtMeasurementUnitName.Name = "txtMeasurementUnitName";
+            this.txtMeasurementUnitName.Size = new System.Drawing.Size(337, 310);
+            this.txtMeasurementUnitName.TabIndex = 1;
+            // 
+            // btnSaveMeasurementUnit
+            // 
+            this.btnSaveMeasurementUnit.Location = new System.Drawing.Point(9, 359);
+            this.btnSaveMeasurementUnit.Name = "btnSaveMeasurementUnit";
+            this.btnSaveMeasurementUnit.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveMeasurementUnit.TabIndex = 3;
+            this.btnSaveMeasurementUnit.Text = "Save";
+            this.btnSaveMeasurementUnit.UseVisualStyleBackColor = true;
+            this.btnSaveMeasurementUnit.Click += new System.EventHandler(this.btnSaveMeasurementUnit_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(152, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Enter Measurement Unit Name";
+            // 
+            // dgMeasurementUnit
+            // 
+            this.dgMeasurementUnit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgMeasurementUnit.Location = new System.Drawing.Point(364, 6);
+            this.dgMeasurementUnit.Name = "dgMeasurementUnit";
+            this.dgMeasurementUnit.Size = new System.Drawing.Size(398, 388);
+            this.dgMeasurementUnit.TabIndex = 5;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.txtDepartmentName);
+            this.groupBox8.Controls.Add(this.btnSaveDepartment);
+            this.groupBox8.Controls.Add(this.label10);
+            this.groupBox8.Location = new System.Drawing.Point(6, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(352, 388);
+            this.groupBox8.TabIndex = 6;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Add/Edit Department";
+            // 
+            // txtDepartmentName
+            // 
+            this.txtDepartmentName.Location = new System.Drawing.Point(9, 43);
+            this.txtDepartmentName.Multiline = true;
+            this.txtDepartmentName.Name = "txtDepartmentName";
+            this.txtDepartmentName.Size = new System.Drawing.Size(337, 310);
+            this.txtDepartmentName.TabIndex = 1;
+            // 
+            // btnSaveDepartment
+            // 
+            this.btnSaveDepartment.Location = new System.Drawing.Point(9, 359);
+            this.btnSaveDepartment.Name = "btnSaveDepartment";
+            this.btnSaveDepartment.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveDepartment.TabIndex = 3;
+            this.btnSaveDepartment.Text = "Save";
+            this.btnSaveDepartment.UseVisualStyleBackColor = true;
+            this.btnSaveDepartment.Click += new System.EventHandler(this.btnSaveDepartment_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 27);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(121, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Enter Department Name";
+            // 
+            // dgDepartment
+            // 
+            this.dgDepartment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgDepartment.Location = new System.Drawing.Point(364, 6);
+            this.dgDepartment.Name = "dgDepartment";
+            this.dgDepartment.Size = new System.Drawing.Size(398, 388);
+            this.dgDepartment.TabIndex = 5;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.txtDesignationName);
+            this.groupBox9.Controls.Add(this.btnSaveDesignation);
+            this.groupBox9.Controls.Add(this.label11);
+            this.groupBox9.Location = new System.Drawing.Point(6, 6);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(352, 388);
+            this.groupBox9.TabIndex = 6;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Add/Edit Designation";
+            // 
+            // txtDesignationName
+            // 
+            this.txtDesignationName.Location = new System.Drawing.Point(9, 43);
+            this.txtDesignationName.Multiline = true;
+            this.txtDesignationName.Name = "txtDesignationName";
+            this.txtDesignationName.Size = new System.Drawing.Size(337, 310);
+            this.txtDesignationName.TabIndex = 1;
+            // 
+            // btnSaveDesignation
+            // 
+            this.btnSaveDesignation.Location = new System.Drawing.Point(9, 359);
+            this.btnSaveDesignation.Name = "btnSaveDesignation";
+            this.btnSaveDesignation.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveDesignation.TabIndex = 3;
+            this.btnSaveDesignation.Text = "Save";
+            this.btnSaveDesignation.UseVisualStyleBackColor = true;
+            this.btnSaveDesignation.Click += new System.EventHandler(this.btnSaveDesignation_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 27);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(122, 13);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Enter Designation Name";
+            // 
+            // dgDesignation
+            // 
+            this.dgDesignation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgDesignation.Location = new System.Drawing.Point(364, 6);
+            this.dgDesignation.Name = "dgDesignation";
+            this.dgDesignation.Size = new System.Drawing.Size(398, 388);
+            this.dgDesignation.TabIndex = 5;
+            // 
             // MastersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -532,6 +739,18 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductType)).EndInit();
+            this.tabMeasurementUnit.ResumeLayout(false);
+            this.tabDepartment.ResumeLayout(false);
+            this.tabDesignation.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMeasurementUnit)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDepartment)).EndInit();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDesignation)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -579,5 +798,23 @@
         private System.Windows.Forms.Button btnSaveProductType;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgProductType;
+        private System.Windows.Forms.TabPage tabMeasurementUnit;
+        private System.Windows.Forms.TabPage tabDepartment;
+        private System.Windows.Forms.TabPage tabDesignation;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox txtMeasurementUnitName;
+        private System.Windows.Forms.Button btnSaveMeasurementUnit;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridView dgMeasurementUnit;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.TextBox txtDepartmentName;
+        private System.Windows.Forms.Button btnSaveDepartment;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView dgDepartment;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.TextBox txtDesignationName;
+        private System.Windows.Forms.Button btnSaveDesignation;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataGridView dgDesignation;
     }
 }

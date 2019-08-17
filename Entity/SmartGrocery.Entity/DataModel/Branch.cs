@@ -12,29 +12,23 @@ namespace SmartGrocery.Entity.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class City
+    public partial class Branch
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public City()
+        public Branch()
         {
-            this.Customers = new HashSet<Customer>();
-            this.Customers1 = new HashSet<Customer>();
             this.Employees = new HashSet<Employee>();
-            this.Suppliers = new HashSet<Supplier>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> StateId { get; set; }
+        public string Address { get; set; }
+        public string ContactNumber { get; set; }
+        public string MobileNumber { get; set; }
+        public string WhatsappNumber { get; set; }
+        public Nullable<int> StoreId { get; set; }
     
-        public virtual State State { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers1 { get; set; }
+        public virtual Store Store { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Supplier> Suppliers { get; set; }
     }
 }
