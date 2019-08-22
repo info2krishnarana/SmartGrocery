@@ -33,10 +33,13 @@ namespace SmartGrocery.Entity.DataModel
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Designation> Designations { get; set; }
+        public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<MeasurementUnit> MeasurementUnits { get; set; }
         public virtual DbSet<ProductType> ProductTypes { get; set; }
+        public virtual DbSet<Region> Regions { get; set; }
+        public virtual DbSet<Society> Societies { get; set; }
         public virtual DbSet<State> States { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }

@@ -26,17 +26,23 @@ namespace SmartGrocery.Entity.DataModel
         public string TinNo { get; set; }
         public string PanNo { get; set; }
         public string GstNo { get; set; }
-        public string ContactNumber { get; set; }
-        public string MobileNumber { get; set; }
-        public string FaxNumber { get; set; }
-        public string WhatsappNumber { get; set; }
-        public string WebsiteUrl { get; set; }
-        public string EmailAddress { get; set; }
+        public string ShippingContactNumber { get; set; }
+        public string ShippingMobileNumber { get; set; }
+        public string ShippingFaxNumber { get; set; }
+        public string ShippingWhatsappNumber { get; set; }
+        public string ShippingWebsiteUrl { get; set; }
+        public string ShippingEmailAddress { get; set; }
         public string ShippingAddress { get; set; }
         public Nullable<int> ShippingCountryId { get; set; }
         public Nullable<int> ShippingStateId { get; set; }
         public Nullable<int> ShippingCityId { get; set; }
-        public string ShippingPostaCode { get; set; }
+        public string ShippingPostalCode { get; set; }
+        public string BillingContactNumber { get; set; }
+        public string BillingMobileNumber { get; set; }
+        public string BillingFaxNumber { get; set; }
+        public string BillingWhatsappNumber { get; set; }
+        public string BillingWebsiteUrl { get; set; }
+        public string BillingEmailAddress { get; set; }
         public string BillingAddress { get; set; }
         public Nullable<int> BillingCountryId { get; set; }
         public Nullable<int> BillingStateId { get; set; }

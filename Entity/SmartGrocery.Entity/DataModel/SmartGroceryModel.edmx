@@ -36,7 +36,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="StateId" Type="int" />
+          <Property Name="DistrictId" Type="int" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -61,17 +61,23 @@
           <Property Name="TinNo" Type="nvarchar" MaxLength="100" />
           <Property Name="PanNo" Type="nvarchar" MaxLength="100" />
           <Property Name="GstNo" Type="nvarchar" MaxLength="100" />
-          <Property Name="ContactNumber" Type="nvarchar" MaxLength="100" />
-          <Property Name="MobileNumber" Type="nvarchar" MaxLength="100" />
-          <Property Name="FaxNumber" Type="nvarchar" MaxLength="100" />
-          <Property Name="WhatsappNumber" Type="nvarchar" MaxLength="100" />
-          <Property Name="WebsiteUrl" Type="nvarchar" MaxLength="100" />
-          <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShippingContactNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShippingMobileNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShippingFaxNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShippingWhatsappNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShippingWebsiteUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShippingEmailAddress" Type="nvarchar" MaxLength="100" />
           <Property Name="ShippingAddress" Type="nvarchar(max)" />
           <Property Name="ShippingCountryId" Type="int" />
           <Property Name="ShippingStateId" Type="int" />
           <Property Name="ShippingCityId" Type="int" />
-          <Property Name="ShippingPostaCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShippingPostalCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="BillingContactNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="BillingMobileNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="BillingFaxNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="BillingWhatsappNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="BillingWebsiteUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="BillingEmailAddress" Type="nvarchar" MaxLength="100" />
           <Property Name="BillingAddress" Type="nvarchar(max)" />
           <Property Name="BillingCountryId" Type="int" />
           <Property Name="BillingStateId" Type="int" />
@@ -98,6 +104,14 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="StateId" Type="int" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -169,6 +183,23 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Pincode" Type="varchar" MaxLength="100" />
+          <Property Name="CityId" Type="int" />
+        </EntityType>
+        <EntityType Name="Society">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="RegionId" Type="int" />
+        </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="Id" />
@@ -234,18 +265,6 @@
             </Principal>
             <Dependent Role="Branch">
               <PropertyRef Name="StoreId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_City_StateId_State_Id">
-          <End Role="State" Type="Self.State" Multiplicity="0..1" />
-          <End Role="City" Type="Self.City" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="State">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="City">
-              <PropertyRef Name="StateId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -318,6 +337,18 @@
             </Principal>
             <Dependent Role="Customer">
               <PropertyRef Name="ShippingStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_District_StateId_State_Id">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="District" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="StateId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -441,6 +472,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Region_CityId_City_Id">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Region" Type="Self.Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Region">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Society_RegionId_Region_Id">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Society" Type="Self.Society" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Society">
+              <PropertyRef Name="RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_State_CountryId_Country_Id">
           <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
           <End Role="State" Type="Self.State" Multiplicity="*" />
@@ -498,20 +553,19 @@
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MeasurementUnit" EntityType="Self.MeasurementUnit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Society" EntityType="Self.Society" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Branch_StoreId_Store_Id" Association="Self.FK_Branch_StoreId_Store_Id">
             <End Role="Store" EntitySet="Store" />
             <End Role="Branch" EntitySet="Branch" />
-          </AssociationSet>
-          <AssociationSet Name="FK_City_StateId_State_Id" Association="Self.FK_City_StateId_State_Id">
-            <End Role="State" EntitySet="State" />
-            <End Role="City" EntitySet="City" />
           </AssociationSet>
           <AssociationSet Name="FK_Customer_BillingCityId_City_Id" Association="Self.FK_Customer_BillingCityId_City_Id">
             <End Role="City" EntitySet="City" />
@@ -536,6 +590,10 @@
           <AssociationSet Name="FK_Customer_ShippingStateId_State_Id" Association="Self.FK_Customer_ShippingStateId_State_Id">
             <End Role="State" EntitySet="State" />
             <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_StateId_State_Id" Association="Self.FK_District_StateId_State_Id">
+            <End Role="State" EntitySet="State" />
+            <End Role="District" EntitySet="District" />
           </AssociationSet>
           <AssociationSet Name="FK_Employee_BranchId_Branch_Id" Association="Self.FK_Employee_BranchId_Branch_Id">
             <End Role="Branch" EntitySet="Branch" />
@@ -577,6 +635,14 @@
             <End Role="ProductType" EntitySet="ProductType" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
+          <AssociationSet Name="FK_Region_CityId_City_Id" Association="Self.FK_Region_CityId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Region" EntitySet="Region" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Society_RegionId_Region_Id" Association="Self.FK_Society_RegionId_Region_Id">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Society" EntitySet="Society" />
+          </AssociationSet>
           <AssociationSet Name="FK_State_CountryId_Country_Id" Association="Self.FK_State_CountryId_Country_Id">
             <End Role="Country" EntitySet="Country" />
             <End Role="State" EntitySet="State" />
@@ -607,10 +673,13 @@
           <EntitySet Name="Customers" EntityType="SmartGrocery.Entity.Customer" />
           <EntitySet Name="Departments" EntityType="SmartGrocery.Entity.Department" />
           <EntitySet Name="Designations" EntityType="SmartGrocery.Entity.Designation" />
+          <EntitySet Name="Districts" EntityType="SmartGrocery.Entity.District" />
           <EntitySet Name="Employees" EntityType="SmartGrocery.Entity.Employee" />
           <EntitySet Name="Items" EntityType="SmartGrocery.Entity.Item" />
           <EntitySet Name="MeasurementUnits" EntityType="SmartGrocery.Entity.MeasurementUnit" />
           <EntitySet Name="ProductTypes" EntityType="SmartGrocery.Entity.ProductType" />
+          <EntitySet Name="Regions" EntityType="SmartGrocery.Entity.Region" />
+          <EntitySet Name="Societies" EntityType="SmartGrocery.Entity.Society" />
           <EntitySet Name="States" EntityType="SmartGrocery.Entity.State" />
           <EntitySet Name="Stores" EntityType="SmartGrocery.Entity.Store" />
           <EntitySet Name="Suppliers" EntityType="SmartGrocery.Entity.Supplier" />
@@ -630,10 +699,6 @@
             <End Role="Category" EntitySet="Categories" />
             <End Role="Item" EntitySet="Items" />
           </AssociationSet>
-          <AssociationSet Name="FK_City_StateId_State_Id" Association="SmartGrocery.Entity.FK_City_StateId_State_Id">
-            <End Role="State" EntitySet="States" />
-            <End Role="City" EntitySet="Cities" />
-          </AssociationSet>
           <AssociationSet Name="FK_Customer_BillingCityId_City_Id" Association="SmartGrocery.Entity.FK_Customer_BillingCityId_City_Id">
             <End Role="City" EntitySet="Cities" />
             <End Role="Customer" EntitySet="Customers" />
@@ -645,6 +710,10 @@
           <AssociationSet Name="FK_Employee_CityId_City_Id" Association="SmartGrocery.Entity.FK_Employee_CityId_City_Id">
             <End Role="City" EntitySet="Cities" />
             <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Region_CityId_City_Id" Association="SmartGrocery.Entity.FK_Region_CityId_City_Id">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Region" EntitySet="Regions" />
           </AssociationSet>
           <AssociationSet Name="FK_Supplier_CityId_City_Id" Association="SmartGrocery.Entity.FK_Supplier_CityId_City_Id">
             <End Role="City" EntitySet="Cities" />
@@ -686,6 +755,10 @@
             <End Role="Designation" EntitySet="Designations" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
+          <AssociationSet Name="FK_District_StateId_State_Id" Association="SmartGrocery.Entity.FK_District_StateId_State_Id">
+            <End Role="State" EntitySet="States" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employee_StateId_State_Id" Association="SmartGrocery.Entity.FK_Employee_StateId_State_Id">
             <End Role="State" EntitySet="States" />
             <End Role="Employee" EntitySet="Employees" />
@@ -697,6 +770,10 @@
           <AssociationSet Name="FK_Item_ProductTypeId_ProductType_Id" Association="SmartGrocery.Entity.FK_Item_ProductTypeId_ProductType_Id">
             <End Role="ProductType" EntitySet="ProductTypes" />
             <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Society_RegionId_Region_Id" Association="SmartGrocery.Entity.FK_Society_RegionId_Region_Id">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="Society" EntitySet="Societies" />
           </AssociationSet>
           <AssociationSet Name="FK_Supplier_StateId_State_Id" Association="SmartGrocery.Entity.FK_Supplier_StateId_State_Id">
             <End Role="State" EntitySet="States" />
@@ -738,11 +815,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="StateId" Type="Int32" />
-          <NavigationProperty Name="State" Relationship="SmartGrocery.Entity.FK_City_StateId_State_Id" FromRole="City" ToRole="State" />
+          <Property Name="DistrictId" Type="Int32" />
           <NavigationProperty Name="Customers" Relationship="SmartGrocery.Entity.FK_Customer_BillingCityId_City_Id" FromRole="City" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="SmartGrocery.Entity.FK_Customer_ShippingCityId_City_Id" FromRole="City" ToRole="Customer" />
           <NavigationProperty Name="Employees" Relationship="SmartGrocery.Entity.FK_Employee_CityId_City_Id" FromRole="City" ToRole="Employee" />
+          <NavigationProperty Name="Regions" Relationship="SmartGrocery.Entity.FK_Region_CityId_City_Id" FromRole="City" ToRole="Region" />
           <NavigationProperty Name="Suppliers" Relationship="SmartGrocery.Entity.FK_Supplier_CityId_City_Id" FromRole="City" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="Country">
@@ -773,17 +850,23 @@
           <Property Name="TinNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PanNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="GstNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ContactNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MobileNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="FaxNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="WhatsappNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="WebsiteUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingContactNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingMobileNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingFaxNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingWhatsappNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingWebsiteUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingEmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ShippingAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ShippingCountryId" Type="Int32" />
           <Property Name="ShippingStateId" Type="Int32" />
           <Property Name="ShippingCityId" Type="Int32" />
-          <Property Name="ShippingPostaCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingPostalCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BillingContactNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BillingMobileNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BillingFaxNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BillingWhatsappNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BillingWebsiteUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BillingEmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="BillingAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BillingCountryId" Type="Int32" />
           <Property Name="BillingStateId" Type="Int32" />
@@ -818,6 +901,15 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employees" Relationship="SmartGrocery.Entity.FK_Employee_DesignationId_Designation_Id" FromRole="Designation" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StateId" Type="Int32" />
+          <NavigationProperty Name="State" Relationship="SmartGrocery.Entity.FK_District_StateId_State_Id" FromRole="District" ToRole="State" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -901,6 +993,26 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Items" Relationship="SmartGrocery.Entity.FK_Item_ProductTypeId_ProductType_Id" FromRole="ProductType" ToRole="Item" />
         </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Pincode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CityId" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="SmartGrocery.Entity.FK_Region_CityId_City_Id" FromRole="Region" ToRole="City" />
+          <NavigationProperty Name="Societies" Relationship="SmartGrocery.Entity.FK_Society_RegionId_Region_Id" FromRole="Region" ToRole="Society" />
+        </EntityType>
+        <EntityType Name="Society">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RegionId" Type="Int32" />
+          <NavigationProperty Name="Region" Relationship="SmartGrocery.Entity.FK_Society_RegionId_Region_Id" FromRole="Society" ToRole="Region" />
+        </EntityType>
         <EntityType Name="State">
           <Key>
             <PropertyRef Name="Id" />
@@ -908,10 +1020,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CountryId" Type="Int32" />
-          <NavigationProperty Name="Cities" Relationship="SmartGrocery.Entity.FK_City_StateId_State_Id" FromRole="State" ToRole="City" />
           <NavigationProperty Name="Country" Relationship="SmartGrocery.Entity.FK_State_CountryId_Country_Id" FromRole="State" ToRole="Country" />
           <NavigationProperty Name="Customers" Relationship="SmartGrocery.Entity.FK_Customer_BillingStateId_State_Id" FromRole="State" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="SmartGrocery.Entity.FK_Customer_ShippingStateId_State_Id" FromRole="State" ToRole="Customer" />
+          <NavigationProperty Name="Districts" Relationship="SmartGrocery.Entity.FK_District_StateId_State_Id" FromRole="State" ToRole="District" />
           <NavigationProperty Name="Employees" Relationship="SmartGrocery.Entity.FK_Employee_StateId_State_Id" FromRole="State" ToRole="Employee" />
           <NavigationProperty Name="Suppliers" Relationship="SmartGrocery.Entity.FK_Supplier_StateId_State_Id" FromRole="State" ToRole="Supplier" />
         </EntityType>
@@ -1015,18 +1127,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_City_StateId_State_Id">
-          <End Type="SmartGrocery.Entity.State" Role="State" Multiplicity="0..1" />
-          <End Type="SmartGrocery.Entity.City" Role="City" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="State">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="City">
-              <PropertyRef Name="StateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Customer_BillingCityId_City_Id">
           <End Type="SmartGrocery.Entity.City" Role="City" Multiplicity="0..1" />
           <End Type="SmartGrocery.Entity.Customer" Role="Customer" Multiplicity="*" />
@@ -1059,6 +1159,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Employee">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Region_CityId_City_Id">
+          <End Type="SmartGrocery.Entity.City" Role="City" Multiplicity="0..1" />
+          <End Type="SmartGrocery.Entity.Region" Role="Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Region">
               <PropertyRef Name="CityId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1183,6 +1295,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_District_StateId_State_Id">
+          <End Type="SmartGrocery.Entity.State" Role="State" Multiplicity="0..1" />
+          <End Type="SmartGrocery.Entity.District" Role="District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employee_StateId_State_Id">
           <End Type="SmartGrocery.Entity.State" Role="State" Multiplicity="0..1" />
           <End Type="SmartGrocery.Entity.Employee" Role="Employee" Multiplicity="*" />
@@ -1216,6 +1340,18 @@
             </Principal>
             <Dependent Role="Item">
               <PropertyRef Name="ProductTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Society_RegionId_Region_Id">
+          <End Type="SmartGrocery.Entity.Region" Role="Region" Multiplicity="0..1" />
+          <End Type="SmartGrocery.Entity.Society" Role="Society" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Society">
+              <PropertyRef Name="RegionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1268,7 +1404,7 @@
           <EntitySetMapping Name="Cities">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.City">
               <MappingFragment StoreEntitySet="City">
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1297,17 +1433,23 @@
                 <ScalarProperty Name="BillingStateId" ColumnName="BillingStateId" />
                 <ScalarProperty Name="BillingCountryId" ColumnName="BillingCountryId" />
                 <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
-                <ScalarProperty Name="ShippingPostaCode" ColumnName="ShippingPostaCode" />
+                <ScalarProperty Name="BillingEmailAddress" ColumnName="BillingEmailAddress" />
+                <ScalarProperty Name="BillingWebsiteUrl" ColumnName="BillingWebsiteUrl" />
+                <ScalarProperty Name="BillingWhatsappNumber" ColumnName="BillingWhatsappNumber" />
+                <ScalarProperty Name="BillingFaxNumber" ColumnName="BillingFaxNumber" />
+                <ScalarProperty Name="BillingMobileNumber" ColumnName="BillingMobileNumber" />
+                <ScalarProperty Name="BillingContactNumber" ColumnName="BillingContactNumber" />
+                <ScalarProperty Name="ShippingPostalCode" ColumnName="ShippingPostalCode" />
                 <ScalarProperty Name="ShippingCityId" ColumnName="ShippingCityId" />
                 <ScalarProperty Name="ShippingStateId" ColumnName="ShippingStateId" />
                 <ScalarProperty Name="ShippingCountryId" ColumnName="ShippingCountryId" />
                 <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="WebsiteUrl" ColumnName="WebsiteUrl" />
-                <ScalarProperty Name="WhatsappNumber" ColumnName="WhatsappNumber" />
-                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
-                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
-                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="ShippingEmailAddress" ColumnName="ShippingEmailAddress" />
+                <ScalarProperty Name="ShippingWebsiteUrl" ColumnName="ShippingWebsiteUrl" />
+                <ScalarProperty Name="ShippingWhatsappNumber" ColumnName="ShippingWhatsappNumber" />
+                <ScalarProperty Name="ShippingFaxNumber" ColumnName="ShippingFaxNumber" />
+                <ScalarProperty Name="ShippingMobileNumber" ColumnName="ShippingMobileNumber" />
+                <ScalarProperty Name="ShippingContactNumber" ColumnName="ShippingContactNumber" />
                 <ScalarProperty Name="GstNo" ColumnName="GstNo" />
                 <ScalarProperty Name="PanNo" ColumnName="PanNo" />
                 <ScalarProperty Name="TinNo" ColumnName="TinNo" />
@@ -1334,6 +1476,15 @@
           <EntitySetMapping Name="Designations">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.Designation">
               <MappingFragment StoreEntitySet="Designation">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="SmartGrocery.Entity.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1408,6 +1559,25 @@
           <EntitySetMapping Name="ProductTypes">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.ProductType">
               <MappingFragment StoreEntitySet="ProductType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="SmartGrocery.Entity.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Societies">
+            <EntityTypeMapping TypeName="SmartGrocery.Entity.Society">
+              <MappingFragment StoreEntitySet="Society">
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

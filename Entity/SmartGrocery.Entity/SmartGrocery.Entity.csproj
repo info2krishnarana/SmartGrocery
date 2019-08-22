@@ -74,6 +74,9 @@
     <Compile Include="DataModel\Designation.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\District.cs">
+      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\Employee.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
@@ -84,6 +87,9 @@
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\ProductType.cs">
+      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Region.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\SmartGroceryModel.Context.cs">
@@ -100,6 +106,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SmartGroceryModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\Society.cs">
+      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\State.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>

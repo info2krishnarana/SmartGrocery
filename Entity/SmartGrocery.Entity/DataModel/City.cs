@@ -20,20 +20,22 @@ namespace SmartGrocery.Entity.DataModel
             this.Customers = new HashSet<Customer>();
             this.Customers1 = new HashSet<Customer>();
             this.Employees = new HashSet<Employee>();
+            this.Regions = new HashSet<Region>();
             this.Suppliers = new HashSet<Supplier>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> StateId { get; set; }
+        public Nullable<int> DistrictId { get; set; }
     
-        public virtual State State { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Region> Regions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier> Suppliers { get; set; }
     }

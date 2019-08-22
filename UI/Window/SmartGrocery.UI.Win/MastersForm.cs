@@ -153,7 +153,7 @@ namespace SmartGrocery.UI.Win
 
                 foreach (string ct in cities)
                 {
-                    city.StateId = Convert.ToInt32(cmbState.SelectedValue);
+                    city.DistrictId = Convert.ToInt32(cmbState.SelectedValue);
                     city.Name = ct;
                     cityRepo.Add(city);
                     cityRepo.Save();

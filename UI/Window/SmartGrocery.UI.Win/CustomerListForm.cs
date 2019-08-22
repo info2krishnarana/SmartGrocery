@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SmartGrocery.Data.Repository;
+using SmartGrocery.Entity.DataModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,14 @@ namespace SmartGrocery.UI.Win
 {
     public partial class CustomerListForm : Form
     {
+        private IGenericRepository<Customer> customerRepo;
+
         public CustomerListForm()
         {
             InitializeComponent();
+
+            customerRepo = new GenericRepository<Customer>();
+            BindCustomerDataGrid();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -28,7 +35,12 @@ namespace SmartGrocery.UI.Win
             customerForm = new CustomerForm();
             //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
             customerForm.ShowDialog();
-            //BindItemDataGrid();
+            BindCustomerDataGrid();
+        }
+
+        private void BindCustomerDataGrid()
+        {
+            dgCustomer.DataSource = customerRepo.GetAll();
         }
     }
 }
