@@ -89,6 +89,9 @@
     <Compile Include="DataModel\ProductType.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\Purchase.cs">
+      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\Region.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>

@@ -14,6 +14,12 @@ namespace SmartGrocery.Entity.DataModel
     
     public partial class Item
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Item()
+        {
+            this.Purchases = new HashSet<Purchase>();
+        }
+    
         public long Id { get; set; }
         public string Barcode { get; set; }
         public string Name { get; set; }
@@ -38,5 +44,7 @@ namespace SmartGrocery.Entity.DataModel
         public virtual Category Category { get; set; }
         public virtual MeasurementUnit MeasurementUnit { get; set; }
         public virtual ProductType ProductType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Purchase> Purchases { get; set; }
     }
 }

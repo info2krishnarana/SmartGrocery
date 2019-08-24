@@ -183,6 +183,21 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemCode" Type="bigint" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="PurchaseAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SupplierId" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="bigint" />
+        </EntityType>
         <EntityType Name="Region">
           <Key>
             <PropertyRef Name="Id" />
@@ -472,6 +487,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Purchase_ItemCode_Item_Id">
+          <End Role="Item" Type="Self.Item" Multiplicity="1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="ItemCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_SupplierId_Supplier_Id">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Region_CityId_City_Id">
           <End Role="City" Type="Self.City" Multiplicity="0..1" />
           <End Role="Region" Type="Self.Region" Multiplicity="*" />
@@ -558,6 +597,7 @@
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MeasurementUnit" EntityType="Self.MeasurementUnit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Society" EntityType="Self.Society" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
@@ -635,6 +675,14 @@
             <End Role="ProductType" EntitySet="ProductType" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
+          <AssociationSet Name="FK_Purchase_ItemCode_Item_Id" Association="Self.FK_Purchase_ItemCode_Item_Id">
+            <End Role="Item" EntitySet="Item" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_SupplierId_Supplier_Id" Association="Self.FK_Purchase_SupplierId_Supplier_Id">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
           <AssociationSet Name="FK_Region_CityId_City_Id" Association="Self.FK_Region_CityId_City_Id">
             <End Role="City" EntitySet="City" />
             <End Role="Region" EntitySet="Region" />
@@ -678,6 +726,7 @@
           <EntitySet Name="Items" EntityType="SmartGrocery.Entity.Item" />
           <EntitySet Name="MeasurementUnits" EntityType="SmartGrocery.Entity.MeasurementUnit" />
           <EntitySet Name="ProductTypes" EntityType="SmartGrocery.Entity.ProductType" />
+          <EntitySet Name="Purchases" EntityType="SmartGrocery.Entity.Purchase" />
           <EntitySet Name="Regions" EntityType="SmartGrocery.Entity.Region" />
           <EntitySet Name="Societies" EntityType="SmartGrocery.Entity.Society" />
           <EntitySet Name="States" EntityType="SmartGrocery.Entity.State" />
@@ -770,6 +819,14 @@
           <AssociationSet Name="FK_Item_ProductTypeId_ProductType_Id" Association="SmartGrocery.Entity.FK_Item_ProductTypeId_ProductType_Id">
             <End Role="ProductType" EntitySet="ProductTypes" />
             <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_ItemCode_Item_Id" Association="SmartGrocery.Entity.FK_Purchase_ItemCode_Item_Id">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_SupplierId_Supplier_Id" Association="SmartGrocery.Entity.FK_Purchase_SupplierId_Supplier_Id">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Purchase" EntitySet="Purchases" />
           </AssociationSet>
           <AssociationSet Name="FK_Society_RegionId_Region_Id" Association="SmartGrocery.Entity.FK_Society_RegionId_Region_Id">
             <End Role="Region" EntitySet="Regions" />
@@ -976,6 +1033,7 @@
           <NavigationProperty Name="Category" Relationship="SmartGrocery.Entity.FK_Item_CategoryId_Category_Id" FromRole="Item" ToRole="Category" />
           <NavigationProperty Name="MeasurementUnit" Relationship="SmartGrocery.Entity.FK_Item_MeasurementUnitId_MeasurementUnit_Id" FromRole="Item" ToRole="MeasurementUnit" />
           <NavigationProperty Name="ProductType" Relationship="SmartGrocery.Entity.FK_Item_ProductTypeId_ProductType_Id" FromRole="Item" ToRole="ProductType" />
+          <NavigationProperty Name="Purchases" Relationship="SmartGrocery.Entity.FK_Purchase_ItemCode_Item_Id" FromRole="Item" ToRole="Purchase" />
         </EntityType>
         <EntityType Name="MeasurementUnit">
           <Key>
@@ -992,6 +1050,23 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Items" Relationship="SmartGrocery.Entity.FK_Item_ProductTypeId_ProductType_Id" FromRole="ProductType" ToRole="Item" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemCode" Type="Int64" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SupplierId" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int64" />
+          <NavigationProperty Name="Item" Relationship="SmartGrocery.Entity.FK_Purchase_ItemCode_Item_Id" FromRole="Purchase" ToRole="Item" />
+          <NavigationProperty Name="Supplier" Relationship="SmartGrocery.Entity.FK_Purchase_SupplierId_Supplier_Id" FromRole="Purchase" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="Region">
           <Key>
@@ -1077,6 +1152,7 @@
           <Property Name="UpdatedBy" Type="Int32" />
           <NavigationProperty Name="City" Relationship="SmartGrocery.Entity.FK_Supplier_CityId_City_Id" FromRole="Supplier" ToRole="City" />
           <NavigationProperty Name="Country" Relationship="SmartGrocery.Entity.FK_Supplier_CountryId_Country_Id" FromRole="Supplier" ToRole="Country" />
+          <NavigationProperty Name="Purchases" Relationship="SmartGrocery.Entity.FK_Purchase_SupplierId_Supplier_Id" FromRole="Supplier" ToRole="Purchase" />
           <NavigationProperty Name="State" Relationship="SmartGrocery.Entity.FK_Supplier_StateId_State_Id" FromRole="Supplier" ToRole="State" />
         </EntityType>
         <Association Name="FK_Branch_StoreId_Store_Id">
@@ -1343,6 +1419,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Purchase_ItemCode_Item_Id">
+          <End Type="SmartGrocery.Entity.Item" Role="Item" Multiplicity="1" />
+          <End Type="SmartGrocery.Entity.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="ItemCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_SupplierId_Supplier_Id">
+          <End Type="SmartGrocery.Entity.Supplier" Role="Supplier" Multiplicity="0..1" />
+          <End Type="SmartGrocery.Entity.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Society_RegionId_Region_Id">
           <End Type="SmartGrocery.Entity.Region" Role="Region" Multiplicity="0..1" />
           <End Type="SmartGrocery.Entity.Society" Role="Society" Multiplicity="*" />
@@ -1560,6 +1660,22 @@
             <EntityTypeMapping TypeName="SmartGrocery.Entity.ProductType">
               <MappingFragment StoreEntitySet="ProductType">
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="SmartGrocery.Entity.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="PurchaseAmount" ColumnName="PurchaseAmount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

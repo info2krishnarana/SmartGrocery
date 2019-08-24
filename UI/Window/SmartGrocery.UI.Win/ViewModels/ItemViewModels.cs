@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartGrocery.UI.Win.ViewModels
 {
-    public class ItemViewModels
+    public class ItemViewModel
     {
         public long Id { get; set; }
         public string Barcode { get; set; }

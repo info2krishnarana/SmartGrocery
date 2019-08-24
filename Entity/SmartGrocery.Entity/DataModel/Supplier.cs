@@ -14,6 +14,12 @@ namespace SmartGrocery.Entity.DataModel
     
     public partial class Supplier
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Supplier()
+        {
+            this.Purchases = new HashSet<Purchase>();
+        }
+    
         public long Id { get; set; }
         public string SupplierCode { get; set; }
         public string SupplierName { get; set; }
@@ -48,6 +54,8 @@ namespace SmartGrocery.Entity.DataModel
     
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Purchase> Purchases { get; set; }
         public virtual State State { get; set; }
     }
 }
