@@ -135,6 +135,7 @@
           <Property Name="CountryId" Type="int" />
           <Property Name="StateId" Type="int" />
           <Property Name="CityId" Type="int" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="100" />
           <Property Name="ContactNumber" Type="nvarchar" MaxLength="100" />
           <Property Name="MobileNumber" Type="nvarchar" MaxLength="100" />
           <Property Name="WhatsappNumber" Type="nvarchar" MaxLength="100" />
@@ -1013,6 +1014,7 @@
           <NavigationProperty Name="Department" Relationship="SmartGrocery.Entity.FK_Employee_DepartmentId_Department_Id" FromRole="Employee" ToRole="Department" />
           <NavigationProperty Name="Designation" Relationship="SmartGrocery.Entity.FK_Employee_DesignationId_Designation_Id" FromRole="Employee" ToRole="Designation" />
           <NavigationProperty Name="State" Relationship="SmartGrocery.Entity.FK_Employee_StateId_State_Id" FromRole="Employee" ToRole="State" />
+          <Property Name="PostalCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -1609,6 +1611,7 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
