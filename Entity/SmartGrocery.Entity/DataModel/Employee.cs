@@ -32,6 +32,7 @@ namespace SmartGrocery.Entity.DataModel
         public Nullable<int> CountryId { get; set; }
         public Nullable<int> StateId { get; set; }
         public Nullable<int> CityId { get; set; }
+        public string PostalCode { get; set; }
         public string ContactNumber { get; set; }
         public string MobileNumber { get; set; }
         public string WhatsappNumber { get; set; }
@@ -41,7 +42,6 @@ namespace SmartGrocery.Entity.DataModel
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
-        public string PostalCode { get; set; }
     
         public virtual Branch Branch { get; set; }
         public virtual City City { get; set; }

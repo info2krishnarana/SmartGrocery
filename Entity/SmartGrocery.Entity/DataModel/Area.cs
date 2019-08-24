@@ -12,12 +12,21 @@ namespace SmartGrocery.Entity.DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Society
+    public partial class Area
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public Nullable<long> AreaId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Area()
+        {
+            this.Societies = new HashSet<Society>();
+        }
     
-        public virtual Area Area { get; set; }
+        public long Id { get; set; }
+        public string PinCode { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> CityId { get; set; }
+    
+        public virtual City City { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Society> Societies { get; set; }
     }
 }

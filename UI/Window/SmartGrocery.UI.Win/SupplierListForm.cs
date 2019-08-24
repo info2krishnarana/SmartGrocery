@@ -40,7 +40,14 @@ namespace SmartGrocery.UI.Win
 
         private void BindSupplierDataGrid()
         {
-            dgSupplier.DataSource = supplierRepo.GetAll();
+            try
+            {
+                dgSupplier.DataSource = supplierRepo.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

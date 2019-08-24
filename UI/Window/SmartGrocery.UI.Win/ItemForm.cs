@@ -47,64 +47,78 @@ namespace SmartGrocery.UI.Win
 
         private void BindAllComoBoxes()
         {
-            Utilities.Validation.BindComboBox(cmbCategory, categoryRepo.GetAll(), "Name", "Id", true);
-            Utilities.Validation.BindComboBox(cmbBrand, brandRepo.GetAll(), "Name", "Id", true);
-            Utilities.Validation.BindComboBox(cmbProductType, productTypeRepo.GetAll(), "Name", "Id", true);
-            Utilities.Validation.BindComboBox(cmbMeasurementUnit, measurementUnitRepo.GetAll(), "Name", "Id", true);
+            try
+            {
+                Utilities.Validation.BindComboBox(cmbCategory, categoryRepo.GetAll(), "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbBrand, brandRepo.GetAll(), "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbProductType, productTypeRepo.GetAll(), "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbMeasurementUnit, measurementUnitRepo.GetAll(), "Name", "Id", true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtBarcode.Text.Trim()))
+            try
             {
-                MessageBox.Show("Barcode required");
-                txtBarcode.Focus();
-            }
-            else if (string.IsNullOrEmpty(txtItemName.Text.Trim()))
-            {
-                MessageBox.Show("Item Name required");
-                txtItemName.Focus();
-            }
-            else if (string.IsNullOrEmpty(txtMrp.Text.Trim()))
-            {
-                MessageBox.Show("MRP required");
-                txtMrp.Focus();
-            }
-            else if (string.IsNullOrEmpty(txtPurchasePrice.Text.Trim()))
-            {
-                MessageBox.Show("Purchase Price required");
-                txtPurchasePrice.Focus();
-            }
-            else if (string.IsNullOrEmpty(txtSalePrice.Text.Trim()))
-            {
-                MessageBox.Show("Sale Price required");
-                txtSalePrice.Focus();
-            }
-            //else if (string.IsNullOrEmpty(txtSalePrice.Text.Trim()))
-            //{
-            //    MessageBox.Show("Sale Price required");
-            //    txtSalePrice.Focus();
-            //}
-            else
-            {
-                item.Barcode = txtBarcode.Text.Trim();
-                item.Name = txtItemName.Text.Trim();
-                item.Description = txtItemDescription.Text.Trim();
-                item.CategoryId = Convert.ToInt32(cmbCategory.SelectedValue);
-                item.BrandId = Convert.ToInt32(cmbBrand.SelectedValue);
-                item.ProductTypeId = Convert.ToInt32(cmbProductType.SelectedValue);
-                item.Mrp = Convert.ToDecimal(txtMrp.Text.Trim());
-                item.PurchasePrice = Convert.ToDecimal(txtPurchasePrice.Text.Trim());
-                item.SalePrice = Convert.ToDecimal(txtSalePrice.Text.Trim());
-                item.MeasurementUnitId = Convert.ToInt32(cmbMeasurementUnit.SelectedValue);
-                item.IsActive = chkIsActive.Checked;
-                item.SaleOnline = chkSaleOnline.Checked;
-                item.NotForSale = chkNotForSaleNow.Checked;
+                if (string.IsNullOrEmpty(txtBarcode.Text.Trim()))
+                {
+                    MessageBox.Show("Barcode required");
+                    txtBarcode.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtItemName.Text.Trim()))
+                {
+                    MessageBox.Show("Item Name required");
+                    txtItemName.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtMrp.Text.Trim()))
+                {
+                    MessageBox.Show("MRP required");
+                    txtMrp.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtPurchasePrice.Text.Trim()))
+                {
+                    MessageBox.Show("Purchase Price required");
+                    txtPurchasePrice.Focus();
+                }
+                else if (string.IsNullOrEmpty(txtSalePrice.Text.Trim()))
+                {
+                    MessageBox.Show("Sale Price required");
+                    txtSalePrice.Focus();
+                }
+                //else if (string.IsNullOrEmpty(txtSalePrice.Text.Trim()))
+                //{
+                //    MessageBox.Show("Sale Price required");
+                //    txtSalePrice.Focus();
+                //}
+                else
+                {
+                    item.Barcode = txtBarcode.Text.Trim();
+                    item.Name = txtItemName.Text.Trim();
+                    item.Description = txtItemDescription.Text.Trim();
+                    item.CategoryId = Convert.ToInt32(cmbCategory.SelectedValue);
+                    item.BrandId = Convert.ToInt32(cmbBrand.SelectedValue);
+                    item.ProductTypeId = Convert.ToInt32(cmbProductType.SelectedValue);
+                    item.Mrp = Convert.ToDecimal(txtMrp.Text.Trim());
+                    item.PurchasePrice = Convert.ToDecimal(txtPurchasePrice.Text.Trim());
+                    item.SalePrice = Convert.ToDecimal(txtSalePrice.Text.Trim());
+                    item.MeasurementUnitId = Convert.ToInt32(cmbMeasurementUnit.SelectedValue);
+                    item.IsActive = chkIsActive.Checked;
+                    item.SaleOnline = chkSaleOnline.Checked;
+                    item.NotForSale = chkNotForSaleNow.Checked;
 
-                itemRepo.Add(item);
-                itemRepo.Save();
+                    itemRepo.Add(item);
+                    itemRepo.Save();
 
-                this.Close();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

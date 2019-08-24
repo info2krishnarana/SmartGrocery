@@ -83,11 +83,18 @@ namespace SmartGrocery.UI.Win
 
         private void BindAllComoBoxes()
         {
-            Utilities.Validation.BindComboBox(cmbCountry, countryRepo.GetAll(), "Name", "Id", true);
-            Utilities.Validation.BindComboBox(cmbState, stateRepo.GetAll(), "Name", "Id", true);
-            Utilities.Validation.BindComboBox(cmbCity, cityeRepo.GetAll(), "Name", "Id", true);
-            Utilities.Validation.BindComboBox(cmbDepartment, departmentRepo.GetAll(), "Name", "Id", true);
-            Utilities.Validation.BindComboBox(cmbDesignation, designationRepo.GetAll(), "Name", "Id", true);
+            try
+            {
+                Utilities.Validation.BindComboBox(cmbCountry, countryRepo.GetAll(), "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbState, stateRepo.GetAll(), "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbCity, cityeRepo.GetAll(), "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbDepartment, departmentRepo.GetAll(), "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbDesignation, designationRepo.GetAll(), "Name", "Id", true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

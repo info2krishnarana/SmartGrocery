@@ -27,6 +27,7 @@ namespace SmartGrocery.Entity.DataModel
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Category> Categories { get; set; }

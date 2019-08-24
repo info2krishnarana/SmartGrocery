@@ -44,28 +44,56 @@ namespace SmartGrocery.UI.Win
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            ItemForm itemForm = null;
-            itemForm = new ItemForm();
-            //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
-            itemForm.ShowDialog();
-            BindItemDataGrid();
+            try
+            {
+                ItemForm itemForm = null;
+                itemForm = new ItemForm();
+                //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
+                itemForm.ShowDialog();
+                BindItemDataGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BindAllComoBoxes()
         {
-            Utilities.Validation.BindComboBox(cmbCategory, categoryRepo.GetAll(), "Name", "Id", true);
-            Utilities.Validation.BindComboBox(cmbBrand, brandRepo.GetAll(), "Name", "Id", true);
-            Utilities.Validation.BindComboBox(cmbProductType, productTypeRepo.GetAll(), "Name", "Id", true);
+            try
+            {
+                Utilities.Validation.BindComboBox(cmbCategory, categoryRepo.GetAll(), "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbBrand, brandRepo.GetAll(), "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbProductType, productTypeRepo.GetAll(), "Name", "Id", true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BindItemDataGrid()
         {
-            dgItems.DataSource = itemRepo.GetAll();
+            try
+            {
+                dgItems.DataSource = itemRepo.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

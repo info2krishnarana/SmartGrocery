@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SmartGrocery.Entity.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PinCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="CityId" Type="int" />
+        </EntityType>
         <EntityType Name="Branch">
           <Key>
             <PropertyRef Name="Id" />
@@ -212,9 +221,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="RegionId" Type="int" />
+          <Property Name="AreaId" Type="bigint" />
         </EntityType>
         <EntityType Name="State">
           <Key>
@@ -272,6 +281,18 @@
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="int" />
         </EntityType>
+        <Association Name="FK_Area_CityId_City_Id">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Branch_StoreId_Store_Id">
           <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
           <End Role="Branch" Type="Self.Branch" Multiplicity="*" />
@@ -524,15 +545,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Society_RegionId_Region_Id">
-          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+        <Association Name="FK_Society_AreaId_Area_Id">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
           <End Role="Society" Type="Self.Society" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Region">
+            <Principal Role="Area">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Society">
-              <PropertyRef Name="RegionId" />
+              <PropertyRef Name="AreaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -589,6 +610,7 @@
           <Parameter Name="ToDate" Type="date" Mode="In" />
         </Function>
         <EntityContainer Name="SmartGroceryEntityStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
@@ -608,6 +630,10 @@
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Area_CityId_City_Id" Association="Self.FK_Area_CityId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
           <AssociationSet Name="FK_Branch_StoreId_Store_Id" Association="Self.FK_Branch_StoreId_Store_Id">
             <End Role="Store" EntitySet="Store" />
             <End Role="Branch" EntitySet="Branch" />
@@ -692,8 +718,8 @@
             <End Role="City" EntitySet="City" />
             <End Role="Region" EntitySet="Region" />
           </AssociationSet>
-          <AssociationSet Name="FK_Society_RegionId_Region_Id" Association="Self.FK_Society_RegionId_Region_Id">
-            <End Role="Region" EntitySet="Region" />
+          <AssociationSet Name="FK_Society_AreaId_Area_Id" Association="Self.FK_Society_AreaId_Area_Id">
+            <End Role="Area" EntitySet="Area" />
             <End Role="Society" EntitySet="Society" />
           </AssociationSet>
           <AssociationSet Name="FK_State_CountryId_Country_Id" Association="Self.FK_State_CountryId_Country_Id">
@@ -718,6 +744,11 @@
     <edmx:ConceptualModels>
       <Schema Namespace="SmartGrocery.Entity" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="SmartGroceryDataContext" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="ReportPurchase" ReturnType="Collection(SmartGrocery.Entity.ReportPurchase_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="Areas" EntityType="SmartGrocery.Entity.Area" />
           <EntitySet Name="Branches" EntityType="SmartGrocery.Entity.Branch" />
           <EntitySet Name="Brands" EntityType="SmartGrocery.Entity.Brand" />
           <EntitySet Name="Categories" EntityType="SmartGrocery.Entity.Category" />
@@ -737,6 +768,14 @@
           <EntitySet Name="States" EntityType="SmartGrocery.Entity.State" />
           <EntitySet Name="Stores" EntityType="SmartGrocery.Entity.Store" />
           <EntitySet Name="Suppliers" EntityType="SmartGrocery.Entity.Supplier" />
+          <AssociationSet Name="FK_Area_CityId_City_Id" Association="SmartGrocery.Entity.FK_Area_CityId_City_Id">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Area" EntitySet="Areas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Society_AreaId_Area_Id" Association="SmartGrocery.Entity.FK_Society_AreaId_Area_Id">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="Society" EntitySet="Societies" />
+          </AssociationSet>
           <AssociationSet Name="FK_Branch_StoreId_Store_Id" Association="SmartGrocery.Entity.FK_Branch_StoreId_Store_Id">
             <End Role="Store" EntitySet="Stores" />
             <End Role="Branch" EntitySet="Branches" />
@@ -833,19 +872,30 @@
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="Purchase" EntitySet="Purchases" />
           </AssociationSet>
-          <AssociationSet Name="FK_Society_RegionId_Region_Id" Association="SmartGrocery.Entity.FK_Society_RegionId_Region_Id">
-            <End Role="Region" EntitySet="Regions" />
-            <End Role="Society" EntitySet="Societies" />
-          </AssociationSet>
           <AssociationSet Name="FK_Supplier_StateId_State_Id" Association="SmartGrocery.Entity.FK_Supplier_StateId_State_Id">
             <End Role="State" EntitySet="States" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <FunctionImport Name="ReportPurchase" ReturnType="Collection(SmartGrocery.Entity.ReportPurchase_Result)">
-            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
-            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
-          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="ReportPurchase_Result">
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="String" Name="SupplierCode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SupplierName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="SmartGrocery.Entity.FK_Area_CityId_City_Id" FromRole="Area" ToRole="City" />
+          <NavigationProperty Name="Societies" Relationship="SmartGrocery.Entity.FK_Society_AreaId_Area_Id" FromRole="Area" ToRole="Society" />
+        </EntityType>
         <EntityType Name="Branch">
           <Key>
             <PropertyRef Name="Id" />
@@ -882,6 +932,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DistrictId" Type="Int32" />
+          <NavigationProperty Name="Areas" Relationship="SmartGrocery.Entity.FK_Area_CityId_City_Id" FromRole="City" ToRole="Area" />
           <NavigationProperty Name="Customers" Relationship="SmartGrocery.Entity.FK_Customer_BillingCityId_City_Id" FromRole="City" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="SmartGrocery.Entity.FK_Customer_ShippingCityId_City_Id" FromRole="City" ToRole="Customer" />
           <NavigationProperty Name="Employees" Relationship="SmartGrocery.Entity.FK_Employee_CityId_City_Id" FromRole="City" ToRole="Employee" />
@@ -999,6 +1050,7 @@
           <Property Name="CountryId" Type="Int32" />
           <Property Name="StateId" Type="Int32" />
           <Property Name="CityId" Type="Int32" />
+          <Property Name="PostalCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ContactNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MobileNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="WhatsappNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -1014,7 +1066,6 @@
           <NavigationProperty Name="Department" Relationship="SmartGrocery.Entity.FK_Employee_DepartmentId_Department_Id" FromRole="Employee" ToRole="Department" />
           <NavigationProperty Name="Designation" Relationship="SmartGrocery.Entity.FK_Employee_DesignationId_Designation_Id" FromRole="Employee" ToRole="Designation" />
           <NavigationProperty Name="State" Relationship="SmartGrocery.Entity.FK_Employee_StateId_State_Id" FromRole="Employee" ToRole="State" />
-          <Property Name="PostalCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Item">
           <Key>
@@ -1087,16 +1138,15 @@
           <Property Name="Pincode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CityId" Type="Int32" />
           <NavigationProperty Name="City" Relationship="SmartGrocery.Entity.FK_Region_CityId_City_Id" FromRole="Region" ToRole="City" />
-          <NavigationProperty Name="Societies" Relationship="SmartGrocery.Entity.FK_Society_RegionId_Region_Id" FromRole="Region" ToRole="Society" />
         </EntityType>
         <EntityType Name="Society">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="RegionId" Type="Int32" />
-          <NavigationProperty Name="Region" Relationship="SmartGrocery.Entity.FK_Society_RegionId_Region_Id" FromRole="Society" ToRole="Region" />
+          <Property Name="AreaId" Type="Int64" />
+          <NavigationProperty Name="Area" Relationship="SmartGrocery.Entity.FK_Society_AreaId_Area_Id" FromRole="Society" ToRole="Area" />
         </EntityType>
         <EntityType Name="State">
           <Key>
@@ -1165,6 +1215,30 @@
           <NavigationProperty Name="Purchases" Relationship="SmartGrocery.Entity.FK_Purchase_SupplierId_Supplier_Id" FromRole="Supplier" ToRole="Purchase" />
           <NavigationProperty Name="State" Relationship="SmartGrocery.Entity.FK_Supplier_StateId_State_Id" FromRole="Supplier" ToRole="State" />
         </EntityType>
+        <Association Name="FK_Area_CityId_City_Id">
+          <End Type="SmartGrocery.Entity.City" Role="City" Multiplicity="0..1" />
+          <End Type="SmartGrocery.Entity.Area" Role="Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Society_AreaId_Area_Id">
+          <End Type="SmartGrocery.Entity.Area" Role="Area" Multiplicity="0..1" />
+          <End Type="SmartGrocery.Entity.Society" Role="Society" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Society">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Branch_StoreId_Store_Id">
           <End Type="SmartGrocery.Entity.Store" Role="Store" Multiplicity="0..1" />
           <End Type="SmartGrocery.Entity.Branch" Role="Branch" Multiplicity="*" />
@@ -1453,18 +1527,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Society_RegionId_Region_Id">
-          <End Type="SmartGrocery.Entity.Region" Role="Region" Multiplicity="0..1" />
-          <End Type="SmartGrocery.Entity.Society" Role="Society" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Region">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Society">
-              <PropertyRef Name="RegionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Supplier_StateId_State_Id">
           <End Type="SmartGrocery.Entity.State" Role="State" Multiplicity="0..1" />
           <End Type="SmartGrocery.Entity.Supplier" Role="Supplier" Multiplicity="*" />
@@ -1477,20 +1539,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="ReportPurchase_Result">
-          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Quantity" Nullable="true" />
-          <Property Type="String" Name="SupplierCode" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="SupplierName" Nullable="true" MaxLength="100" />
-          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
-        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SmartGroceryEntityStoreContainer" CdmEntityContainer="SmartGroceryDataContext">
+          <FunctionImportMapping FunctionImportName="ReportPurchase" FunctionName="SmartGrocery.Entity.Store.ReportPurchase">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SmartGrocery.Entity.ReportPurchase_Result">
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="SmartGrocery.Entity.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Branches">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.Branch">
               <MappingFragment StoreEntitySet="Branch">
@@ -1611,7 +1687,6 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.Employee">
               <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -1621,6 +1696,7 @@
                 <ScalarProperty Name="WhatsappNumber" ColumnName="WhatsappNumber" />
                 <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
                 <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
                 <ScalarProperty Name="CityId" ColumnName="CityId" />
                 <ScalarProperty Name="StateId" ColumnName="StateId" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
@@ -1712,7 +1788,7 @@
           <EntitySetMapping Name="Societies">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.Society">
               <MappingFragment StoreEntitySet="Society">
-                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1777,18 +1853,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="ReportPurchase" FunctionName="SmartGrocery.Entity.Store.ReportPurchase">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SmartGrocery.Entity.ReportPurchase_Result">
-                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
-                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

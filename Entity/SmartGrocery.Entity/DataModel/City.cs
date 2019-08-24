@@ -17,6 +17,7 @@ namespace SmartGrocery.Entity.DataModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public City()
         {
+            this.Areas = new HashSet<Area>();
             this.Customers = new HashSet<Customer>();
             this.Customers1 = new HashSet<Customer>();
             this.Employees = new HashSet<Employee>();
@@ -28,6 +29,8 @@ namespace SmartGrocery.Entity.DataModel
         public string Name { get; set; }
         public Nullable<int> DistrictId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Area> Areas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

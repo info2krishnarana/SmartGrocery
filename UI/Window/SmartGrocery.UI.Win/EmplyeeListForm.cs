@@ -31,16 +31,30 @@ namespace SmartGrocery.UI.Win
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            EmployeeForm employeeForm = null;
-            employeeForm = new EmployeeForm();
-            //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
-            employeeForm.ShowDialog();
-            BindEmployeeDataGrid();
+            try
+            {
+                EmployeeForm employeeForm = null;
+                employeeForm = new EmployeeForm();
+                //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
+                employeeForm.ShowDialog();
+                BindEmployeeDataGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BindEmployeeDataGrid()
         {
-            dgEmployee.DataSource = employeeRepo.GetAll();
+            try
+            {
+                dgEmployee.DataSource = employeeRepo.GetAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
