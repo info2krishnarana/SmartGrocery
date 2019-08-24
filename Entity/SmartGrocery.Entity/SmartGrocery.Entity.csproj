@@ -95,6 +95,9 @@
     <Compile Include="DataModel\Region.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\ReportPurchase_Result.cs">
+      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\SmartGroceryModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

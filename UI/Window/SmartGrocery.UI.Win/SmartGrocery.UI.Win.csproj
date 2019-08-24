@@ -118,6 +118,12 @@
     <Compile Include="PurchaseListForm.Designer.cs">
       <DependentUpon>PurchaseListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchaseReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseReportForm.Designer.cs">
+      <DependentUpon>PurchaseReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SupplierForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,7 @@
     <Compile Include="Utilities\Validation.cs" />
     <Compile Include="ViewModels\ItemViewModels.cs" />
     <Compile Include="ViewModels\PurchaseViewModels.cs" />
+    <Compile Include="ViewModels\ReportViewModels.cs" />
     <EmbeddedResource Include="CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +179,9 @@
     </Compile>
     <EmbeddedResource Include="PurchaseListForm.resx">
       <DependentUpon>PurchaseListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseReportForm.resx">
+      <DependentUpon>PurchaseReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>

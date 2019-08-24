@@ -117,5 +117,11 @@ namespace SmartGrocery.UI.Win
             purchaseListForm = new PurchaseListForm();            //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
             purchaseListForm.ShowDialog();
         }
+
+        private void purchaseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            PurchaseReportForm purchaseReportForm = new PurchaseReportForm();           //addressForm.Size = Size.Subtract(addressForm.ParentForm.ClientRectangle.Size, new Size(10, 30));
+            purchaseReportForm.ShowDialog();
+        }
     }
 }
