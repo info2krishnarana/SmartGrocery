@@ -1,5 +1,6 @@
 ﻿using SmartGrocery.Data.Repository;
 using SmartGrocery.Entity.DataModel;
+using SmartGrocery.UI.Win.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace SmartGrocery.UI.Win
 
         SmartGroceryDataContext smartGroceryDataContext;
         Purchase purchase;
+        PurchaseReportViewModel purchaseReportViewModel;
 
         public PurchaseReportForm()
         {
@@ -36,6 +38,7 @@ namespace SmartGrocery.UI.Win
             dgPurchaseList.Rows.Clear();
             try
             {
+                purchaseReportViewModel = new PurchaseReportViewModel();
                 ObjectResult<ReportPurchase_Result> reportPurchase_Results = smartGroceryDataContext.ReportPurchase(dtFromDate.Value, dtToDate.Value);
                 //if (reportPurchase_Results.Count()>0)
                 //{
