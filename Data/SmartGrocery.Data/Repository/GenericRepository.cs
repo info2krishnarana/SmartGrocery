@@ -46,6 +46,11 @@ namespace SmartGrocery.Data.Repository
             _dbSet.Add(obj);
         }
 
+        public void Add(IEnumerable<T> obj)
+        {
+            _dbSet.AddRange(obj);
+        }
+
         public void Save()
         {
             _context.SaveChanges();
@@ -55,6 +60,6 @@ namespace SmartGrocery.Data.Repository
         {
             _dbSet.Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;
-        }
+        }        
     }
 }

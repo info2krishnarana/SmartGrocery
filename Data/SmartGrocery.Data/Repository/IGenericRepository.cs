@@ -11,6 +11,7 @@ namespace SmartGrocery.Data.Repository
         IEnumerable<T> GetAll();
         T GetById(object id);
         void Add(T obj);
+        void Add(IEnumerable<T> obj);
         void Update(T obj);
         void Delete(object id);
         void Save();

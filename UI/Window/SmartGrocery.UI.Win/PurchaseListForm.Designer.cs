@@ -75,7 +75,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1030, 76);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add/Search Customer";
+            this.groupBox1.Text = "Add Purchase List";
             // 
             // cmbSupplier
             // 
@@ -207,6 +207,7 @@
             this.btnSave.TabIndex = 22;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClear
             // 

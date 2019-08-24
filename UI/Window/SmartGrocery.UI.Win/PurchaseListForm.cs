@@ -17,11 +17,14 @@ namespace SmartGrocery.UI.Win
     {
         private IGenericRepository<Item> itemRepo;
         private IGenericRepository<Supplier> supplierRepo;
+        private IGenericRepository<Purchase> purchaseRepo;
 
         Item item;
         Supplier supplier;
+        Purchase purchase;
         PurchaseListViewModel purchaseListViewModel;
         List<PurchaseListViewModel> purchaseListViewModelList;
+        List<Purchase> purchaseList;
 
         public PurchaseListForm()
         {
@@ -31,6 +34,7 @@ namespace SmartGrocery.UI.Win
 
                 itemRepo = new GenericRepository<Item>();
                 supplierRepo = new GenericRepository<Supplier>();
+                purchaseRepo = new GenericRepository<Purchase>();
 
                 // item = new Item();
                 //supplier = new Supplier();
@@ -170,6 +174,58 @@ namespace SmartGrocery.UI.Win
             //dgPurchaseList.DataSource = null;
 
             dgPurchaseList.Rows.Clear();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                purchaseList = new List<Purchase>();
+
+                foreach (DataGridViewRow dataGridViewRowExisting in dgPurchaseList.Rows)
+                {
+                    purchase = new Purchase();
+
+                    purchase.ItemCode = Convert.ToInt64(dataGridViewRowExisting.Cells["ItemCode"].Value);
+                    //item = itemRepo.GetById(purchaseListViewModel.ItemCode);
+                    if (purchase.ItemCode > 0)
+                    {
+                        //purchase.ItemName = Convert.ToString(dataGridViewRowExisting.Cells["ItemName"].Value);
+                        //purchase.BarCode = Convert.ToString(dataGridViewRowExisting.Cells["BarCode"].Value);
+                        purchase.Quantity = Convert.ToInt32(dataGridViewRowExisting.Cells["Quantity"].Value);
+                        purchase.PurchaseAmount = Convert.ToInt64(dataGridViewRowExisting.Cells["PurchaseAmount"].Value);
+                        purchase.PaidAmount = Convert.ToInt64(dataGridViewRowExisting.Cells["PaidAmount"].Value);
+                        purchase.SupplierId = Convert.ToInt64(dataGridViewRowExisting.Cells["SupplierId"].Value);
+                        //purchase.SupplierName = Convert.ToString(dataGridViewRowExisting.Cells["SupplierName"].Value);
+                        purchase.CreatedDate = DateTime.Now;
+                        purchase.UpdatedDate = DateTime.Now;
+
+                        purchaseList.Add(purchase);
+                    }
+                }
+
+                if (purchaseList.Count < 1)
+                {
+                    MessageBox.Show("Please add at least one item in Purchase List");
+                }
+                else
+                {
+                    purchaseRepo.Add(purchaseList);
+                    //foreach (Purchase purchaseItem in purchaseList)
+                    //{
+                    //    purchaseRepo.Add(purchaseItem);
+                    //}
+                    purchaseRepo.Save();
+
+                    MessageBox.Show("Purchase Items saved successfully");
+
+                    dgPurchaseList.Rows.Clear();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
