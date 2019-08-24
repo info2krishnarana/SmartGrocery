@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.dgPurchaseList = new System.Windows.Forms.DataGridView();
-            this.ItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,35 +42,10 @@
             // dgPurchaseList
             // 
             this.dgPurchaseList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPurchaseList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ItemCode,
-            this.BarCode,
-            this.Quantity,
-            this.SupplierName});
             this.dgPurchaseList.Location = new System.Drawing.Point(12, 94);
             this.dgPurchaseList.Name = "dgPurchaseList";
             this.dgPurchaseList.Size = new System.Drawing.Size(1030, 470);
             this.dgPurchaseList.TabIndex = 8;
-            // 
-            // ItemCode
-            // 
-            this.ItemCode.HeaderText = "Item";
-            this.ItemCode.Name = "ItemCode";
-            // 
-            // BarCode
-            // 
-            this.BarCode.HeaderText = "Bar Code";
-            this.BarCode.Name = "BarCode";
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            // 
-            // SupplierName
-            // 
-            this.SupplierName.HeaderText = "Supplier";
-            this.SupplierName.Name = "SupplierName";
             // 
             // groupBox1
             // 
@@ -93,7 +64,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(191, 16);
+            this.label2.Location = new System.Drawing.Point(191, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 31;
@@ -102,7 +73,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Location = new System.Drawing.Point(6, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 31;
@@ -159,9 +130,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtToDate;
         private System.Windows.Forms.DateTimePicker dtFromDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BarCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Objects;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -32,9 +33,14 @@ namespace SmartGrocery.UI.Win
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            dgPurchaseList.Rows.Clear();
             try
             {
-                List<ReportPurchase_Result> reportPurchase_Results = smartGroceryDataContext.ReportPurchase(dtFromDate.Value, dtToDate.Value).ToList();
+                ObjectResult<ReportPurchase_Result> reportPurchase_Results = smartGroceryDataContext.ReportPurchase(dtFromDate.Value, dtToDate.Value);
+                //if (reportPurchase_Results.Count()>0)
+                //{
+
+                //}
                 dgPurchaseList.DataSource = reportPurchase_Results;
             }
             catch (Exception ex)

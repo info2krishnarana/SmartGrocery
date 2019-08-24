@@ -9,7 +9,7 @@ namespace SmartGrocery.UI.Win.ViewModels
     public class PurchaseReportViewModel
     {
         public long SrNo { get; set; }
-        public long ItemCod { get; set; }
+        public long ItemCode { get; set; }
         public string ItemName { get; set; }
         public string BarCode { get; set; }
         public int Quantity { get; set; }
