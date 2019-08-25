@@ -269,6 +269,7 @@ namespace SmartGrocery.UI.Win
                         }
                     }
                 }
+                Utilities.Validation.BindComboBox(cmbCategory, categoryRepo.GetAll(), "Name", "Id", true);
             }
             catch (Exception ex)
             {
@@ -326,6 +327,11 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
+                    if (category==null)
+                    {
+                        category = new Category();
+                    }
+
                     string[] categories = txtCategory.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (string categ in categories)
@@ -388,11 +394,17 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
+                    if (subCategory==null)
+                    {
+                        subCategory = new SubCategory();
+                    }
+
                     string[] productTypes = txtSubCategory.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (string prdType in productTypes)
                     {
                         subCategory.Name = prdType;
+                        subCategory.CategoryId = Convert.ToInt32(cmbCategory.SelectedValue);
                         subCategoryRepo.Add(subCategory);
                         subCategoryRepo.Save();
                     }
