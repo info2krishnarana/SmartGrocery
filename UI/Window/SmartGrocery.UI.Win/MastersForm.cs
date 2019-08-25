@@ -22,11 +22,17 @@ namespace SmartGrocery.UI.Win
         private IGenericRepository<Area> areaRepo;
         private IGenericRepository<Society> societyRepo;
         private IGenericRepository<Category> categoryRepo;
-        private IGenericRepository<Brand> brandRepo;
-        private IGenericRepository<ProductType> productTypeRepo;
+        private IGenericRepository<SubCategory> subCategoryRepo;
+        private IGenericRepository<Brand> brandRepo;        
         private IGenericRepository<MeasurementUnit> measurementUnitRepo;
         private IGenericRepository<Department> departmentRepo;
         private IGenericRepository<Designation> designationRepo;
+
+        private IEnumerable<Country> countryList;
+        private IEnumerable<State> stateList;
+        private IEnumerable<District> districtList;
+        private IEnumerable<City> cityList;
+        private IEnumerable<Area> areaList;
 
         private Country country;
         private State state;
@@ -35,12 +41,11 @@ namespace SmartGrocery.UI.Win
         private Area area;
         private Society society;
         private Category category;
-        private Brand brand;
-        private ProductType productType;
+        private SubCategory subCategory;
+        private Brand brand;        
         private MeasurementUnit measurementUnit;
         private Department department;
         private Designation designation;
-        private IEnumerable<string> areas;
 
         public MastersForm()
         {
@@ -53,11 +58,17 @@ namespace SmartGrocery.UI.Win
             societyRepo = new GenericRepository<Society>();
             cityRepo = new GenericRepository<City>();
             categoryRepo = new GenericRepository<Category>();
+            subCategoryRepo = new GenericRepository<SubCategory>();
             brandRepo = new GenericRepository<Brand>();
-            productTypeRepo = new GenericRepository<ProductType>();
             measurementUnitRepo = new GenericRepository<MeasurementUnit>();
             departmentRepo = new GenericRepository<Department>();
             designationRepo = new GenericRepository<Designation>();
+
+            countryList = new List<Country>();
+            stateList = new List<State>();
+            districtList = new List<District>();
+            cityList = new List<City>();
+            areaList = new List<Area>();
 
             country = new Country();
             state = new State();
@@ -66,8 +77,8 @@ namespace SmartGrocery.UI.Win
             area = new Area();
             society = new Society();
             category = new Category();
+            subCategory = new SubCategory();
             brand = new Brand();
-            productType = new ProductType();
             measurementUnit = new MeasurementUnit();
             department = new Department();
             designation = new Designation();
@@ -88,11 +99,17 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
+                    if (country == null)
+                    {
+                        country = new Country();
+                    }
+
                     string[] countries = txtCountry.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (string cntrs in countries)
                     {
                         country.Name = cntrs;
+                        country.IsSelected = false;
                         countryRepo.Add(country);
                         countryRepo.Save();
                     }
@@ -119,12 +136,18 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
+                    if (state==null)
+                    {
+                        state = new State();
+                    }
+
                     string[] states = txtState.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (string sts in states)
                     {
-                        state.CountryId = Convert.ToInt32(cmbCountry.SelectedValue);
+                        state.CountryId = Convert.ToInt32(cmbCountryOnState.SelectedValue);
                         state.Name = sts;
+                        state.IsSelected = false;
                         stateRepo.Add(state);
                         stateRepo.Save();
                     }
@@ -152,7 +175,7 @@ namespace SmartGrocery.UI.Win
                 dgSociety.DataSource = societyRepo.GetAll();
                 dgCategory.DataSource = categoryRepo.GetAll();
                 dgBrand.DataSource = brandRepo.GetAll();
-                dgProductType.DataSource = productTypeRepo.GetAll();
+                dgSubCategory.DataSource = subCategoryRepo.GetAll();
                 dgMeasurementUnit.DataSource = measurementUnitRepo.GetAll();
                 dgDepartment.DataSource = departmentRepo.GetAll();
                 dgDesignation.DataSource = designationRepo.GetAll();
@@ -167,11 +190,85 @@ namespace SmartGrocery.UI.Win
         {
             try
             {
-                Utilities.Validation.BindComboBox(cmbCountry, countryRepo.GetAll(), "Name", "Id", true);
-                Utilities.Validation.BindComboBox(cmbState, stateRepo.GetAll(), "Name", "Id", true);
-                Utilities.Validation.BindComboBox(cmbDistrict, districtRepo.GetAll(), "Name", "Id", true);
-                Utilities.Validation.BindComboBox(cmbCity, cityRepo.GetAll(), "Name", "Id", true);
-                Utilities.Validation.BindComboBox(cmbArea, areaRepo.GetAll(), "Name", "Id", true);
+                //countries combobox
+                countryList = countryRepo.GetAll();
+
+                Utilities.Validation.BindComboBox(cmbCountryOnState, countryList, "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbCountryOnDistrict, countryList, "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbCountryOnCity, countryList, "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbCountryOnArea, countryList, "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbCountryOnSociety, countryList, "Name", "Id", true);
+
+                country = countryList.SingleOrDefault(c => c.IsSelected == true);
+
+                if (country != null)
+                {
+                    cmbCountryOnState.SelectedValue = country.Id;
+                    cmbCountryOnDistrict.SelectedValue = country.Id;
+                    cmbCountryOnCity.SelectedValue = country.Id;
+                    cmbCountryOnArea.SelectedValue = country.Id;
+                    cmbCountryOnSociety.SelectedValue = country.Id;
+
+                    //state combobox
+                    stateList = stateRepo.GetAll().Where(s => s.CountryId == country.Id).ToList();
+
+                    Utilities.Validation.BindComboBox(cmbStateOnDistrict, stateList, "Name", "Id", true);
+                    Utilities.Validation.BindComboBox(cmbStateOnCity, stateList, "Name", "Id", true);
+                    Utilities.Validation.BindComboBox(cmbStateOnArea, stateList, "Name", "Id", true);
+                    Utilities.Validation.BindComboBox(cmbStateOnSociety, stateList, "Name", "Id", true);
+
+                    state = stateList.SingleOrDefault(s => s.IsSelected == true);
+
+                    if (state != null)
+                    {
+                        cmbStateOnDistrict.SelectedValue = state.Id;
+                        cmbStateOnCity.SelectedValue = state.Id;
+                        cmbStateOnArea.SelectedValue = state.Id;
+                        cmbStateOnSociety.SelectedValue = state.Id;
+
+                        //district combobox
+                        districtList = districtRepo.GetAll().Where(s => s.StateId == state.Id).ToList();
+
+                        Utilities.Validation.BindComboBox(cmbDistrictOnCity, districtList, "Name", "Id", true);
+                        Utilities.Validation.BindComboBox(cmbDistrictOnArea, districtList, "Name", "Id", true);
+                        Utilities.Validation.BindComboBox(cmbDistrictOnSociety, districtList, "Name", "Id", true);
+
+                        district = districtList.SingleOrDefault(s => s.IsSelected == true);
+
+                        if (district!=null)
+                        {
+                            cmbDistrictOnCity.SelectedValue = district.Id;
+                            cmbDistrictOnArea.SelectedValue = district.Id;
+                            cmbDistrictOnSociety.SelectedValue = district.Id;
+
+                            //city combobox
+                            cityList = cityRepo.GetAll().Where(d => d.DistrictId == district.Id).ToList();
+
+                            Utilities.Validation.BindComboBox(cmbCityOnArea, cityList, "Name", "Id", true);
+                            Utilities.Validation.BindComboBox(cmbCityOnSociety, cityList, "Name", "Id", true);
+
+                            city = cityList.SingleOrDefault(c => c.IsSelected == true);
+
+                            if (city!=null)
+                            {
+                                cmbCityOnArea.SelectedValue = city.Id;
+                                cmbCityOnSociety.SelectedValue = city.Id;
+
+                                //area combobox
+                                areaList = areaRepo.GetAll().Where(c => c.CityId == city.Id).ToList();
+
+                                Utilities.Validation.BindComboBox(cmbAreaOnSociety, areaList, "Name", "Id", true);
+
+                                area = areaList.SingleOrDefault(a => a.IsSelected == true);
+
+                                if (area!=null)
+                                {
+                                    cmbAreaOnSociety.SelectedValue = area.Id;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -191,12 +288,18 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
+                    if (city==null)
+                    {
+                        city = new City();
+                    }
+
                     string[] cities = txtCity.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (string ct in cities)
                     {
-                        city.DistrictId = Convert.ToInt32(cmbDistrict.SelectedValue);
+                        city.DistrictId = Convert.ToInt32(cmbDistrictOnCity.SelectedValue);
                         city.Name = ct;
+                        city.IsSelected = false;
                         cityRepo.Add(city);
                         cityRepo.Save();
                     }
@@ -278,22 +381,22 @@ namespace SmartGrocery.UI.Win
         {
             try
             {
-                if (string.IsNullOrEmpty(txtProductType.Text.Trim()))
+                if (string.IsNullOrEmpty(txtSubCategory.Text.Trim()))
                 {
                     MessageBox.Show("Product Type Name required");
-                    txtProductType.Focus();
+                    txtSubCategory.Focus();
                 }
                 else
                 {
-                    string[] productTypes = txtProductType.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] productTypes = txtSubCategory.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (string prdType in productTypes)
                     {
-                        productType.Name = prdType;
-                        productTypeRepo.Add(productType);
-                        productTypeRepo.Save();
+                        subCategory.Name = prdType;
+                        subCategoryRepo.Add(subCategory);
+                        subCategoryRepo.Save();
                     }
-                    txtProductType.Clear();
+                    txtSubCategory.Clear();
 
                     BindAllDataGrids();
                     BindAllComboBoxes();
@@ -405,16 +508,22 @@ namespace SmartGrocery.UI.Win
                 if (string.IsNullOrEmpty(txtDistrictName.Text.Trim()))
                 {
                     MessageBox.Show("District Name required");
-                    txtCity.Focus();
+                    txtDistrictName.Focus();
                 }
                 else
                 {
+                    if (district == null)
+                    {
+                        district = new District();
+                    }
+
                     string[] districts = txtDistrictName.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (string dist in districts)
                     {
-                        district.StateId = Convert.ToInt32(cmbState.SelectedValue);
+                        district.StateId = Convert.ToInt32(cmbStateOnDistrict.SelectedValue);
                         district.Name = dist;
+                        district.IsSelected = false;
                         districtRepo.Add(district);
                         districtRepo.Save();
                     }
@@ -446,12 +555,19 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
+                    if (area==null)
+                    {
+                        area = new Area();
+                    }
+
                     string[] areas = txtAreaName.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (string ar in areas)
                     {
-                        area.CityId = Convert.ToInt32(cmbCity.SelectedValue);
+                        area.CityId = Convert.ToInt32(cmbCityOnArea.SelectedValue);
                         area.Name = ar;
+                        area.PinCode = txtAreaPinCode.Text.Trim();
+                        area.IsSelected = false;
                         areaRepo.Add(area);
                         areaRepo.Save();
                     }
@@ -479,12 +595,18 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
+                    if (society==null)
+                    {
+                        society = new Society();
+                    }
+
                     string[] societies = txtSocietyName.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
                     foreach (string st in societies)
                     {
-                        society.AreaId = Convert.ToInt32(cmbArea.SelectedValue);
+                        society.AreaId = Convert.ToInt32(cmbAreaOnSociety.SelectedValue);
                         society.Name = st;
+                        society.IsSelected = false;
                         societyRepo.Add(society);
                         societyRepo.Save();
                     }

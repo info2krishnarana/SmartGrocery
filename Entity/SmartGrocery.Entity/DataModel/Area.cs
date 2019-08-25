@@ -24,6 +24,7 @@ namespace SmartGrocery.Entity.DataModel
         public string PinCode { get; set; }
         public string Name { get; set; }
         public Nullable<int> CityId { get; set; }
+        public Nullable<bool> IsSelected { get; set; }
     
         public virtual City City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

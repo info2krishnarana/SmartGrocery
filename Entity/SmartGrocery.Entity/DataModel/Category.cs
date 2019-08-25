@@ -18,6 +18,7 @@ namespace SmartGrocery.Entity.DataModel
         public Category()
         {
             this.Items = new HashSet<Item>();
+            this.SubCategories = new HashSet<SubCategory>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace SmartGrocery.Entity.DataModel
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Item> Items { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SubCategory> SubCategories { get; set; }
     }
 }

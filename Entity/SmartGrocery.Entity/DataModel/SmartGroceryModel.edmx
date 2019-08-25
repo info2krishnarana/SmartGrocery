@@ -13,6 +13,7 @@
           <Property Name="PinCode" Type="nvarchar" MaxLength="50" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="CityId" Type="int" />
+          <Property Name="IsSelected" Type="bit" />
         </EntityType>
         <EntityType Name="Branch">
           <Key>
@@ -46,6 +47,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="DistrictId" Type="int" />
+          <Property Name="IsSelected" Type="bit" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -53,6 +55,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsSelected" Type="bit" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -121,6 +124,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="StateId" Type="int" />
+          <Property Name="IsSelected" Type="bit" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -162,13 +166,14 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Barcode" Type="nvarchar" MaxLength="100" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="CommonName" Type="nvarchar" MaxLength="100" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Mrp" Type="decimal" Precision="18" Scale="2" />
           <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="SalePrice" Type="decimal" Precision="18" Scale="2" />
           <Property Name="MeasurementUnitId" Type="int" />
           <Property Name="CategoryId" Type="int" />
-          <Property Name="ProductTypeId" Type="int" />
+          <Property Name="SubCategoryId" Type="int" />
           <Property Name="BrandId" Type="int" />
           <Property Name="Photo" Type="nvarchar(max)" />
           <Property Name="IsActive" Type="bit" />
@@ -186,13 +191,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="ProductType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="100" />
-        </EntityType>
         <EntityType Name="Purchase">
           <Key>
             <PropertyRef Name="Id" />
@@ -203,7 +201,7 @@
           <Property Name="PurchaseAmount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="SupplierId" Type="bigint" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedBy" Type="bigint" />
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="bigint" />
@@ -216,6 +214,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Pincode" Type="varchar" MaxLength="100" />
           <Property Name="CityId" Type="int" />
+          <Property Name="IsSelected" Type="bit" />
         </EntityType>
         <EntityType Name="Society">
           <Key>
@@ -224,6 +223,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="AreaId" Type="bigint" />
+          <Property Name="IsSelected" Type="bit" />
         </EntityType>
         <EntityType Name="State">
           <Key>
@@ -232,6 +232,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="CountryId" Type="int" />
+          <Property Name="IsSelected" Type="bit" />
         </EntityType>
         <EntityType Name="Store">
           <Key>
@@ -244,6 +245,14 @@
           <Property Name="WhatppNumber" Type="nvarchar" MaxLength="100" />
           <Property Name="Website" Type="nvarchar" MaxLength="100" />
           <Property Name="EmailAddress" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="CategoryId" Type="int" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -497,15 +506,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Item_ProductTypeId_ProductType_Id">
-          <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
+        <Association Name="FK_Item_SubCategoryId_SubCategory_Id">
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="0..1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductType">
+            <Principal Role="SubCategory">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Item">
-              <PropertyRef Name="ProductTypeId" />
+              <PropertyRef Name="SubCategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -569,6 +578,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SubCategory_CategoryId_Category_Id">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Supplier_CityId_City_Id">
           <End Role="City" Type="Self.City" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
@@ -623,12 +644,12 @@
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MeasurementUnit" EntityType="Self.MeasurementUnit" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Society" EntityType="Self.Society" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Store" EntityType="Self.Store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Area_CityId_City_Id" Association="Self.FK_Area_CityId_City_Id">
             <End Role="City" EntitySet="City" />
@@ -702,8 +723,8 @@
             <End Role="MeasurementUnit" EntitySet="MeasurementUnit" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
-          <AssociationSet Name="FK_Item_ProductTypeId_ProductType_Id" Association="Self.FK_Item_ProductTypeId_ProductType_Id">
-            <End Role="ProductType" EntitySet="ProductType" />
+          <AssociationSet Name="FK_Item_SubCategoryId_SubCategory_Id" Association="Self.FK_Item_SubCategoryId_SubCategory_Id">
+            <End Role="SubCategory" EntitySet="SubCategory" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
           <AssociationSet Name="FK_Purchase_ItemCode_Item_Id" Association="Self.FK_Purchase_ItemCode_Item_Id">
@@ -725,6 +746,10 @@
           <AssociationSet Name="FK_State_CountryId_Country_Id" Association="Self.FK_State_CountryId_Country_Id">
             <End Role="Country" EntitySet="Country" />
             <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_CategoryId_Category_Id" Association="Self.FK_SubCategory_CategoryId_Category_Id">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SubCategory" EntitySet="SubCategory" />
           </AssociationSet>
           <AssociationSet Name="FK_Supplier_CityId_City_Id" Association="Self.FK_Supplier_CityId_City_Id">
             <End Role="City" EntitySet="City" />
@@ -761,12 +786,12 @@
           <EntitySet Name="Employees" EntityType="SmartGrocery.Entity.Employee" />
           <EntitySet Name="Items" EntityType="SmartGrocery.Entity.Item" />
           <EntitySet Name="MeasurementUnits" EntityType="SmartGrocery.Entity.MeasurementUnit" />
-          <EntitySet Name="ProductTypes" EntityType="SmartGrocery.Entity.ProductType" />
           <EntitySet Name="Purchases" EntityType="SmartGrocery.Entity.Purchase" />
           <EntitySet Name="Regions" EntityType="SmartGrocery.Entity.Region" />
           <EntitySet Name="Societies" EntityType="SmartGrocery.Entity.Society" />
           <EntitySet Name="States" EntityType="SmartGrocery.Entity.State" />
           <EntitySet Name="Stores" EntityType="SmartGrocery.Entity.Store" />
+          <EntitySet Name="SubCategories" EntityType="SmartGrocery.Entity.SubCategory" />
           <EntitySet Name="Suppliers" EntityType="SmartGrocery.Entity.Supplier" />
           <AssociationSet Name="FK_Area_CityId_City_Id" Association="SmartGrocery.Entity.FK_Area_CityId_City_Id">
             <End Role="City" EntitySet="Cities" />
@@ -791,6 +816,10 @@
           <AssociationSet Name="FK_Item_CategoryId_Category_Id" Association="SmartGrocery.Entity.FK_Item_CategoryId_Category_Id">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_CategoryId_Category_Id" Association="SmartGrocery.Entity.FK_SubCategory_CategoryId_Category_Id">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="SubCategory" EntitySet="SubCategories" />
           </AssociationSet>
           <AssociationSet Name="FK_Customer_BillingCityId_City_Id" Association="SmartGrocery.Entity.FK_Customer_BillingCityId_City_Id">
             <End Role="City" EntitySet="Cities" />
@@ -860,8 +889,8 @@
             <End Role="MeasurementUnit" EntitySet="MeasurementUnits" />
             <End Role="Item" EntitySet="Items" />
           </AssociationSet>
-          <AssociationSet Name="FK_Item_ProductTypeId_ProductType_Id" Association="SmartGrocery.Entity.FK_Item_ProductTypeId_ProductType_Id">
-            <End Role="ProductType" EntitySet="ProductTypes" />
+          <AssociationSet Name="FK_Item_SubCategoryId_SubCategory_Id" Association="SmartGrocery.Entity.FK_Item_SubCategoryId_SubCategory_Id">
+            <End Role="SubCategory" EntitySet="SubCategories" />
             <End Role="Item" EntitySet="Items" />
           </AssociationSet>
           <AssociationSet Name="FK_Purchase_ItemCode_Item_Id" Association="SmartGrocery.Entity.FK_Purchase_ItemCode_Item_Id">
@@ -876,7 +905,7 @@
             <End Role="State" EntitySet="States" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <ComplexType Name="ReportPurchase_Result">
           <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="BarCode" Nullable="true" MaxLength="100" />
@@ -895,6 +924,7 @@
           <Property Name="CityId" Type="Int32" />
           <NavigationProperty Name="City" Relationship="SmartGrocery.Entity.FK_Area_CityId_City_Id" FromRole="Area" ToRole="City" />
           <NavigationProperty Name="Societies" Relationship="SmartGrocery.Entity.FK_Society_AreaId_Area_Id" FromRole="Area" ToRole="Society" />
+          <Property Name="IsSelected" Type="Boolean" />
         </EntityType>
         <EntityType Name="Branch">
           <Key>
@@ -924,6 +954,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Items" Relationship="SmartGrocery.Entity.FK_Item_CategoryId_Category_Id" FromRole="Category" ToRole="Item" />
+          <NavigationProperty Name="SubCategories" Relationship="SmartGrocery.Entity.FK_SubCategory_CategoryId_Category_Id" FromRole="Category" ToRole="SubCategory" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -932,6 +963,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DistrictId" Type="Int32" />
+          <Property Name="IsSelected" Type="Boolean" />
           <NavigationProperty Name="Areas" Relationship="SmartGrocery.Entity.FK_Area_CityId_City_Id" FromRole="City" ToRole="Area" />
           <NavigationProperty Name="Customers" Relationship="SmartGrocery.Entity.FK_Customer_BillingCityId_City_Id" FromRole="City" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="SmartGrocery.Entity.FK_Customer_ShippingCityId_City_Id" FromRole="City" ToRole="Customer" />
@@ -945,6 +977,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsSelected" Type="Boolean" />
           <NavigationProperty Name="Customers" Relationship="SmartGrocery.Entity.FK_Customer_BillingCountryId_Country_Id" FromRole="Country" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="SmartGrocery.Entity.FK_Customer_ShippingCountryId_Country_Id" FromRole="Country" ToRole="Customer" />
           <NavigationProperty Name="Employees" Relationship="SmartGrocery.Entity.FK_Employee_CountryId_Country_Id" FromRole="Country" ToRole="Employee" />
@@ -1026,6 +1059,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="StateId" Type="Int32" />
+          <Property Name="IsSelected" Type="Boolean" />
           <NavigationProperty Name="State" Relationship="SmartGrocery.Entity.FK_District_StateId_State_Id" FromRole="District" ToRole="State" />
         </EntityType>
         <EntityType Name="Employee">
@@ -1074,13 +1108,14 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CommonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Mrp" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="SalePrice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="MeasurementUnitId" Type="Int32" />
           <Property Name="CategoryId" Type="Int32" />
-          <Property Name="ProductTypeId" Type="Int32" />
+          <Property Name="SubCategoryId" Type="Int32" />
           <Property Name="BrandId" Type="Int32" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" />
@@ -1093,7 +1128,7 @@
           <NavigationProperty Name="Brand" Relationship="SmartGrocery.Entity.FK_Item_BrandId_Brand_Id" FromRole="Item" ToRole="Brand" />
           <NavigationProperty Name="Category" Relationship="SmartGrocery.Entity.FK_Item_CategoryId_Category_Id" FromRole="Item" ToRole="Category" />
           <NavigationProperty Name="MeasurementUnit" Relationship="SmartGrocery.Entity.FK_Item_MeasurementUnitId_MeasurementUnit_Id" FromRole="Item" ToRole="MeasurementUnit" />
-          <NavigationProperty Name="ProductType" Relationship="SmartGrocery.Entity.FK_Item_ProductTypeId_ProductType_Id" FromRole="Item" ToRole="ProductType" />
+          <NavigationProperty Name="SubCategory" Relationship="SmartGrocery.Entity.FK_Item_SubCategoryId_SubCategory_Id" FromRole="Item" ToRole="SubCategory" />
           <NavigationProperty Name="Purchases" Relationship="SmartGrocery.Entity.FK_Purchase_ItemCode_Item_Id" FromRole="Item" ToRole="Purchase" />
         </EntityType>
         <EntityType Name="MeasurementUnit">
@@ -1103,14 +1138,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Items" Relationship="SmartGrocery.Entity.FK_Item_MeasurementUnitId_MeasurementUnit_Id" FromRole="MeasurementUnit" ToRole="Item" />
-        </EntityType>
-        <EntityType Name="ProductType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Items" Relationship="SmartGrocery.Entity.FK_Item_ProductTypeId_ProductType_Id" FromRole="ProductType" ToRole="Item" />
         </EntityType>
         <EntityType Name="Purchase">
           <Key>
@@ -1122,7 +1149,7 @@
           <Property Name="PurchaseAmount" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="SupplierId" Type="Int64" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="Int64" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="Int64" />
@@ -1137,6 +1164,7 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Pincode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CityId" Type="Int32" />
+          <Property Name="IsSelected" Type="Boolean" />
           <NavigationProperty Name="City" Relationship="SmartGrocery.Entity.FK_Region_CityId_City_Id" FromRole="Region" ToRole="City" />
         </EntityType>
         <EntityType Name="Society">
@@ -1146,6 +1174,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="AreaId" Type="Int64" />
+          <Property Name="IsSelected" Type="Boolean" />
           <NavigationProperty Name="Area" Relationship="SmartGrocery.Entity.FK_Society_AreaId_Area_Id" FromRole="Society" ToRole="Area" />
         </EntityType>
         <EntityType Name="State">
@@ -1155,6 +1184,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CountryId" Type="Int32" />
+          <Property Name="IsSelected" Type="Boolean" />
           <NavigationProperty Name="Country" Relationship="SmartGrocery.Entity.FK_State_CountryId_Country_Id" FromRole="State" ToRole="Country" />
           <NavigationProperty Name="Customers" Relationship="SmartGrocery.Entity.FK_Customer_BillingStateId_State_Id" FromRole="State" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="SmartGrocery.Entity.FK_Customer_ShippingStateId_State_Id" FromRole="State" ToRole="Customer" />
@@ -1174,6 +1204,16 @@
           <Property Name="Website" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EmailAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Branches" Relationship="SmartGrocery.Entity.FK_Branch_StoreId_Store_Id" FromRole="Store" ToRole="Branch" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="SmartGrocery.Entity.FK_SubCategory_CategoryId_Category_Id" FromRole="SubCategory" ToRole="Category" />
+          <NavigationProperty Name="Items" Relationship="SmartGrocery.Entity.FK_Item_SubCategoryId_SubCategory_Id" FromRole="SubCategory" ToRole="Item" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -1283,6 +1323,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Item">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_CategoryId_Category_Id">
+          <End Type="SmartGrocery.Entity.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="SmartGrocery.Entity.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubCategory">
               <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1491,15 +1543,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Item_ProductTypeId_ProductType_Id">
-          <End Type="SmartGrocery.Entity.ProductType" Role="ProductType" Multiplicity="0..1" />
+        <Association Name="FK_Item_SubCategoryId_SubCategory_Id">
+          <End Type="SmartGrocery.Entity.SubCategory" Role="SubCategory" Multiplicity="0..1" />
           <End Type="SmartGrocery.Entity.Item" Role="Item" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductType">
+            <Principal Role="SubCategory">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Item">
-              <PropertyRef Name="ProductTypeId" />
+              <PropertyRef Name="SubCategoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1560,6 +1612,7 @@
           <EntitySetMapping Name="Areas">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.Area">
               <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
                 <ScalarProperty Name="CityId" ColumnName="CityId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="PinCode" ColumnName="PinCode" />
@@ -1598,6 +1651,7 @@
           <EntitySetMapping Name="Cities">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.City">
               <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
                 <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1607,6 +1661,7 @@
           <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.Country">
               <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1678,6 +1733,7 @@
           <EntitySetMapping Name="Districts">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.District">
               <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
                 <ScalarProperty Name="StateId" ColumnName="StateId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1730,13 +1786,14 @@
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="BrandId" ColumnName="BrandId" />
-                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="MeasurementUnitId" ColumnName="MeasurementUnitId" />
                 <ScalarProperty Name="SalePrice" ColumnName="SalePrice" />
                 <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
                 <ScalarProperty Name="Mrp" ColumnName="Mrp" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CommonName" ColumnName="CommonName" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Barcode" ColumnName="Barcode" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1746,14 +1803,6 @@
           <EntitySetMapping Name="MeasurementUnits">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.MeasurementUnit">
               <MappingFragment StoreEntitySet="MeasurementUnit">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductTypes">
-            <EntityTypeMapping TypeName="SmartGrocery.Entity.ProductType">
-              <MappingFragment StoreEntitySet="ProductType">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1778,6 +1827,7 @@
           <EntitySetMapping Name="Regions">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.Region">
               <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
                 <ScalarProperty Name="CityId" ColumnName="CityId" />
                 <ScalarProperty Name="Pincode" ColumnName="Pincode" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1788,6 +1838,7 @@
           <EntitySetMapping Name="Societies">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.Society">
               <MappingFragment StoreEntitySet="Society">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
                 <ScalarProperty Name="AreaId" ColumnName="AreaId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1797,6 +1848,7 @@
           <EntitySetMapping Name="States">
             <EntityTypeMapping TypeName="SmartGrocery.Entity.State">
               <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1811,6 +1863,15 @@
                 <ScalarProperty Name="WhatppNumber" ColumnName="WhatppNumber" />
                 <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
                 <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="SmartGrocery.Entity.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategory">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1853,7 +1914,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

@@ -20,7 +20,7 @@ namespace SmartGrocery.Entity.DataModel
         public Nullable<decimal> PurchaseAmount { get; set; }
         public Nullable<decimal> PaidAmount { get; set; }
         public Nullable<long> SupplierId { get; set; }
-        public System.DateTime CreatedDate { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<long> CreatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public Nullable<long> UpdatedBy { get; set; }

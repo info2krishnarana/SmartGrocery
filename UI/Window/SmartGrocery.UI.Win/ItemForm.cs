@@ -16,13 +16,13 @@ namespace SmartGrocery.UI.Win
     {
         private IGenericRepository<Category> categoryRepo;
         private IGenericRepository<Brand> brandRepo;
-        private IGenericRepository<ProductType> productTypeRepo;
+        private IGenericRepository<SubCategory> subCategoryRepo;
         private IGenericRepository<Item> itemRepo;
         private IGenericRepository<MeasurementUnit> measurementUnitRepo;
 
         private Category category;
         private Brand brand;
-        private ProductType productType;
+        private SubCategory subCategory;
         private Item item;
         private MeasurementUnit measurement;
 
@@ -32,13 +32,13 @@ namespace SmartGrocery.UI.Win
 
             categoryRepo = new GenericRepository<Category>();
             brandRepo = new GenericRepository<Brand>();
-            productTypeRepo = new GenericRepository<ProductType>();
+            subCategoryRepo = new GenericRepository<SubCategory>();
             itemRepo = new GenericRepository<Item>();
             measurementUnitRepo = new GenericRepository<MeasurementUnit>();
 
             category = new Category();
             brand = new Brand();
-            productType = new ProductType();
+            subCategory = new SubCategory();
             item = new Item();
             measurement = new MeasurementUnit();
 
@@ -51,7 +51,7 @@ namespace SmartGrocery.UI.Win
             {
                 Utilities.Validation.BindComboBox(cmbCategory, categoryRepo.GetAll(), "Name", "Id", true);
                 Utilities.Validation.BindComboBox(cmbBrand, brandRepo.GetAll(), "Name", "Id", true);
-                Utilities.Validation.BindComboBox(cmbProductType, productTypeRepo.GetAll(), "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbSubCategory, subCategoryRepo.GetAll(), "Name", "Id", true);
                 Utilities.Validation.BindComboBox(cmbMeasurementUnit, measurementUnitRepo.GetAll(), "Name", "Id", true);
             }
             catch (Exception ex)
@@ -101,7 +101,7 @@ namespace SmartGrocery.UI.Win
                     item.Description = txtItemDescription.Text.Trim();
                     item.CategoryId = Convert.ToInt32(cmbCategory.SelectedValue);
                     item.BrandId = Convert.ToInt32(cmbBrand.SelectedValue);
-                    item.ProductTypeId = Convert.ToInt32(cmbProductType.SelectedValue);
+                    item.SubCategoryId = Convert.ToInt32(cmbSubCategory.SelectedValue);
                     item.Mrp = Convert.ToDecimal(txtMrp.Text.Trim());
                     item.PurchasePrice = Convert.ToDecimal(txtPurchasePrice.Text.Trim());
                     item.SalePrice = Convert.ToDecimal(txtSalePrice.Text.Trim());

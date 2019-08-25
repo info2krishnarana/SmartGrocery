@@ -16,12 +16,12 @@ namespace SmartGrocery.UI.Win
     {
         private IGenericRepository<Category> categoryRepo;
         private IGenericRepository<Brand> brandRepo;
-        private IGenericRepository<ProductType> productTypeRepo;
+        private IGenericRepository<SubCategory> subCategoryRepo;
         private IGenericRepository<Item> itemRepo;
 
         private Category category;
         private Brand brand;
-        private ProductType productType;
+        private SubCategory subCategory;
         private Item item;
 
         public ItemListForm()
@@ -30,12 +30,12 @@ namespace SmartGrocery.UI.Win
 
             categoryRepo = new GenericRepository<Category>();
             brandRepo = new GenericRepository<Brand>();
-            productTypeRepo = new GenericRepository<ProductType>();
+            subCategoryRepo = new GenericRepository<SubCategory>();
             itemRepo = new GenericRepository<Item>();
 
             category = new Category();
             brand = new Brand();
-            productType = new ProductType();
+            subCategory = new SubCategory();
             item = new Item();
 
             BindAllComoBoxes();
@@ -64,7 +64,7 @@ namespace SmartGrocery.UI.Win
             {
                 Utilities.Validation.BindComboBox(cmbCategory, categoryRepo.GetAll(), "Name", "Id", true);
                 Utilities.Validation.BindComboBox(cmbBrand, brandRepo.GetAll(), "Name", "Id", true);
-                Utilities.Validation.BindComboBox(cmbProductType, productTypeRepo.GetAll(), "Name", "Id", true);
+                Utilities.Validation.BindComboBox(cmbProductType, subCategoryRepo.GetAll(), "Name", "Id", true);
             }
             catch (Exception ex)
             {

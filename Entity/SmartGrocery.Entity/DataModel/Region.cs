@@ -18,6 +18,7 @@ namespace SmartGrocery.Entity.DataModel
         public string Name { get; set; }
         public string Pincode { get; set; }
         public Nullable<int> CityId { get; set; }
+        public Nullable<bool> IsSelected { get; set; }
     
         public virtual City City { get; set; }
     }

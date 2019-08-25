@@ -37,38 +37,64 @@
             this.dgCountry = new System.Windows.Forms.DataGridView();
             this.tabState = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbCountry = new System.Windows.Forms.ComboBox();
+            this.cmbCountryOnState = new System.Windows.Forms.ComboBox();
             this.txtState = new System.Windows.Forms.TextBox();
             this.btnSaveState = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgState = new System.Windows.Forms.DataGridView();
+            this.tabDistrict = new System.Windows.Forms.TabPage();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.cmbStateOnDistrict = new System.Windows.Forms.ComboBox();
+            this.txtDistrictName = new System.Windows.Forms.TextBox();
+            this.btnDistrict = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dgDistrict = new System.Windows.Forms.DataGridView();
             this.tabCity = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cmbDistrict = new System.Windows.Forms.ComboBox();
+            this.cmbDistrictOnCity = new System.Windows.Forms.ComboBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.btnSaveCity = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dgCity = new System.Windows.Forms.DataGridView();
+            this.tabArea = new System.Windows.Forms.TabPage();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.txtAreaPinCode = new System.Windows.Forms.TextBox();
+            this.lblPinCode = new System.Windows.Forms.Label();
+            this.cmbCityOnArea = new System.Windows.Forms.ComboBox();
+            this.txtAreaName = new System.Windows.Forms.TextBox();
+            this.btnSaveArea = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblAreaName = new System.Windows.Forms.Label();
+            this.dgArea = new System.Windows.Forms.DataGridView();
+            this.tabSociety = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.cmbAreaOnSociety = new System.Windows.Forms.ComboBox();
+            this.txtSocietyName = new System.Windows.Forms.TextBox();
+            this.btnSaveSociety = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dgSociety = new System.Windows.Forms.DataGridView();
             this.tabCategory = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtCategory = new System.Windows.Forms.TextBox();
             this.btnSaveCategory = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dgCategory = new System.Windows.Forms.DataGridView();
+            this.tabSubCategory = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtSubCategory = new System.Windows.Forms.TextBox();
+            this.btnSaveSubCategory = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dgSubCategory = new System.Windows.Forms.DataGridView();
             this.tabBrand = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.txtBrand = new System.Windows.Forms.TextBox();
             this.btnSaveBrand = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.dgBrand = new System.Windows.Forms.DataGridView();
-            this.tabType = new System.Windows.Forms.TabPage();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.txtProductType = new System.Windows.Forms.TextBox();
-            this.btnSaveProductType = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.dgProductType = new System.Windows.Forms.DataGridView();
             this.tabMeasurementUnit = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.txtMeasurementUnitName = new System.Windows.Forms.TextBox();
@@ -87,32 +113,28 @@
             this.btnSaveDesignation = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.dgDesignation = new System.Windows.Forms.DataGridView();
-            this.tabDistrict = new System.Windows.Forms.TabPage();
-            this.tabArea = new System.Windows.Forms.TabPage();
-            this.tabSociety = new System.Windows.Forms.TabPage();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.cmbCity = new System.Windows.Forms.ComboBox();
-            this.txtAreaName = new System.Windows.Forms.TextBox();
-            this.btnSaveArea = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblAreaName = new System.Windows.Forms.Label();
-            this.dgArea = new System.Windows.Forms.DataGridView();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.cmbArea = new System.Windows.Forms.ComboBox();
-            this.txtSocietyName = new System.Windows.Forms.TextBox();
-            this.btnSaveSociety = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dgSociety = new System.Windows.Forms.DataGridView();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.cmbState = new System.Windows.Forms.ComboBox();
-            this.txtDistrictName = new System.Windows.Forms.TextBox();
-            this.btnDistrict = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.dgDistrict = new System.Windows.Forms.DataGridView();
-            this.lblPinCode = new System.Windows.Forms.Label();
-            this.txtAreaPinCode = new System.Windows.Forms.TextBox();
+            this.cmbCountryOnDistrict = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cmbCountryOnCity = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cmbStateOnCity = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cmbCountryOnArea = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cmbStateOnArea = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cmbDistrictOnArea = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cmbCountryOnSociety = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cmbStateOnSociety = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.cmbDistrictOnSociety = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cmbCityOnSociety = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.tabMasters.SuspendLayout();
             this.tabCountry.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -120,18 +142,27 @@
             this.tabState.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgState)).BeginInit();
+            this.tabDistrict.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDistrict)).BeginInit();
             this.tabCity.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCity)).BeginInit();
+            this.tabArea.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgArea)).BeginInit();
+            this.tabSociety.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSociety)).BeginInit();
             this.tabCategory.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCategory)).BeginInit();
+            this.tabSubCategory.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSubCategory)).BeginInit();
             this.tabBrand.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgBrand)).BeginInit();
-            this.tabType.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgProductType)).BeginInit();
             this.tabMeasurementUnit.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMeasurementUnit)).BeginInit();
@@ -141,15 +172,6 @@
             this.tabDesignation.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDesignation)).BeginInit();
-            this.tabDistrict.SuspendLayout();
-            this.tabArea.SuspendLayout();
-            this.tabSociety.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgArea)).BeginInit();
-            this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgSociety)).BeginInit();
-            this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgDistrict)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMasters
@@ -161,8 +183,8 @@
             this.tabMasters.Controls.Add(this.tabArea);
             this.tabMasters.Controls.Add(this.tabSociety);
             this.tabMasters.Controls.Add(this.tabCategory);
+            this.tabMasters.Controls.Add(this.tabSubCategory);
             this.tabMasters.Controls.Add(this.tabBrand);
-            this.tabMasters.Controls.Add(this.tabType);
             this.tabMasters.Controls.Add(this.tabMeasurementUnit);
             this.tabMasters.Controls.Add(this.tabDepartment);
             this.tabMasters.Controls.Add(this.tabDesignation);
@@ -245,7 +267,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cmbCountry);
+            this.groupBox2.Controls.Add(this.cmbCountryOnState);
             this.groupBox2.Controls.Add(this.txtState);
             this.groupBox2.Controls.Add(this.btnSaveState);
             this.groupBox2.Controls.Add(this.label4);
@@ -257,20 +279,20 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add/Edit State";
             // 
-            // cmbCountry
+            // cmbCountryOnState
             // 
-            this.cmbCountry.FormattingEnabled = true;
-            this.cmbCountry.Location = new System.Drawing.Point(9, 44);
-            this.cmbCountry.Name = "cmbCountry";
-            this.cmbCountry.Size = new System.Drawing.Size(208, 21);
-            this.cmbCountry.TabIndex = 4;
+            this.cmbCountryOnState.FormattingEnabled = true;
+            this.cmbCountryOnState.Location = new System.Drawing.Point(88, 24);
+            this.cmbCountryOnState.Name = "cmbCountryOnState";
+            this.cmbCountryOnState.Size = new System.Drawing.Size(258, 21);
+            this.cmbCountryOnState.TabIndex = 4;
             // 
             // txtState
             // 
-            this.txtState.Location = new System.Drawing.Point(9, 94);
+            this.txtState.Location = new System.Drawing.Point(9, 80);
             this.txtState.Multiline = true;
             this.txtState.Name = "txtState";
-            this.txtState.Size = new System.Drawing.Size(337, 259);
+            this.txtState.Size = new System.Drawing.Size(337, 273);
             this.txtState.TabIndex = 1;
             // 
             // btnSaveState
@@ -295,7 +317,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 78);
+            this.label2.Location = new System.Drawing.Point(6, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 13);
             this.label2.TabIndex = 2;
@@ -308,6 +330,86 @@
             this.dgState.Name = "dgState";
             this.dgState.Size = new System.Drawing.Size(398, 388);
             this.dgState.TabIndex = 5;
+            // 
+            // tabDistrict
+            // 
+            this.tabDistrict.Controls.Add(this.groupBox12);
+            this.tabDistrict.Controls.Add(this.dgDistrict);
+            this.tabDistrict.Location = new System.Drawing.Point(4, 22);
+            this.tabDistrict.Name = "tabDistrict";
+            this.tabDistrict.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDistrict.Size = new System.Drawing.Size(768, 400);
+            this.tabDistrict.TabIndex = 9;
+            this.tabDistrict.Text = "District";
+            this.tabDistrict.UseVisualStyleBackColor = true;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.cmbCountryOnDistrict);
+            this.groupBox12.Controls.Add(this.label13);
+            this.groupBox12.Controls.Add(this.cmbStateOnDistrict);
+            this.groupBox12.Controls.Add(this.txtDistrictName);
+            this.groupBox12.Controls.Add(this.btnDistrict);
+            this.groupBox12.Controls.Add(this.label16);
+            this.groupBox12.Controls.Add(this.label17);
+            this.groupBox12.Location = new System.Drawing.Point(6, 6);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(352, 388);
+            this.groupBox12.TabIndex = 9;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Add/Edit District";
+            // 
+            // cmbStateOnDistrict
+            // 
+            this.cmbStateOnDistrict.FormattingEnabled = true;
+            this.cmbStateOnDistrict.Location = new System.Drawing.Point(88, 59);
+            this.cmbStateOnDistrict.Name = "cmbStateOnDistrict";
+            this.cmbStateOnDistrict.Size = new System.Drawing.Size(258, 21);
+            this.cmbStateOnDistrict.TabIndex = 4;
+            // 
+            // txtDistrictName
+            // 
+            this.txtDistrictName.Location = new System.Drawing.Point(9, 112);
+            this.txtDistrictName.Multiline = true;
+            this.txtDistrictName.Name = "txtDistrictName";
+            this.txtDistrictName.Size = new System.Drawing.Size(337, 241);
+            this.txtDistrictName.TabIndex = 1;
+            // 
+            // btnDistrict
+            // 
+            this.btnDistrict.Location = new System.Drawing.Point(9, 359);
+            this.btnDistrict.Name = "btnDistrict";
+            this.btnDistrict.Size = new System.Drawing.Size(75, 23);
+            this.btnDistrict.TabIndex = 3;
+            this.btnDistrict.Text = "Save";
+            this.btnDistrict.UseVisualStyleBackColor = true;
+            this.btnDistrict.Click += new System.EventHandler(this.btnDistrict_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 62);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 13);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "Select State";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 96);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(98, 13);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Enter District Name";
+            // 
+            // dgDistrict
+            // 
+            this.dgDistrict.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgDistrict.Location = new System.Drawing.Point(364, 6);
+            this.dgDistrict.Name = "dgDistrict";
+            this.dgDistrict.Size = new System.Drawing.Size(398, 388);
+            this.dgDistrict.TabIndex = 8;
             // 
             // tabCity
             // 
@@ -323,7 +425,11 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.cmbDistrict);
+            this.groupBox3.Controls.Add(this.cmbCountryOnCity);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.cmbStateOnCity);
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.cmbDistrictOnCity);
             this.groupBox3.Controls.Add(this.txtCity);
             this.groupBox3.Controls.Add(this.btnSaveCity);
             this.groupBox3.Controls.Add(this.label3);
@@ -335,20 +441,20 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Add/Edit City";
             // 
-            // cmbDistrict
+            // cmbDistrictOnCity
             // 
-            this.cmbDistrict.FormattingEnabled = true;
-            this.cmbDistrict.Location = new System.Drawing.Point(9, 44);
-            this.cmbDistrict.Name = "cmbDistrict";
-            this.cmbDistrict.Size = new System.Drawing.Size(208, 21);
-            this.cmbDistrict.TabIndex = 4;
+            this.cmbDistrictOnCity.FormattingEnabled = true;
+            this.cmbDistrictOnCity.Location = new System.Drawing.Point(102, 76);
+            this.cmbDistrictOnCity.Name = "cmbDistrictOnCity";
+            this.cmbDistrictOnCity.Size = new System.Drawing.Size(244, 21);
+            this.cmbDistrictOnCity.TabIndex = 4;
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(9, 94);
+            this.txtCity.Location = new System.Drawing.Point(9, 116);
             this.txtCity.Multiline = true;
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(337, 259);
+            this.txtCity.Size = new System.Drawing.Size(337, 237);
             this.txtCity.TabIndex = 1;
             // 
             // btnSaveCity
@@ -364,7 +470,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 27);
+            this.label3.Location = new System.Drawing.Point(8, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 2;
@@ -373,7 +479,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 78);
+            this.label5.Location = new System.Drawing.Point(8, 100);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 13);
             this.label5.TabIndex = 2;
@@ -386,6 +492,192 @@
             this.dgCity.Name = "dgCity";
             this.dgCity.Size = new System.Drawing.Size(398, 388);
             this.dgCity.TabIndex = 5;
+            // 
+            // tabArea
+            // 
+            this.tabArea.Controls.Add(this.groupBox10);
+            this.tabArea.Controls.Add(this.dgArea);
+            this.tabArea.Location = new System.Drawing.Point(4, 22);
+            this.tabArea.Name = "tabArea";
+            this.tabArea.Size = new System.Drawing.Size(768, 400);
+            this.tabArea.TabIndex = 10;
+            this.tabArea.Text = "Area";
+            this.tabArea.UseVisualStyleBackColor = true;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.cmbCountryOnArea);
+            this.groupBox10.Controls.Add(this.label20);
+            this.groupBox10.Controls.Add(this.cmbStateOnArea);
+            this.groupBox10.Controls.Add(this.label21);
+            this.groupBox10.Controls.Add(this.cmbDistrictOnArea);
+            this.groupBox10.Controls.Add(this.label22);
+            this.groupBox10.Controls.Add(this.txtAreaPinCode);
+            this.groupBox10.Controls.Add(this.lblPinCode);
+            this.groupBox10.Controls.Add(this.cmbCityOnArea);
+            this.groupBox10.Controls.Add(this.txtAreaName);
+            this.groupBox10.Controls.Add(this.btnSaveArea);
+            this.groupBox10.Controls.Add(this.label12);
+            this.groupBox10.Controls.Add(this.lblAreaName);
+            this.groupBox10.Location = new System.Drawing.Point(6, 6);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(352, 388);
+            this.groupBox10.TabIndex = 9;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Add/Edit Area";
+            // 
+            // txtAreaPinCode
+            // 
+            this.txtAreaPinCode.Location = new System.Drawing.Point(138, 128);
+            this.txtAreaPinCode.Name = "txtAreaPinCode";
+            this.txtAreaPinCode.Size = new System.Drawing.Size(208, 20);
+            this.txtAreaPinCode.TabIndex = 6;
+            // 
+            // lblPinCode
+            // 
+            this.lblPinCode.AutoSize = true;
+            this.lblPinCode.Location = new System.Drawing.Point(6, 128);
+            this.lblPinCode.Name = "lblPinCode";
+            this.lblPinCode.Size = new System.Drawing.Size(100, 13);
+            this.lblPinCode.TabIndex = 5;
+            this.lblPinCode.Text = "Enter Area PinCode";
+            // 
+            // cmbCityOnArea
+            // 
+            this.cmbCityOnArea.FormattingEnabled = true;
+            this.cmbCityOnArea.Location = new System.Drawing.Point(138, 99);
+            this.cmbCityOnArea.Name = "cmbCityOnArea";
+            this.cmbCityOnArea.Size = new System.Drawing.Size(208, 21);
+            this.cmbCityOnArea.TabIndex = 4;
+            // 
+            // txtAreaName
+            // 
+            this.txtAreaName.Location = new System.Drawing.Point(9, 177);
+            this.txtAreaName.Multiline = true;
+            this.txtAreaName.Name = "txtAreaName";
+            this.txtAreaName.Size = new System.Drawing.Size(337, 176);
+            this.txtAreaName.TabIndex = 1;
+            // 
+            // btnSaveArea
+            // 
+            this.btnSaveArea.Location = new System.Drawing.Point(9, 359);
+            this.btnSaveArea.Name = "btnSaveArea";
+            this.btnSaveArea.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveArea.TabIndex = 3;
+            this.btnSaveArea.Text = "Save";
+            this.btnSaveArea.UseVisualStyleBackColor = true;
+            this.btnSaveArea.Click += new System.EventHandler(this.btnSaveArea_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 99);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(57, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Select City";
+            // 
+            // lblAreaName
+            // 
+            this.lblAreaName.AutoSize = true;
+            this.lblAreaName.Location = new System.Drawing.Point(6, 161);
+            this.lblAreaName.Name = "lblAreaName";
+            this.lblAreaName.Size = new System.Drawing.Size(88, 13);
+            this.lblAreaName.TabIndex = 2;
+            this.lblAreaName.Text = "Enter Area Name";
+            // 
+            // dgArea
+            // 
+            this.dgArea.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgArea.Location = new System.Drawing.Point(364, 6);
+            this.dgArea.Name = "dgArea";
+            this.dgArea.Size = new System.Drawing.Size(398, 388);
+            this.dgArea.TabIndex = 8;
+            // 
+            // tabSociety
+            // 
+            this.tabSociety.Controls.Add(this.groupBox11);
+            this.tabSociety.Controls.Add(this.dgSociety);
+            this.tabSociety.Location = new System.Drawing.Point(4, 22);
+            this.tabSociety.Name = "tabSociety";
+            this.tabSociety.Size = new System.Drawing.Size(768, 400);
+            this.tabSociety.TabIndex = 11;
+            this.tabSociety.Text = "Society";
+            this.tabSociety.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.cmbCountryOnSociety);
+            this.groupBox11.Controls.Add(this.label23);
+            this.groupBox11.Controls.Add(this.cmbStateOnSociety);
+            this.groupBox11.Controls.Add(this.label24);
+            this.groupBox11.Controls.Add(this.cmbDistrictOnSociety);
+            this.groupBox11.Controls.Add(this.label25);
+            this.groupBox11.Controls.Add(this.cmbCityOnSociety);
+            this.groupBox11.Controls.Add(this.label26);
+            this.groupBox11.Controls.Add(this.cmbAreaOnSociety);
+            this.groupBox11.Controls.Add(this.txtSocietyName);
+            this.groupBox11.Controls.Add(this.btnSaveSociety);
+            this.groupBox11.Controls.Add(this.label14);
+            this.groupBox11.Controls.Add(this.label15);
+            this.groupBox11.Location = new System.Drawing.Point(6, 6);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(352, 388);
+            this.groupBox11.TabIndex = 9;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Add/Edit Society";
+            // 
+            // cmbAreaOnSociety
+            // 
+            this.cmbAreaOnSociety.FormattingEnabled = true;
+            this.cmbAreaOnSociety.Location = new System.Drawing.Point(138, 137);
+            this.cmbAreaOnSociety.Name = "cmbAreaOnSociety";
+            this.cmbAreaOnSociety.Size = new System.Drawing.Size(208, 21);
+            this.cmbAreaOnSociety.TabIndex = 4;
+            // 
+            // txtSocietyName
+            // 
+            this.txtSocietyName.Location = new System.Drawing.Point(9, 191);
+            this.txtSocietyName.Multiline = true;
+            this.txtSocietyName.Name = "txtSocietyName";
+            this.txtSocietyName.Size = new System.Drawing.Size(337, 162);
+            this.txtSocietyName.TabIndex = 1;
+            // 
+            // btnSaveSociety
+            // 
+            this.btnSaveSociety.Location = new System.Drawing.Point(9, 359);
+            this.btnSaveSociety.Name = "btnSaveSociety";
+            this.btnSaveSociety.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveSociety.TabIndex = 3;
+            this.btnSaveSociety.Text = "Save";
+            this.btnSaveSociety.UseVisualStyleBackColor = true;
+            this.btnSaveSociety.Click += new System.EventHandler(this.btnSaveSociety_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 137);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(62, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Select Area";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 175);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(101, 13);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Enter Society Name";
+            // 
+            // dgSociety
+            // 
+            this.dgSociety.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSociety.Location = new System.Drawing.Point(364, 6);
+            this.dgSociety.Name = "dgSociety";
+            this.dgSociety.Size = new System.Drawing.Size(398, 388);
+            this.dgSociety.TabIndex = 8;
             // 
             // tabCategory
             // 
@@ -446,6 +738,67 @@
             this.dgCategory.Size = new System.Drawing.Size(398, 388);
             this.dgCategory.TabIndex = 5;
             // 
+            // tabSubCategory
+            // 
+            this.tabSubCategory.Controls.Add(this.groupBox6);
+            this.tabSubCategory.Controls.Add(this.dgSubCategory);
+            this.tabSubCategory.Location = new System.Drawing.Point(4, 22);
+            this.tabSubCategory.Name = "tabSubCategory";
+            this.tabSubCategory.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSubCategory.Size = new System.Drawing.Size(768, 400);
+            this.tabSubCategory.TabIndex = 5;
+            this.tabSubCategory.Text = "Sub Category";
+            this.tabSubCategory.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.cmbCategory);
+            this.groupBox6.Controls.Add(this.label27);
+            this.groupBox6.Controls.Add(this.txtSubCategory);
+            this.groupBox6.Controls.Add(this.btnSaveSubCategory);
+            this.groupBox6.Controls.Add(this.label8);
+            this.groupBox6.Location = new System.Drawing.Point(6, 6);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(352, 388);
+            this.groupBox6.TabIndex = 6;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Add/Edit SubCategory";
+            // 
+            // txtSubCategory
+            // 
+            this.txtSubCategory.Location = new System.Drawing.Point(9, 85);
+            this.txtSubCategory.Multiline = true;
+            this.txtSubCategory.Name = "txtSubCategory";
+            this.txtSubCategory.Size = new System.Drawing.Size(337, 268);
+            this.txtSubCategory.TabIndex = 1;
+            // 
+            // btnSaveSubCategory
+            // 
+            this.btnSaveSubCategory.Location = new System.Drawing.Point(9, 359);
+            this.btnSaveSubCategory.Name = "btnSaveSubCategory";
+            this.btnSaveSubCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveSubCategory.TabIndex = 3;
+            this.btnSaveSubCategory.Text = "Save";
+            this.btnSaveSubCategory.UseVisualStyleBackColor = true;
+            this.btnSaveSubCategory.Click += new System.EventHandler(this.btnSaveType_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 69);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(99, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Enter Sub Category";
+            // 
+            // dgSubCategory
+            // 
+            this.dgSubCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSubCategory.Location = new System.Drawing.Point(364, 6);
+            this.dgSubCategory.Name = "dgSubCategory";
+            this.dgSubCategory.Size = new System.Drawing.Size(398, 388);
+            this.dgSubCategory.TabIndex = 5;
+            // 
             // tabBrand
             // 
             this.tabBrand.Controls.Add(this.groupBox5);
@@ -504,65 +857,6 @@
             this.dgBrand.Name = "dgBrand";
             this.dgBrand.Size = new System.Drawing.Size(398, 388);
             this.dgBrand.TabIndex = 5;
-            // 
-            // tabType
-            // 
-            this.tabType.Controls.Add(this.groupBox6);
-            this.tabType.Controls.Add(this.dgProductType);
-            this.tabType.Location = new System.Drawing.Point(4, 22);
-            this.tabType.Name = "tabType";
-            this.tabType.Padding = new System.Windows.Forms.Padding(3);
-            this.tabType.Size = new System.Drawing.Size(768, 400);
-            this.tabType.TabIndex = 5;
-            this.tabType.Text = "Product Type";
-            this.tabType.UseVisualStyleBackColor = true;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.txtProductType);
-            this.groupBox6.Controls.Add(this.btnSaveProductType);
-            this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Location = new System.Drawing.Point(6, 6);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(352, 388);
-            this.groupBox6.TabIndex = 6;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Add/Edit Procuct Type";
-            // 
-            // txtProductType
-            // 
-            this.txtProductType.Location = new System.Drawing.Point(9, 43);
-            this.txtProductType.Multiline = true;
-            this.txtProductType.Name = "txtProductType";
-            this.txtProductType.Size = new System.Drawing.Size(337, 310);
-            this.txtProductType.TabIndex = 1;
-            // 
-            // btnSaveProductType
-            // 
-            this.btnSaveProductType.Location = new System.Drawing.Point(9, 359);
-            this.btnSaveProductType.Name = "btnSaveProductType";
-            this.btnSaveProductType.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveProductType.TabIndex = 3;
-            this.btnSaveProductType.Text = "Save";
-            this.btnSaveProductType.UseVisualStyleBackColor = true;
-            this.btnSaveProductType.Click += new System.EventHandler(this.btnSaveType_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 27);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 13);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "Enter Product Type";
-            // 
-            // dgProductType
-            // 
-            this.dgProductType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgProductType.Location = new System.Drawing.Point(364, 6);
-            this.dgProductType.Name = "dgProductType";
-            this.dgProductType.Size = new System.Drawing.Size(398, 388);
-            this.dgProductType.TabIndex = 5;
             // 
             // tabMeasurementUnit
             // 
@@ -741,255 +1035,192 @@
             this.dgDesignation.Size = new System.Drawing.Size(398, 388);
             this.dgDesignation.TabIndex = 5;
             // 
-            // tabDistrict
+            // cmbCountryOnDistrict
             // 
-            this.tabDistrict.Controls.Add(this.groupBox12);
-            this.tabDistrict.Controls.Add(this.dgDistrict);
-            this.tabDistrict.Location = new System.Drawing.Point(4, 22);
-            this.tabDistrict.Name = "tabDistrict";
-            this.tabDistrict.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDistrict.Size = new System.Drawing.Size(768, 400);
-            this.tabDistrict.TabIndex = 9;
-            this.tabDistrict.Text = "District";
-            this.tabDistrict.UseVisualStyleBackColor = true;
+            this.cmbCountryOnDistrict.FormattingEnabled = true;
+            this.cmbCountryOnDistrict.Location = new System.Drawing.Point(88, 27);
+            this.cmbCountryOnDistrict.Name = "cmbCountryOnDistrict";
+            this.cmbCountryOnDistrict.Size = new System.Drawing.Size(258, 21);
+            this.cmbCountryOnDistrict.TabIndex = 6;
             // 
-            // tabArea
+            // label13
             // 
-            this.tabArea.Controls.Add(this.groupBox10);
-            this.tabArea.Controls.Add(this.dgArea);
-            this.tabArea.Location = new System.Drawing.Point(4, 22);
-            this.tabArea.Name = "tabArea";
-            this.tabArea.Size = new System.Drawing.Size(768, 400);
-            this.tabArea.TabIndex = 10;
-            this.tabArea.Text = "Area";
-            this.tabArea.UseVisualStyleBackColor = true;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "Select Country";
             // 
-            // tabSociety
+            // cmbCountryOnCity
             // 
-            this.tabSociety.Controls.Add(this.groupBox11);
-            this.tabSociety.Controls.Add(this.dgSociety);
-            this.tabSociety.Location = new System.Drawing.Point(4, 22);
-            this.tabSociety.Name = "tabSociety";
-            this.tabSociety.Size = new System.Drawing.Size(768, 400);
-            this.tabSociety.TabIndex = 11;
-            this.tabSociety.Text = "Society";
-            this.tabSociety.UseVisualStyleBackColor = true;
+            this.cmbCountryOnCity.FormattingEnabled = true;
+            this.cmbCountryOnCity.Location = new System.Drawing.Point(102, 19);
+            this.cmbCountryOnCity.Name = "cmbCountryOnCity";
+            this.cmbCountryOnCity.Size = new System.Drawing.Size(244, 21);
+            this.cmbCountryOnCity.TabIndex = 10;
             // 
-            // groupBox10
+            // label18
             // 
-            this.groupBox10.Controls.Add(this.txtAreaPinCode);
-            this.groupBox10.Controls.Add(this.lblPinCode);
-            this.groupBox10.Controls.Add(this.cmbCity);
-            this.groupBox10.Controls.Add(this.txtAreaName);
-            this.groupBox10.Controls.Add(this.btnSaveArea);
-            this.groupBox10.Controls.Add(this.label12);
-            this.groupBox10.Controls.Add(this.lblAreaName);
-            this.groupBox10.Location = new System.Drawing.Point(6, 6);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(352, 388);
-            this.groupBox10.TabIndex = 9;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Add/Edit Area";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(8, 21);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(76, 13);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "Select Country";
             // 
-            // cmbCity
+            // cmbStateOnCity
             // 
-            this.cmbCity.FormattingEnabled = true;
-            this.cmbCity.Location = new System.Drawing.Point(9, 44);
-            this.cmbCity.Name = "cmbCity";
-            this.cmbCity.Size = new System.Drawing.Size(208, 21);
-            this.cmbCity.TabIndex = 4;
+            this.cmbStateOnCity.FormattingEnabled = true;
+            this.cmbStateOnCity.Location = new System.Drawing.Point(102, 48);
+            this.cmbStateOnCity.Name = "cmbStateOnCity";
+            this.cmbStateOnCity.Size = new System.Drawing.Size(244, 21);
+            this.cmbStateOnCity.TabIndex = 8;
             // 
-            // txtAreaName
+            // label19
             // 
-            this.txtAreaName.Location = new System.Drawing.Point(9, 147);
-            this.txtAreaName.Multiline = true;
-            this.txtAreaName.Name = "txtAreaName";
-            this.txtAreaName.Size = new System.Drawing.Size(337, 206);
-            this.txtAreaName.TabIndex = 1;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(8, 48);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(65, 13);
+            this.label19.TabIndex = 7;
+            this.label19.Text = "Select State";
             // 
-            // btnSaveArea
+            // cmbCountryOnArea
             // 
-            this.btnSaveArea.Location = new System.Drawing.Point(9, 359);
-            this.btnSaveArea.Name = "btnSaveArea";
-            this.btnSaveArea.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveArea.TabIndex = 3;
-            this.btnSaveArea.Text = "Save";
-            this.btnSaveArea.UseVisualStyleBackColor = true;
-            this.btnSaveArea.Click += new System.EventHandler(this.btnSaveArea_Click);
+            this.cmbCountryOnArea.FormattingEnabled = true;
+            this.cmbCountryOnArea.Location = new System.Drawing.Point(138, 16);
+            this.cmbCountryOnArea.Name = "cmbCountryOnArea";
+            this.cmbCountryOnArea.Size = new System.Drawing.Size(208, 21);
+            this.cmbCountryOnArea.TabIndex = 16;
             // 
-            // label12
+            // label20
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 27);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(57, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Select City";
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 16);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(76, 13);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "Select Country";
             // 
-            // lblAreaName
+            // cmbStateOnArea
             // 
-            this.lblAreaName.AutoSize = true;
-            this.lblAreaName.Location = new System.Drawing.Point(6, 131);
-            this.lblAreaName.Name = "lblAreaName";
-            this.lblAreaName.Size = new System.Drawing.Size(88, 13);
-            this.lblAreaName.TabIndex = 2;
-            this.lblAreaName.Text = "Enter Area Name";
+            this.cmbStateOnArea.FormattingEnabled = true;
+            this.cmbStateOnArea.Location = new System.Drawing.Point(138, 45);
+            this.cmbStateOnArea.Name = "cmbStateOnArea";
+            this.cmbStateOnArea.Size = new System.Drawing.Size(208, 21);
+            this.cmbStateOnArea.TabIndex = 14;
             // 
-            // dgArea
+            // label21
             // 
-            this.dgArea.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgArea.Location = new System.Drawing.Point(364, 6);
-            this.dgArea.Name = "dgArea";
-            this.dgArea.Size = new System.Drawing.Size(398, 388);
-            this.dgArea.TabIndex = 8;
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 45);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(65, 13);
+            this.label21.TabIndex = 13;
+            this.label21.Text = "Select State";
             // 
-            // groupBox11
+            // cmbDistrictOnArea
             // 
-            this.groupBox11.Controls.Add(this.cmbArea);
-            this.groupBox11.Controls.Add(this.txtSocietyName);
-            this.groupBox11.Controls.Add(this.btnSaveSociety);
-            this.groupBox11.Controls.Add(this.label14);
-            this.groupBox11.Controls.Add(this.label15);
-            this.groupBox11.Location = new System.Drawing.Point(6, 6);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(352, 388);
-            this.groupBox11.TabIndex = 9;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Add/Edit Society";
+            this.cmbDistrictOnArea.FormattingEnabled = true;
+            this.cmbDistrictOnArea.Location = new System.Drawing.Point(138, 72);
+            this.cmbDistrictOnArea.Name = "cmbDistrictOnArea";
+            this.cmbDistrictOnArea.Size = new System.Drawing.Size(208, 21);
+            this.cmbDistrictOnArea.TabIndex = 12;
             // 
-            // cmbArea
+            // label22
             // 
-            this.cmbArea.FormattingEnabled = true;
-            this.cmbArea.Location = new System.Drawing.Point(9, 44);
-            this.cmbArea.Name = "cmbArea";
-            this.cmbArea.Size = new System.Drawing.Size(208, 21);
-            this.cmbArea.TabIndex = 4;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 72);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(72, 13);
+            this.label22.TabIndex = 11;
+            this.label22.Text = "Select District";
             // 
-            // txtSocietyName
+            // cmbCountryOnSociety
             // 
-            this.txtSocietyName.Location = new System.Drawing.Point(9, 94);
-            this.txtSocietyName.Multiline = true;
-            this.txtSocietyName.Name = "txtSocietyName";
-            this.txtSocietyName.Size = new System.Drawing.Size(337, 259);
-            this.txtSocietyName.TabIndex = 1;
+            this.cmbCountryOnSociety.FormattingEnabled = true;
+            this.cmbCountryOnSociety.Location = new System.Drawing.Point(138, 27);
+            this.cmbCountryOnSociety.Name = "cmbCountryOnSociety";
+            this.cmbCountryOnSociety.Size = new System.Drawing.Size(208, 21);
+            this.cmbCountryOnSociety.TabIndex = 24;
             // 
-            // btnSaveSociety
+            // label23
             // 
-            this.btnSaveSociety.Location = new System.Drawing.Point(9, 359);
-            this.btnSaveSociety.Name = "btnSaveSociety";
-            this.btnSaveSociety.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveSociety.TabIndex = 3;
-            this.btnSaveSociety.Text = "Save";
-            this.btnSaveSociety.UseVisualStyleBackColor = true;
-            this.btnSaveSociety.Click += new System.EventHandler(this.btnSaveSociety_Click);
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 27);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(76, 13);
+            this.label23.TabIndex = 23;
+            this.label23.Text = "Select Country";
             // 
-            // label14
+            // cmbStateOnSociety
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 27);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(62, 13);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Select Area";
+            this.cmbStateOnSociety.FormattingEnabled = true;
+            this.cmbStateOnSociety.Location = new System.Drawing.Point(138, 56);
+            this.cmbStateOnSociety.Name = "cmbStateOnSociety";
+            this.cmbStateOnSociety.Size = new System.Drawing.Size(208, 21);
+            this.cmbStateOnSociety.TabIndex = 22;
             // 
-            // label15
+            // label24
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 78);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(101, 13);
-            this.label15.TabIndex = 2;
-            this.label15.Text = "Enter Society Name";
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 56);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(65, 13);
+            this.label24.TabIndex = 21;
+            this.label24.Text = "Select State";
             // 
-            // dgSociety
+            // cmbDistrictOnSociety
             // 
-            this.dgSociety.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgSociety.Location = new System.Drawing.Point(364, 6);
-            this.dgSociety.Name = "dgSociety";
-            this.dgSociety.Size = new System.Drawing.Size(398, 388);
-            this.dgSociety.TabIndex = 8;
+            this.cmbDistrictOnSociety.FormattingEnabled = true;
+            this.cmbDistrictOnSociety.Location = new System.Drawing.Point(138, 83);
+            this.cmbDistrictOnSociety.Name = "cmbDistrictOnSociety";
+            this.cmbDistrictOnSociety.Size = new System.Drawing.Size(208, 21);
+            this.cmbDistrictOnSociety.TabIndex = 20;
             // 
-            // groupBox12
+            // label25
             // 
-            this.groupBox12.Controls.Add(this.cmbState);
-            this.groupBox12.Controls.Add(this.txtDistrictName);
-            this.groupBox12.Controls.Add(this.btnDistrict);
-            this.groupBox12.Controls.Add(this.label16);
-            this.groupBox12.Controls.Add(this.label17);
-            this.groupBox12.Location = new System.Drawing.Point(6, 6);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(352, 388);
-            this.groupBox12.TabIndex = 9;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Add/Edit District";
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 83);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(72, 13);
+            this.label25.TabIndex = 19;
+            this.label25.Text = "Select District";
             // 
-            // cmbState
+            // cmbCityOnSociety
             // 
-            this.cmbState.FormattingEnabled = true;
-            this.cmbState.Location = new System.Drawing.Point(9, 44);
-            this.cmbState.Name = "cmbState";
-            this.cmbState.Size = new System.Drawing.Size(208, 21);
-            this.cmbState.TabIndex = 4;
+            this.cmbCityOnSociety.FormattingEnabled = true;
+            this.cmbCityOnSociety.Location = new System.Drawing.Point(138, 110);
+            this.cmbCityOnSociety.Name = "cmbCityOnSociety";
+            this.cmbCityOnSociety.Size = new System.Drawing.Size(208, 21);
+            this.cmbCityOnSociety.TabIndex = 18;
             // 
-            // txtDistrictName
+            // label26
             // 
-            this.txtDistrictName.Location = new System.Drawing.Point(9, 94);
-            this.txtDistrictName.Multiline = true;
-            this.txtDistrictName.Name = "txtDistrictName";
-            this.txtDistrictName.Size = new System.Drawing.Size(337, 259);
-            this.txtDistrictName.TabIndex = 1;
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 110);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(57, 13);
+            this.label26.TabIndex = 17;
+            this.label26.Text = "Select City";
             // 
-            // btnDistrict
+            // cmbCategory
             // 
-            this.btnDistrict.Location = new System.Drawing.Point(9, 359);
-            this.btnDistrict.Name = "btnDistrict";
-            this.btnDistrict.Size = new System.Drawing.Size(75, 23);
-            this.btnDistrict.TabIndex = 3;
-            this.btnDistrict.Text = "Save";
-            this.btnDistrict.UseVisualStyleBackColor = true;
-            this.btnDistrict.Click += new System.EventHandler(this.btnDistrict_Click);
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(138, 29);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(208, 21);
+            this.cmbCategory.TabIndex = 26;
             // 
-            // label16
+            // label27
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 27);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(65, 13);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Select State";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 78);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(98, 13);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Enter District Name";
-            // 
-            // dgDistrict
-            // 
-            this.dgDistrict.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgDistrict.Location = new System.Drawing.Point(364, 6);
-            this.dgDistrict.Name = "dgDistrict";
-            this.dgDistrict.Size = new System.Drawing.Size(398, 388);
-            this.dgDistrict.TabIndex = 8;
-            // 
-            // lblPinCode
-            // 
-            this.lblPinCode.AutoSize = true;
-            this.lblPinCode.Location = new System.Drawing.Point(6, 79);
-            this.lblPinCode.Name = "lblPinCode";
-            this.lblPinCode.Size = new System.Drawing.Size(100, 13);
-            this.lblPinCode.TabIndex = 5;
-            this.lblPinCode.Text = "Enter Area PinCode";
-            // 
-            // txtAreaPinCode
-            // 
-            this.txtAreaPinCode.Location = new System.Drawing.Point(9, 95);
-            this.txtAreaPinCode.Name = "txtAreaPinCode";
-            this.txtAreaPinCode.Size = new System.Drawing.Size(208, 20);
-            this.txtAreaPinCode.TabIndex = 6;
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 29);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(82, 13);
+            this.label27.TabIndex = 25;
+            this.label27.Text = "Select Category";
             // 
             // MastersForm
             // 
@@ -1011,22 +1242,34 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgState)).EndInit();
+            this.tabDistrict.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDistrict)).EndInit();
             this.tabCity.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCity)).EndInit();
+            this.tabArea.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgArea)).EndInit();
+            this.tabSociety.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSociety)).EndInit();
             this.tabCategory.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCategory)).EndInit();
+            this.tabSubCategory.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSubCategory)).EndInit();
             this.tabBrand.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgBrand)).EndInit();
-            this.tabType.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgProductType)).EndInit();
             this.tabMeasurementUnit.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -1039,18 +1282,6 @@
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDesignation)).EndInit();
-            this.tabDistrict.ResumeLayout(false);
-            this.tabArea.ResumeLayout(false);
-            this.tabSociety.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgArea)).EndInit();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgSociety)).EndInit();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgDistrict)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1072,17 +1303,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgState;
         private System.Windows.Forms.DataGridView dgCity;
-        private System.Windows.Forms.ComboBox cmbCountry;
+        private System.Windows.Forms.ComboBox cmbCountryOnState;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox cmbDistrict;
+        private System.Windows.Forms.ComboBox cmbDistrictOnCity;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.Button btnSaveCity;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TabPage tabCategory;
         private System.Windows.Forms.TabPage tabBrand;
-        private System.Windows.Forms.TabPage tabType;
+        private System.Windows.Forms.TabPage tabSubCategory;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtCategory;
         private System.Windows.Forms.Button btnSaveCategory;
@@ -1094,10 +1325,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgBrand;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox txtProductType;
-        private System.Windows.Forms.Button btnSaveProductType;
+        private System.Windows.Forms.TextBox txtSubCategory;
+        private System.Windows.Forms.Button btnSaveSubCategory;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dgProductType;
+        private System.Windows.Forms.DataGridView dgSubCategory;
         private System.Windows.Forms.TabPage tabMeasurementUnit;
         private System.Windows.Forms.TabPage tabDepartment;
         private System.Windows.Forms.TabPage tabDesignation;
@@ -1118,7 +1349,7 @@
         private System.Windows.Forms.DataGridView dgDesignation;
         private System.Windows.Forms.TabPage tabDistrict;
         private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.ComboBox cmbState;
+        private System.Windows.Forms.ComboBox cmbStateOnDistrict;
         private System.Windows.Forms.TextBox txtDistrictName;
         private System.Windows.Forms.Button btnDistrict;
         private System.Windows.Forms.Label label16;
@@ -1126,7 +1357,7 @@
         private System.Windows.Forms.DataGridView dgDistrict;
         private System.Windows.Forms.TabPage tabArea;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.ComboBox cmbCity;
+        private System.Windows.Forms.ComboBox cmbCityOnArea;
         private System.Windows.Forms.TextBox txtAreaName;
         private System.Windows.Forms.Button btnSaveArea;
         private System.Windows.Forms.Label label12;
@@ -1134,7 +1365,7 @@
         private System.Windows.Forms.DataGridView dgArea;
         private System.Windows.Forms.TabPage tabSociety;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.ComboBox cmbArea;
+        private System.Windows.Forms.ComboBox cmbAreaOnSociety;
         private System.Windows.Forms.TextBox txtSocietyName;
         private System.Windows.Forms.Button btnSaveSociety;
         private System.Windows.Forms.Label label14;
@@ -1142,5 +1373,27 @@
         private System.Windows.Forms.DataGridView dgSociety;
         private System.Windows.Forms.TextBox txtAreaPinCode;
         private System.Windows.Forms.Label lblPinCode;
+        private System.Windows.Forms.ComboBox cmbCountryOnDistrict;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox cmbCountryOnCity;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cmbStateOnCity;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cmbCountryOnArea;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ComboBox cmbStateOnArea;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.ComboBox cmbDistrictOnArea;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox cmbCountryOnSociety;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox cmbStateOnSociety;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox cmbDistrictOnSociety;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox cmbCityOnSociety;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.Label label27;
     }
 }

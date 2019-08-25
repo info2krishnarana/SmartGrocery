@@ -17,6 +17,7 @@ namespace SmartGrocery.Entity.DataModel
         public long Id { get; set; }
         public string Name { get; set; }
         public Nullable<long> AreaId { get; set; }
+        public Nullable<bool> IsSelected { get; set; }
     
         public virtual Area Area { get; set; }
     }

@@ -89,9 +89,6 @@
     <Compile Include="DataModel\MeasurementUnit.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModel\ProductType.cs">
-      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataModel\Purchase.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
@@ -123,6 +120,9 @@
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Store.cs">
+      <DependentUpon>SmartGroceryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\SubCategory.cs">
       <DependentUpon>SmartGroceryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Supplier.cs">

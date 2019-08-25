@@ -32,7 +32,7 @@
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cmbProductType = new System.Windows.Forms.ComboBox();
+            this.cmbSubCategory = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbBrand = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,7 +42,9 @@
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.txtSalePrice = new System.Windows.Forms.TextBox();
+            this.cmbMeasurementUnit = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtPurchasePrice = new System.Windows.Forms.TextBox();
             this.txtMrp = new System.Windows.Forms.TextBox();
@@ -54,8 +56,6 @@
             this.chkSaleOnline = new System.Windows.Forms.CheckBox();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cmbMeasurementUnit = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -66,7 +66,7 @@
             this.groupBox1.Controls.Add(this.txtBarcode);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.cmbProductType);
+            this.groupBox1.Controls.Add(this.cmbSubCategory);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.cmbBrand);
             this.groupBox1.Controls.Add(this.label3);
@@ -101,24 +101,24 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 218);
+            this.label5.Location = new System.Drawing.Point(6, 185);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.Size = new System.Drawing.Size(71, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Type";
+            this.label5.Text = "Sub Category";
             // 
-            // cmbProductType
+            // cmbSubCategory
             // 
-            this.cmbProductType.FormattingEnabled = true;
-            this.cmbProductType.Location = new System.Drawing.Point(84, 218);
-            this.cmbProductType.Name = "cmbProductType";
-            this.cmbProductType.Size = new System.Drawing.Size(244, 21);
-            this.cmbProductType.TabIndex = 5;
+            this.cmbSubCategory.FormattingEnabled = true;
+            this.cmbSubCategory.Location = new System.Drawing.Point(84, 185);
+            this.cmbSubCategory.Name = "cmbSubCategory";
+            this.cmbSubCategory.Size = new System.Drawing.Size(244, 21);
+            this.cmbSubCategory.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 186);
+            this.label4.Location = new System.Drawing.Point(6, 215);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 7;
@@ -127,7 +127,7 @@
             // cmbBrand
             // 
             this.cmbBrand.FormattingEnabled = true;
-            this.cmbBrand.Location = new System.Drawing.Point(84, 186);
+            this.cmbBrand.Location = new System.Drawing.Point(84, 215);
             this.cmbBrand.Name = "cmbBrand";
             this.cmbBrand.Size = new System.Drawing.Size(244, 21);
             this.cmbBrand.TabIndex = 4;
@@ -199,6 +199,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pricing Details";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 99);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(93, 13);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Measurement Unit";
+            // 
             // txtSalePrice
             // 
             this.txtSalePrice.Location = new System.Drawing.Point(106, 73);
@@ -206,6 +215,14 @@
             this.txtSalePrice.Size = new System.Drawing.Size(223, 20);
             this.txtSalePrice.TabIndex = 2;
             this.txtSalePrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowOnlyNumber);
+            // 
+            // cmbMeasurementUnit
+            // 
+            this.cmbMeasurementUnit.FormattingEnabled = true;
+            this.cmbMeasurementUnit.Location = new System.Drawing.Point(106, 99);
+            this.cmbMeasurementUnit.Name = "cmbMeasurementUnit";
+            this.cmbMeasurementUnit.Size = new System.Drawing.Size(223, 21);
+            this.cmbMeasurementUnit.TabIndex = 11;
             // 
             // label8
             // 
@@ -315,23 +332,6 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 99);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 13);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Measurement Unit";
-            // 
-            // cmbMeasurementUnit
-            // 
-            this.cmbMeasurementUnit.FormattingEnabled = true;
-            this.cmbMeasurementUnit.Location = new System.Drawing.Point(106, 99);
-            this.cmbMeasurementUnit.Name = "cmbMeasurementUnit";
-            this.cmbMeasurementUnit.Size = new System.Drawing.Size(223, 21);
-            this.cmbMeasurementUnit.TabIndex = 11;
-            // 
             // ItemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,7 +378,7 @@
         private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cmbProductType;
+        private System.Windows.Forms.ComboBox cmbSubCategory;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbBrand;
         private System.Windows.Forms.Label label3;
