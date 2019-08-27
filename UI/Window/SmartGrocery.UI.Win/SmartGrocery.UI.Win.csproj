@@ -146,6 +146,7 @@
     <Compile Include="Utilities\InputValidation.cs" />
     <Compile Include="Utilities\Validation.cs" />
     <Compile Include="ViewModels\ItemViewModels.cs" />
+    <Compile Include="ViewModels\MasterViewModels.cs" />
     <Compile Include="ViewModels\PurchaseViewModels.cs" />
     <Compile Include="ViewModels\ReportViewModels.cs" />
     <EmbeddedResource Include="CustomerForm.resx">

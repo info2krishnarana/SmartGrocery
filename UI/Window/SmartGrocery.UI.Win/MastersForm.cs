@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SmartGrocery.Entity.DataModel;
 using SmartGrocery.Business;
 using SmartGrocery.Data.Repository;
+using SmartGrocery.UI.Win.ViewModels;
 
 namespace SmartGrocery.UI.Win
 {
@@ -23,16 +24,16 @@ namespace SmartGrocery.UI.Win
         private IGenericRepository<Society> societyRepo;
         private IGenericRepository<Category> categoryRepo;
         private IGenericRepository<SubCategory> subCategoryRepo;
-        private IGenericRepository<Brand> brandRepo;        
+        private IGenericRepository<Brand> brandRepo;
         private IGenericRepository<MeasurementUnit> measurementUnitRepo;
         private IGenericRepository<Department> departmentRepo;
         private IGenericRepository<Designation> designationRepo;
 
-        private IEnumerable<Country> countryList;
-        private IEnumerable<State> stateList;
-        private IEnumerable<District> districtList;
-        private IEnumerable<City> cityList;
-        private IEnumerable<Area> areaList;
+        private List<Country> countryList;
+        private List<State> stateList;
+        private List<District> districtList;
+        private List<City> cityList;
+        private List<Area> areaList;
 
         private Country country;
         private State state;
@@ -42,11 +43,12 @@ namespace SmartGrocery.UI.Win
         private Society society;
         private Category category;
         private SubCategory subCategory;
-        private Brand brand;        
+        private Brand brand;
         private MeasurementUnit measurementUnit;
         private Department department;
         private Designation designation;
 
+        private int MasterDataId = 0;
         public MastersForm()
         {
             InitializeComponent();
@@ -64,13 +66,13 @@ namespace SmartGrocery.UI.Win
             departmentRepo = new GenericRepository<Department>();
             designationRepo = new GenericRepository<Designation>();
 
-            countryList = new List<Country>();
-            stateList = new List<State>();
-            districtList = new List<District>();
-            cityList = new List<City>();
-            areaList = new List<Area>();
+            //countryList = new List<Country>();
+            //stateList = new List<State>();
+            //districtList = new List<District>();
+            //cityList = new List<City>();
+            //areaList = new List<Area>();
 
-            country = new Country();
+            //country = new Country();
             state = new State();
             district = new District();
             city = new City();
@@ -91,7 +93,6 @@ namespace SmartGrocery.UI.Win
         {
             try
             {
-
                 if (string.IsNullOrEmpty(txtCountry.Text.Trim()))
                 {
                     MessageBox.Show("Country Name required");
@@ -99,20 +100,33 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
-                    if (country == null)
+                    if (MasterDataId > 0)
                     {
-                        country = new Country();
+                        country = countryRepo.GetById(MasterDataId);
+
+                        country.Name = txtCountry.Text.Trim();
+                        countryRepo.Update(country);
+
+                        MasterDataId = 0;
+                    }
+                    else
+                    {
+
+                        countryList = new List<Country>();
+                        string[] countries = txtCountry.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (string cntrs in countries)
+                        {
+                            country = new Country();
+                            country.Name = cntrs;
+                            country.IsSelected = false;
+                            countryList.Add(country);
+                        }
+
+                        countryRepo.Add(countryList);
                     }
 
-                    string[] countries = txtCountry.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-
-                    foreach (string cntrs in countries)
-                    {
-                        country.Name = cntrs;
-                        country.IsSelected = false;
-                        countryRepo.Add(country);
-                        countryRepo.Save();
-                    }
+                    countryRepo.Save();
                     txtCountry.Clear();
 
                     BindAllDataGrids();
@@ -136,7 +150,7 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
-                    if (state==null)
+                    if (state == null)
                     {
                         state = new State();
                     }
@@ -167,7 +181,16 @@ namespace SmartGrocery.UI.Win
         {
             try
             {
-                dgCountry.DataSource = countryRepo.GetAll();
+                List<MasterViewModel> countryViewModelList = countryRepo.GetAll().Select(c =>
+                 new MasterViewModel
+                 {
+                     MasterDataId = c.Id,
+                     MasterDataText = c.Name
+                 }).ToList();
+
+                dgCountry.DataSource = countryViewModelList;
+                dgCountry.Columns["MasterDataId"].Visible = false;
+
                 dgState.DataSource = stateRepo.GetAll();
                 dgDistrict.DataSource = districtRepo.GetAll();
                 dgCity.DataSource = cityRepo.GetAll();
@@ -191,7 +214,7 @@ namespace SmartGrocery.UI.Win
             try
             {
                 //countries combobox
-                countryList = countryRepo.GetAll();
+                countryList = countryRepo.GetAll().ToList();
 
                 Utilities.Validation.BindComboBox(cmbCountryOnState, countryList, "Name", "Id", true);
                 Utilities.Validation.BindComboBox(cmbCountryOnDistrict, countryList, "Name", "Id", true);
@@ -235,7 +258,7 @@ namespace SmartGrocery.UI.Win
 
                         district = districtList.SingleOrDefault(s => s.IsSelected == true);
 
-                        if (district!=null)
+                        if (district != null)
                         {
                             cmbDistrictOnCity.SelectedValue = district.Id;
                             cmbDistrictOnArea.SelectedValue = district.Id;
@@ -249,7 +272,7 @@ namespace SmartGrocery.UI.Win
 
                             city = cityList.SingleOrDefault(c => c.IsSelected == true);
 
-                            if (city!=null)
+                            if (city != null)
                             {
                                 cmbCityOnArea.SelectedValue = city.Id;
                                 cmbCityOnSociety.SelectedValue = city.Id;
@@ -261,7 +284,7 @@ namespace SmartGrocery.UI.Win
 
                                 area = areaList.SingleOrDefault(a => a.IsSelected == true);
 
-                                if (area!=null)
+                                if (area != null)
                                 {
                                     cmbAreaOnSociety.SelectedValue = area.Id;
                                 }
@@ -289,7 +312,7 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
-                    if (city==null)
+                    if (city == null)
                     {
                         city = new City();
                     }
@@ -327,7 +350,7 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
-                    if (category==null)
+                    if (category == null)
                     {
                         category = new Category();
                     }
@@ -394,7 +417,7 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
-                    if (subCategory==null)
+                    if (subCategory == null)
                     {
                         subCategory = new SubCategory();
                     }
@@ -567,7 +590,7 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
-                    if (area==null)
+                    if (area == null)
                     {
                         area = new Area();
                     }
@@ -607,7 +630,7 @@ namespace SmartGrocery.UI.Win
                 }
                 else
                 {
-                    if (society==null)
+                    if (society == null)
                     {
                         society = new Society();
                     }
@@ -626,6 +649,36 @@ namespace SmartGrocery.UI.Win
 
                     BindAllDataGrids();
                     BindAllComboBoxes();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cmbCountryOnDistrict_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //stateList = stateRepo.GetAll().Where(c => c.CountryId == Convert.ToInt32(cmbCountryOnDistrict.SelectedValue)).ToList();
+                //Utilities.Validation.BindComboBox(cmbStateOnDistrict, stateList, "Name", "Id", true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgCountry_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
                 }
             }
             catch (Exception ex)

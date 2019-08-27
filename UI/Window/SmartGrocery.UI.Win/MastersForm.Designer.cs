@@ -45,6 +45,8 @@
             this.dgState = new System.Windows.Forms.DataGridView();
             this.tabDistrict = new System.Windows.Forms.TabPage();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.cmbCountryOnDistrict = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.cmbStateOnDistrict = new System.Windows.Forms.ComboBox();
             this.txtDistrictName = new System.Windows.Forms.TextBox();
             this.btnDistrict = new System.Windows.Forms.Button();
@@ -53,6 +55,10 @@
             this.dgDistrict = new System.Windows.Forms.DataGridView();
             this.tabCity = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cmbCountryOnCity = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cmbStateOnCity = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.cmbDistrictOnCity = new System.Windows.Forms.ComboBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.btnSaveCity = new System.Windows.Forms.Button();
@@ -61,6 +67,12 @@
             this.dgCity = new System.Windows.Forms.DataGridView();
             this.tabArea = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.cmbCountryOnArea = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cmbStateOnArea = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cmbDistrictOnArea = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.txtAreaPinCode = new System.Windows.Forms.TextBox();
             this.lblPinCode = new System.Windows.Forms.Label();
             this.cmbCityOnArea = new System.Windows.Forms.ComboBox();
@@ -71,6 +83,14 @@
             this.dgArea = new System.Windows.Forms.DataGridView();
             this.tabSociety = new System.Windows.Forms.TabPage();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.cmbCountryOnSociety = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cmbStateOnSociety = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.cmbDistrictOnSociety = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cmbCityOnSociety = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.cmbAreaOnSociety = new System.Windows.Forms.ComboBox();
             this.txtSocietyName = new System.Windows.Forms.TextBox();
             this.btnSaveSociety = new System.Windows.Forms.Button();
@@ -85,6 +105,8 @@
             this.dgCategory = new System.Windows.Forms.DataGridView();
             this.tabSubCategory = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
             this.txtSubCategory = new System.Windows.Forms.TextBox();
             this.btnSaveSubCategory = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -113,28 +135,6 @@
             this.btnSaveDesignation = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.dgDesignation = new System.Windows.Forms.DataGridView();
-            this.cmbCountryOnDistrict = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cmbCountryOnCity = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.cmbStateOnCity = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.cmbCountryOnArea = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.cmbStateOnArea = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.cmbDistrictOnArea = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.cmbCountryOnSociety = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.cmbStateOnSociety = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.cmbDistrictOnSociety = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.cmbCityOnSociety = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.cmbCategory = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
             this.tabMasters.SuspendLayout();
             this.tabCountry.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -252,6 +252,7 @@
             this.dgCountry.Name = "dgCountry";
             this.dgCountry.Size = new System.Drawing.Size(398, 388);
             this.dgCountry.TabIndex = 0;
+            this.dgCountry.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCountry_CellDoubleClick);
             // 
             // tabState
             // 
@@ -359,6 +360,24 @@
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Add/Edit District";
             // 
+            // cmbCountryOnDistrict
+            // 
+            this.cmbCountryOnDistrict.FormattingEnabled = true;
+            this.cmbCountryOnDistrict.Location = new System.Drawing.Point(88, 27);
+            this.cmbCountryOnDistrict.Name = "cmbCountryOnDistrict";
+            this.cmbCountryOnDistrict.Size = new System.Drawing.Size(258, 21);
+            this.cmbCountryOnDistrict.TabIndex = 6;
+            this.cmbCountryOnDistrict.SelectedIndexChanged += new System.EventHandler(this.cmbCountryOnDistrict_SelectedIndexChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "Select Country";
+            // 
             // cmbStateOnDistrict
             // 
             this.cmbStateOnDistrict.FormattingEnabled = true;
@@ -440,6 +459,40 @@
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Add/Edit City";
+            // 
+            // cmbCountryOnCity
+            // 
+            this.cmbCountryOnCity.FormattingEnabled = true;
+            this.cmbCountryOnCity.Location = new System.Drawing.Point(102, 19);
+            this.cmbCountryOnCity.Name = "cmbCountryOnCity";
+            this.cmbCountryOnCity.Size = new System.Drawing.Size(244, 21);
+            this.cmbCountryOnCity.TabIndex = 10;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(8, 21);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(76, 13);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "Select Country";
+            // 
+            // cmbStateOnCity
+            // 
+            this.cmbStateOnCity.FormattingEnabled = true;
+            this.cmbStateOnCity.Location = new System.Drawing.Point(102, 48);
+            this.cmbStateOnCity.Name = "cmbStateOnCity";
+            this.cmbStateOnCity.Size = new System.Drawing.Size(244, 21);
+            this.cmbStateOnCity.TabIndex = 8;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(8, 48);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(65, 13);
+            this.label19.TabIndex = 7;
+            this.label19.Text = "Select State";
             // 
             // cmbDistrictOnCity
             // 
@@ -525,6 +578,57 @@
             this.groupBox10.TabIndex = 9;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Add/Edit Area";
+            // 
+            // cmbCountryOnArea
+            // 
+            this.cmbCountryOnArea.FormattingEnabled = true;
+            this.cmbCountryOnArea.Location = new System.Drawing.Point(138, 16);
+            this.cmbCountryOnArea.Name = "cmbCountryOnArea";
+            this.cmbCountryOnArea.Size = new System.Drawing.Size(208, 21);
+            this.cmbCountryOnArea.TabIndex = 16;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 16);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(76, 13);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "Select Country";
+            // 
+            // cmbStateOnArea
+            // 
+            this.cmbStateOnArea.FormattingEnabled = true;
+            this.cmbStateOnArea.Location = new System.Drawing.Point(138, 45);
+            this.cmbStateOnArea.Name = "cmbStateOnArea";
+            this.cmbStateOnArea.Size = new System.Drawing.Size(208, 21);
+            this.cmbStateOnArea.TabIndex = 14;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 45);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(65, 13);
+            this.label21.TabIndex = 13;
+            this.label21.Text = "Select State";
+            // 
+            // cmbDistrictOnArea
+            // 
+            this.cmbDistrictOnArea.FormattingEnabled = true;
+            this.cmbDistrictOnArea.Location = new System.Drawing.Point(138, 72);
+            this.cmbDistrictOnArea.Name = "cmbDistrictOnArea";
+            this.cmbDistrictOnArea.Size = new System.Drawing.Size(208, 21);
+            this.cmbDistrictOnArea.TabIndex = 12;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 72);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(72, 13);
+            this.label22.TabIndex = 11;
+            this.label22.Text = "Select District";
             // 
             // txtAreaPinCode
             // 
@@ -626,6 +730,74 @@
             this.groupBox11.TabIndex = 9;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Add/Edit Society";
+            // 
+            // cmbCountryOnSociety
+            // 
+            this.cmbCountryOnSociety.FormattingEnabled = true;
+            this.cmbCountryOnSociety.Location = new System.Drawing.Point(138, 27);
+            this.cmbCountryOnSociety.Name = "cmbCountryOnSociety";
+            this.cmbCountryOnSociety.Size = new System.Drawing.Size(208, 21);
+            this.cmbCountryOnSociety.TabIndex = 24;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 27);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(76, 13);
+            this.label23.TabIndex = 23;
+            this.label23.Text = "Select Country";
+            // 
+            // cmbStateOnSociety
+            // 
+            this.cmbStateOnSociety.FormattingEnabled = true;
+            this.cmbStateOnSociety.Location = new System.Drawing.Point(138, 56);
+            this.cmbStateOnSociety.Name = "cmbStateOnSociety";
+            this.cmbStateOnSociety.Size = new System.Drawing.Size(208, 21);
+            this.cmbStateOnSociety.TabIndex = 22;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 56);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(65, 13);
+            this.label24.TabIndex = 21;
+            this.label24.Text = "Select State";
+            // 
+            // cmbDistrictOnSociety
+            // 
+            this.cmbDistrictOnSociety.FormattingEnabled = true;
+            this.cmbDistrictOnSociety.Location = new System.Drawing.Point(138, 83);
+            this.cmbDistrictOnSociety.Name = "cmbDistrictOnSociety";
+            this.cmbDistrictOnSociety.Size = new System.Drawing.Size(208, 21);
+            this.cmbDistrictOnSociety.TabIndex = 20;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 83);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(72, 13);
+            this.label25.TabIndex = 19;
+            this.label25.Text = "Select District";
+            // 
+            // cmbCityOnSociety
+            // 
+            this.cmbCityOnSociety.FormattingEnabled = true;
+            this.cmbCityOnSociety.Location = new System.Drawing.Point(138, 110);
+            this.cmbCityOnSociety.Name = "cmbCityOnSociety";
+            this.cmbCityOnSociety.Size = new System.Drawing.Size(208, 21);
+            this.cmbCityOnSociety.TabIndex = 18;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 110);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(57, 13);
+            this.label26.TabIndex = 17;
+            this.label26.Text = "Select City";
             // 
             // cmbAreaOnSociety
             // 
@@ -763,6 +935,23 @@
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Add/Edit SubCategory";
+            // 
+            // cmbCategory
+            // 
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(138, 29);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(208, 21);
+            this.cmbCategory.TabIndex = 26;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 29);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(82, 13);
+            this.label27.TabIndex = 25;
+            this.label27.Text = "Select Category";
             // 
             // txtSubCategory
             // 
@@ -1034,193 +1223,6 @@
             this.dgDesignation.Name = "dgDesignation";
             this.dgDesignation.Size = new System.Drawing.Size(398, 388);
             this.dgDesignation.TabIndex = 5;
-            // 
-            // cmbCountryOnDistrict
-            // 
-            this.cmbCountryOnDistrict.FormattingEnabled = true;
-            this.cmbCountryOnDistrict.Location = new System.Drawing.Point(88, 27);
-            this.cmbCountryOnDistrict.Name = "cmbCountryOnDistrict";
-            this.cmbCountryOnDistrict.Size = new System.Drawing.Size(258, 21);
-            this.cmbCountryOnDistrict.TabIndex = 6;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 27);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(76, 13);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "Select Country";
-            // 
-            // cmbCountryOnCity
-            // 
-            this.cmbCountryOnCity.FormattingEnabled = true;
-            this.cmbCountryOnCity.Location = new System.Drawing.Point(102, 19);
-            this.cmbCountryOnCity.Name = "cmbCountryOnCity";
-            this.cmbCountryOnCity.Size = new System.Drawing.Size(244, 21);
-            this.cmbCountryOnCity.TabIndex = 10;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(8, 21);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(76, 13);
-            this.label18.TabIndex = 9;
-            this.label18.Text = "Select Country";
-            // 
-            // cmbStateOnCity
-            // 
-            this.cmbStateOnCity.FormattingEnabled = true;
-            this.cmbStateOnCity.Location = new System.Drawing.Point(102, 48);
-            this.cmbStateOnCity.Name = "cmbStateOnCity";
-            this.cmbStateOnCity.Size = new System.Drawing.Size(244, 21);
-            this.cmbStateOnCity.TabIndex = 8;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(8, 48);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(65, 13);
-            this.label19.TabIndex = 7;
-            this.label19.Text = "Select State";
-            // 
-            // cmbCountryOnArea
-            // 
-            this.cmbCountryOnArea.FormattingEnabled = true;
-            this.cmbCountryOnArea.Location = new System.Drawing.Point(138, 16);
-            this.cmbCountryOnArea.Name = "cmbCountryOnArea";
-            this.cmbCountryOnArea.Size = new System.Drawing.Size(208, 21);
-            this.cmbCountryOnArea.TabIndex = 16;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 16);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(76, 13);
-            this.label20.TabIndex = 15;
-            this.label20.Text = "Select Country";
-            // 
-            // cmbStateOnArea
-            // 
-            this.cmbStateOnArea.FormattingEnabled = true;
-            this.cmbStateOnArea.Location = new System.Drawing.Point(138, 45);
-            this.cmbStateOnArea.Name = "cmbStateOnArea";
-            this.cmbStateOnArea.Size = new System.Drawing.Size(208, 21);
-            this.cmbStateOnArea.TabIndex = 14;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 45);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(65, 13);
-            this.label21.TabIndex = 13;
-            this.label21.Text = "Select State";
-            // 
-            // cmbDistrictOnArea
-            // 
-            this.cmbDistrictOnArea.FormattingEnabled = true;
-            this.cmbDistrictOnArea.Location = new System.Drawing.Point(138, 72);
-            this.cmbDistrictOnArea.Name = "cmbDistrictOnArea";
-            this.cmbDistrictOnArea.Size = new System.Drawing.Size(208, 21);
-            this.cmbDistrictOnArea.TabIndex = 12;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 72);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(72, 13);
-            this.label22.TabIndex = 11;
-            this.label22.Text = "Select District";
-            // 
-            // cmbCountryOnSociety
-            // 
-            this.cmbCountryOnSociety.FormattingEnabled = true;
-            this.cmbCountryOnSociety.Location = new System.Drawing.Point(138, 27);
-            this.cmbCountryOnSociety.Name = "cmbCountryOnSociety";
-            this.cmbCountryOnSociety.Size = new System.Drawing.Size(208, 21);
-            this.cmbCountryOnSociety.TabIndex = 24;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(6, 27);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(76, 13);
-            this.label23.TabIndex = 23;
-            this.label23.Text = "Select Country";
-            // 
-            // cmbStateOnSociety
-            // 
-            this.cmbStateOnSociety.FormattingEnabled = true;
-            this.cmbStateOnSociety.Location = new System.Drawing.Point(138, 56);
-            this.cmbStateOnSociety.Name = "cmbStateOnSociety";
-            this.cmbStateOnSociety.Size = new System.Drawing.Size(208, 21);
-            this.cmbStateOnSociety.TabIndex = 22;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(6, 56);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(65, 13);
-            this.label24.TabIndex = 21;
-            this.label24.Text = "Select State";
-            // 
-            // cmbDistrictOnSociety
-            // 
-            this.cmbDistrictOnSociety.FormattingEnabled = true;
-            this.cmbDistrictOnSociety.Location = new System.Drawing.Point(138, 83);
-            this.cmbDistrictOnSociety.Name = "cmbDistrictOnSociety";
-            this.cmbDistrictOnSociety.Size = new System.Drawing.Size(208, 21);
-            this.cmbDistrictOnSociety.TabIndex = 20;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 83);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(72, 13);
-            this.label25.TabIndex = 19;
-            this.label25.Text = "Select District";
-            // 
-            // cmbCityOnSociety
-            // 
-            this.cmbCityOnSociety.FormattingEnabled = true;
-            this.cmbCityOnSociety.Location = new System.Drawing.Point(138, 110);
-            this.cmbCityOnSociety.Name = "cmbCityOnSociety";
-            this.cmbCityOnSociety.Size = new System.Drawing.Size(208, 21);
-            this.cmbCityOnSociety.TabIndex = 18;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(6, 110);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(57, 13);
-            this.label26.TabIndex = 17;
-            this.label26.Text = "Select City";
-            // 
-            // cmbCategory
-            // 
-            this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(138, 29);
-            this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(208, 21);
-            this.cmbCategory.TabIndex = 26;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(6, 29);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(82, 13);
-            this.label27.TabIndex = 25;
-            this.label27.Text = "Select Category";
             // 
             // MastersForm
             // 
