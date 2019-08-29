@@ -331,6 +331,7 @@
             this.dgState.Name = "dgState";
             this.dgState.Size = new System.Drawing.Size(398, 388);
             this.dgState.TabIndex = 5;
+            this.dgState.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgState_CellDoubleClick);
             // 
             // tabDistrict
             // 
@@ -429,6 +430,7 @@
             this.dgDistrict.Name = "dgDistrict";
             this.dgDistrict.Size = new System.Drawing.Size(398, 388);
             this.dgDistrict.TabIndex = 8;
+            this.dgDistrict.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDistrict_CellDoubleClick);
             // 
             // tabCity
             // 
@@ -545,6 +547,7 @@
             this.dgCity.Name = "dgCity";
             this.dgCity.Size = new System.Drawing.Size(398, 388);
             this.dgCity.TabIndex = 5;
+            this.dgCity.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCity_CellDoubleClick);
             // 
             // tabArea
             // 
@@ -697,6 +700,7 @@
             this.dgArea.Name = "dgArea";
             this.dgArea.Size = new System.Drawing.Size(398, 388);
             this.dgArea.TabIndex = 8;
+            this.dgArea.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgArea_CellDoubleClick);
             // 
             // tabSociety
             // 
@@ -850,6 +854,7 @@
             this.dgSociety.Name = "dgSociety";
             this.dgSociety.Size = new System.Drawing.Size(398, 388);
             this.dgSociety.TabIndex = 8;
+            this.dgSociety.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSociety_CellDoubleClick);
             // 
             // tabCategory
             // 
@@ -909,6 +914,7 @@
             this.dgCategory.Name = "dgCategory";
             this.dgCategory.Size = new System.Drawing.Size(398, 388);
             this.dgCategory.TabIndex = 5;
+            this.dgCategory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCategory_CellDoubleClick);
             // 
             // tabSubCategory
             // 
@@ -987,6 +993,7 @@
             this.dgSubCategory.Name = "dgSubCategory";
             this.dgSubCategory.Size = new System.Drawing.Size(398, 388);
             this.dgSubCategory.TabIndex = 5;
+            this.dgSubCategory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSubCategory_CellDoubleClick);
             // 
             // tabBrand
             // 
@@ -1046,6 +1053,7 @@
             this.dgBrand.Name = "dgBrand";
             this.dgBrand.Size = new System.Drawing.Size(398, 388);
             this.dgBrand.TabIndex = 5;
+            this.dgBrand.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgBrand_CellDoubleClick);
             // 
             // tabMeasurementUnit
             // 
@@ -1105,6 +1113,7 @@
             this.dgMeasurementUnit.Name = "dgMeasurementUnit";
             this.dgMeasurementUnit.Size = new System.Drawing.Size(398, 388);
             this.dgMeasurementUnit.TabIndex = 5;
+            this.dgMeasurementUnit.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMeasurementUnit_CellDoubleClick);
             // 
             // tabDepartment
             // 
@@ -1164,6 +1173,7 @@
             this.dgDepartment.Name = "dgDepartment";
             this.dgDepartment.Size = new System.Drawing.Size(398, 388);
             this.dgDepartment.TabIndex = 5;
+            this.dgDepartment.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDepartment_CellDoubleClick);
             // 
             // tabDesignation
             // 
@@ -1223,6 +1233,7 @@
             this.dgDesignation.Name = "dgDesignation";
             this.dgDesignation.Size = new System.Drawing.Size(398, 388);
             this.dgDesignation.TabIndex = 5;
+            this.dgDesignation.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgDesignation_CellDoubleClick);
             // 
             // MastersForm
             // 

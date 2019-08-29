@@ -104,8 +104,15 @@ namespace SmartGrocery.UI.Win
                     {
                         country = countryRepo.GetById(MasterDataId);
 
-                        country.Name = txtCountry.Text.Trim();
-                        countryRepo.Update(country);
+                        if (country.Name == txtCountry.Text.Trim())
+                        {
+                            MessageBox.Show("Country with same name already exist");
+                        }
+                        else
+                        {
+                            country.Name = txtCountry.Text.Trim();
+                            countryRepo.Update(country);
+                        }
 
                         MasterDataId = 0;
                     }
@@ -115,11 +122,20 @@ namespace SmartGrocery.UI.Win
                         countryList = new List<Country>();
                         string[] countries = txtCountry.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
+                        List<Country> countryInDb = countryRepo.GetAll().ToList();
+
+                        if (countryInDb.Select(x => x.Name).Intersect(countries).Any())
+                        {
+                            MessageBox.Show("Country with same name already exist");
+                            return;
+                        }
+
                         foreach (string cntrs in countries)
                         {
                             country = new Country();
                             country.Name = cntrs;
                             country.IsSelected = false;
+                            
                             countryList.Add(country);
                         }
 
@@ -671,6 +687,193 @@ namespace SmartGrocery.UI.Win
         }
 
         private void dgCountry_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgState_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgDistrict_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgCity_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgArea_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgSociety_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgCategory_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgSubCategory_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgBrand_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgMeasurementUnit_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgDepartment_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (country != null)
+                {
+                    txtCountry.Text = country.Name;
+                    MasterDataId = country.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgDesignation_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
