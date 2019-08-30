@@ -11,4 +11,11 @@ namespace SmartGrocery.UI.Win.ViewModels
         public int MasterDataId { get; set; }
         public string MasterDataText { get; set; }
     }
+
+    public class MasterAreaViewModel
+    {
+        public int MasterDataId { get; set; }
+        public string MasterDataText { get; set; }
+        public string PinCode { get; set; }
+    }
 }

@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PinCode" Type="nvarchar" MaxLength="50" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="CityId" Type="int" />
@@ -220,9 +220,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="AreaId" Type="bigint" />
+          <Property Name="AreaId" Type="int" />
           <Property Name="IsSelected" Type="bit" />
         </EntityType>
         <EntityType Name="State">
@@ -918,13 +918,13 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PinCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CityId" Type="Int32" />
+          <Property Name="IsSelected" Type="Boolean" />
           <NavigationProperty Name="City" Relationship="SmartGrocery.Entity.FK_Area_CityId_City_Id" FromRole="Area" ToRole="City" />
           <NavigationProperty Name="Societies" Relationship="SmartGrocery.Entity.FK_Society_AreaId_Area_Id" FromRole="Area" ToRole="Society" />
-          <Property Name="IsSelected" Type="Boolean" />
         </EntityType>
         <EntityType Name="Branch">
           <Key>
@@ -1171,9 +1171,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="AreaId" Type="Int64" />
+          <Property Name="AreaId" Type="Int32" />
           <Property Name="IsSelected" Type="Boolean" />
           <NavigationProperty Name="Area" Relationship="SmartGrocery.Entity.FK_Society_AreaId_Area_Id" FromRole="Society" ToRole="Area" />
         </EntityType>

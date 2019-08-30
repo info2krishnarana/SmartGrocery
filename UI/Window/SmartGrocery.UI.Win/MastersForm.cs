@@ -205,19 +205,120 @@ namespace SmartGrocery.UI.Win
                  }).ToList();
 
                 dgCountry.DataSource = countryViewModelList;
+                dgCountry.Columns["MasterDataText"].HeaderText = "Country";
                 dgCountry.Columns["MasterDataId"].Visible = false;
 
-                dgState.DataSource = stateRepo.GetAll();
-                dgDistrict.DataSource = districtRepo.GetAll();
-                dgCity.DataSource = cityRepo.GetAll();
-                dgArea.DataSource = areaRepo.GetAll();
-                dgSociety.DataSource = societyRepo.GetAll();
-                dgCategory.DataSource = categoryRepo.GetAll();
-                dgBrand.DataSource = brandRepo.GetAll();
-                dgSubCategory.DataSource = subCategoryRepo.GetAll();
-                dgMeasurementUnit.DataSource = measurementUnitRepo.GetAll();
-                dgDepartment.DataSource = departmentRepo.GetAll();
-                dgDesignation.DataSource = designationRepo.GetAll();
+                List<MasterViewModel> stateViewModelList = stateRepo.GetAll().Select(c =>
+                 new MasterViewModel
+                 {
+                     MasterDataId = c.Id,
+                     MasterDataText = c.Name
+                 }).ToList();
+                dgState.DataSource = stateViewModelList;
+                dgState.Columns["MasterDataText"].HeaderText = "State";
+                dgState.Columns["MasterDataId"].Visible = false;
+
+                List<MasterViewModel> districtViewModelList = districtRepo.GetAll().Select(c =>
+                 new MasterViewModel
+                 {
+                     MasterDataId = c.Id,
+                     MasterDataText = c.Name
+                 }).ToList();
+                dgDistrict.DataSource = districtViewModelList;
+                dgDistrict.Columns["MasterDataText"].HeaderText = "District";
+                dgDistrict.Columns["MasterDataId"].Visible = false;
+
+                List<MasterViewModel> cityViewModelList = cityRepo.GetAll().Select(c =>
+                  new MasterViewModel
+                  {
+                      MasterDataId = c.Id,
+                      MasterDataText = c.Name
+                  }).ToList();
+                dgCity.DataSource = cityViewModelList;
+                dgCity.Columns["MasterDataText"].HeaderText = "City";
+                dgCity.Columns["MasterDataId"].Visible = false;
+
+                List<MasterAreaViewModel> areaViewModelList = areaRepo.GetAll().Select(c =>
+                  new MasterAreaViewModel
+                  {
+                      MasterDataId = c.Id,
+                      MasterDataText = c.Name,
+                      PinCode=c.PinCode
+
+                  }).ToList();
+                dgArea.DataSource = areaViewModelList;
+                dgArea.Columns["MasterDataText"].HeaderText = "Area";
+                dgArea.Columns["MasterDataId"].Visible = false;
+
+                List<MasterViewModel> societyViewModelList = societyRepo.GetAll().Select(c =>
+                 new MasterViewModel
+                 {
+                     MasterDataId = c.Id,
+                     MasterDataText = c.Name
+                 }).ToList();
+                dgSociety.DataSource = societyViewModelList;
+                dgSociety.Columns["MasterDataText"].HeaderText = "Society";
+                dgSociety.Columns["MasterDataId"].Visible = false;
+
+                List<MasterViewModel> categoryViewModelList = categoryRepo.GetAll().Select(c =>
+                 new MasterViewModel
+                 {
+                     MasterDataId = c.Id,
+                     MasterDataText = c.Name
+                 }).ToList();
+                dgCategory.DataSource = categoryViewModelList;
+                dgCategory.Columns["MasterDataText"].HeaderText = "Category";
+                dgCategory.Columns["MasterDataId"].Visible = false;
+
+                List<MasterViewModel> subCategoryViewModelList = subCategoryRepo.GetAll().Select(c =>
+                new MasterViewModel
+                {
+                    MasterDataId = c.Id,
+                    MasterDataText = c.Name
+                }).ToList();
+                dgSubCategory.DataSource = subCategoryViewModelList;
+                dgSubCategory.Columns["MasterDataText"].HeaderText = "Sub Category";
+                dgSubCategory.Columns["MasterDataId"].Visible = false;
+
+                List<MasterViewModel> brandViewModelList = brandRepo.GetAll().Select(c =>
+                new MasterViewModel
+                {
+                    MasterDataId = c.Id,
+                    MasterDataText = c.Name
+                }).ToList();
+                dgBrand.DataSource = brandViewModelList;
+                dgBrand.Columns["MasterDataText"].HeaderText = "Brand";
+                dgBrand.Columns["MasterDataId"].Visible = false;
+
+                List<MasterViewModel> measurementUnitViewModelList = measurementUnitRepo.GetAll().Select(c =>
+                                new MasterViewModel
+                                {
+                                    MasterDataId = c.Id,
+                                    MasterDataText = c.Name
+                                }).ToList();
+                dgMeasurementUnit.DataSource = measurementUnitViewModelList;
+                dgMeasurementUnit.Columns["MasterDataText"].HeaderText = "Measurement Unit";
+                dgMeasurementUnit.Columns["MasterDataId"].Visible = false;
+
+                List<MasterViewModel> departmentViewModelList = departmentRepo.GetAll().Select(c =>
+                                new MasterViewModel
+                                {
+                                    MasterDataId = c.Id,
+                                    MasterDataText = c.Name
+                                }).ToList();
+                dgDepartment.DataSource = departmentViewModelList;
+                dgDepartment.Columns["MasterDataText"].HeaderText = "Department";
+                dgDepartment.Columns["MasterDataId"].Visible = false;
+
+                List<MasterViewModel> designationViewModelList = designationRepo.GetAll().Select(c =>
+                                new MasterViewModel
+                                {
+                                    MasterDataId = c.Id,
+                                    MasterDataText = c.Name
+                                }).ToList();
+                dgDesignation.DataSource = designationViewModelList;
+                dgDesignation.Columns["MasterDataText"].HeaderText = "Designation";
+                dgDesignation.Columns["MasterDataId"].Visible = false;
             }
             catch (Exception ex)
             {

@@ -5,26 +5,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b4bab8238da64b30b0e4566c65c4e28d" Name="Diagram1">
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Area" Width="1.5" PointX="5.25" PointY="9.125" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Branch" Width="1.5" PointX="6" PointY="38.875" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Brand" Width="1.5" PointX="9" PointY="14.875" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Category" Width="1.5" PointX="9" PointY="19.625" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.City" Width="1.5" PointX="3" PointY="25.25" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Area" Width="1.5" PointX="5.25" PointY="27.75" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Branch" Width="1.5" PointX="3" PointY="19.25" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Brand" Width="1.5" PointX="9" PointY="5.75" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Category" Width="1.5" PointX="9" PointY="8.125" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.City" Width="1.5" PointX="3" PointY="27.875" />
         <EntityTypeShape EntityType="SmartGrocery.Entity.Country" Width="1.5" PointX="0.75" PointY="15.875" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Customer" Width="1.5" PointX="5.25" PointY="21.75" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Department" Width="1.5" PointX="6" PointY="33.5" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Designation" Width="1.5" PointX="6" PointY="19.125" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.District" Width="1.5" PointX="5.25" PointY="43.75" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Employee" Width="1.5" PointX="8.25" PointY="23" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Item" Width="1.5" PointX="11.25" PointY="13.875" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.MeasurementUnit" Width="1.5" PointX="9" PointY="17.25" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Purchase" Width="1.5" PointX="13.5" PointY="25.125" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Region" Width="1.5" PointX="5.25" PointY="16.25" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Society" Width="1.5" PointX="7.5" PointY="9.25" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.State" Width="1.5" PointX="3" PointY="34.75" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Store" Width="1.5" PointX="3.75" PointY="38.875" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.SubCategory" Width="1.5" PointX="9" PointY="12.125" />
-        <EntityTypeShape EntityType="SmartGrocery.Entity.Supplier" Width="1.5" PointX="11.25" PointY="22.875" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Customer" Width="1.5" PointX="11.25" PointY="16.375" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Department" Width="1.5" PointX="3" PointY="13.875" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Designation" Width="1.5" PointX="3" PointY="16.5" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.District" Width="1.5" PointX="5.25" PointY="24.375" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Employee" Width="1.5" PointX="5.25" PointY="15.625" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Item" Width="1.5" PointX="11.25" PointY="7.5" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.MeasurementUnit" Width="1.5" PointX="9" PointY="13.375" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Purchase" Width="1.5" PointX="13.5" PointY="19.75" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Region" Width="1.5" PointX="5.25" PointY="30.875" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Society" Width="1.5" PointX="7.5" PointY="27.875" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.State" Width="1.5" PointX="3" PointY="24" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Store" Width="1.5" PointX="0.75" PointY="19.25" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.SubCategory" Width="1.5" PointX="9" PointY="10.625" />
+        <EntityTypeShape EntityType="SmartGrocery.Entity.Supplier" Width="1.5" PointX="8.25" PointY="17.5" />
         <AssociationConnector Association="SmartGrocery.Entity.FK_Area_CityId_City_Id" />
         <AssociationConnector Association="SmartGrocery.Entity.FK_Society_AreaId_Area_Id" />
         <AssociationConnector Association="SmartGrocery.Entity.FK_Branch_StoreId_Store_Id" />

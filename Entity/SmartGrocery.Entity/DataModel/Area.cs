@@ -20,7 +20,7 @@ namespace SmartGrocery.Entity.DataModel
             this.Societies = new HashSet<Society>();
         }
     
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string PinCode { get; set; }
         public string Name { get; set; }
         public Nullable<int> CityId { get; set; }
