@@ -89,110 +89,6 @@ namespace SmartGrocery.UI.Win
             BindAllComboBoxes();
         }
 
-        private void btnSaveCountry_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(txtCountry.Text.Trim()))
-                {
-                    MessageBox.Show("Country Name required");
-                    txtCountry.Focus();
-                }
-                else
-                {
-                    if (MasterDataId > 0)
-                    {
-                        country = countryRepo.GetById(MasterDataId);
-
-                        if (country.Name == txtCountry.Text.Trim())
-                        {
-                            MessageBox.Show("Country with same name already exist");
-                        }
-                        else
-                        {
-                            country.Name = txtCountry.Text.Trim();
-                            countryRepo.Update(country);
-                        }
-
-                        MasterDataId = 0;
-                    }
-                    else
-                    {
-
-                        countryList = new List<Country>();
-                        string[] countries = txtCountry.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-
-                        List<Country> countryInDb = countryRepo.GetAll().ToList();
-
-                        if (countryInDb.Select(x => x.Name).Intersect(countries).Any())
-                        {
-                            MessageBox.Show("Country with same name already exist");
-                            return;
-                        }
-
-                        foreach (string cntrs in countries)
-                        {
-                            country = new Country();
-                            country.Name = cntrs;
-                            country.IsSelected = false;
-                            
-                            countryList.Add(country);
-                        }
-
-                        countryRepo.Add(countryList);
-                    }
-
-                    countryRepo.Save();
-                    txtCountry.Clear();
-
-                    BindAllDataGrids();
-                    BindAllComboBoxes();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnSaveState_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(txtState.Text.Trim()))
-                {
-                    MessageBox.Show("State Name required");
-                    txtState.Focus();
-                }
-                else
-                {
-                    if (state == null)
-                    {
-                        state = new State();
-                    }
-
-                    string[] states = txtState.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-
-                    foreach (string sts in states)
-                    {
-                        state.CountryId = Convert.ToInt32(cmbCountryOnState.SelectedValue);
-                        state.Name = sts;
-                        state.IsSelected = false;
-                        stateRepo.Add(state);
-                        stateRepo.Save();
-                    }
-                    txtState.Clear();
-
-                    BindAllDataGrids();
-                    BindAllComboBoxes();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
         private void BindAllDataGrids()
         {
             try
@@ -243,7 +139,7 @@ namespace SmartGrocery.UI.Win
                   {
                       MasterDataId = c.Id,
                       MasterDataText = c.Name,
-                      PinCode=c.PinCode
+                      PinCode = c.PinCode
 
                   }).ToList();
                 dgArea.DataSource = areaViewModelList;
@@ -410,6 +306,140 @@ namespace SmartGrocery.UI.Win
                     }
                 }
                 Utilities.Validation.BindComboBox(cmbCategory, categoryRepo.GetAll(), "Name", "Id", true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSaveCountry_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtCountry.Text.Trim()))
+                {
+                    MessageBox.Show("Country Name required");
+                    txtCountry.Focus();
+                }
+                else
+                {
+                    List<Country> countryInDb = countryRepo.GetAll().ToList();
+
+                    if (MasterDataId > 0)
+                    {
+                        country = countryRepo.GetById(MasterDataId);
+
+                        if (countryInDb.Any(c=>c.Name.ToLower()==txtCountry.Text.Trim().ToLower()))
+                        {
+                            MessageBox.Show("Country with same name already exist");
+                            return;
+                        }
+                        else
+                        {
+                            country.Name = txtCountry.Text.Trim();
+                            countryRepo.Update(country);
+                        }
+
+                        MasterDataId = 0;
+                    }
+                    else
+                    {
+
+                        countryList = new List<Country>();
+                        string[] countries = txtCountry.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                       
+                        if (countryInDb.Select(x => x.Name).Intersect(countries).Any())
+                        {
+                            MessageBox.Show("Country with same name already exist");
+                            return;
+                        }
+
+                        foreach (string cntrs in countries)
+                        {
+                            country = new Country();
+                            country.Name = cntrs;
+                            country.IsSelected = false;
+
+                            countryList.Add(country);
+                        }
+
+                        countryRepo.Add(countryList);
+                    }
+
+                    countryRepo.Save();
+                    txtCountry.Clear();
+
+                    BindAllDataGrids();
+                    BindAllComboBoxes();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnSaveState_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtState.Text.Trim()))
+                {
+                    MessageBox.Show("State Name required");
+                    txtState.Focus();
+                }
+                else
+                {
+                    List<State> stateInDb = stateRepo.GetAll().ToList();
+
+                    if (MasterDataId > 0)
+                    {                
+                        state = stateRepo.GetById(MasterDataId);
+
+                        if (stateInDb.Any(s=>s.Name.ToLower()==txtState.Text.Trim().ToLower()))
+                        {
+                            MessageBox.Show("State with same name already exist");
+                            return;
+                        }
+                        else
+                        {
+                            state.Name = txtState.Text.Trim();
+                            stateRepo.Update(state);
+                        }
+
+                        MasterDataId = 0;
+                    }
+                    else
+                    {
+
+                        stateList = new List<State>();
+                        string[] statesArr = txtState.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);                      
+
+                        if (stateInDb.Select(x => x.Name).Intersect(statesArr).Any())
+                        {
+                            MessageBox.Show("State with same name already exist");
+                            return;
+                        }
+
+                        foreach (string stt in statesArr)
+                        {
+                            state = new State();
+                            state.Name = stt;
+                            state.IsSelected = false;
+
+                            stateList.Add(state);
+                        }
+
+                        stateRepo.Add(stateList);
+                    }
+
+                    stateRepo.Save();
+                    txtState.Clear();
+
+                    BindAllDataGrids();
+                    BindAllComboBoxes();
+                }
             }
             catch (Exception ex)
             {
@@ -808,11 +838,11 @@ namespace SmartGrocery.UI.Win
         {
             try
             {
-                country = countryRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
-                if (country != null)
+                state = stateRepo.GetById(Convert.ToInt32(((DataGridView)sender).Rows[e.RowIndex].Cells["MasterDataId"].Value));
+                if (state != null)
                 {
-                    txtCountry.Text = country.Name;
-                    MasterDataId = country.Id;
+                    txtState.Text = state.Name;
+                    MasterDataId = state.Id;
                 }
             }
             catch (Exception ex)
